@@ -18,7 +18,13 @@ export function SiteFooter() {
             </li>
           ))}
         </ul>
-        <p>Micro-entreprise. © {new Date().getFullYear()}</p>
+        <p className="flex flex-wrap items-center gap-x-3 gap-y-1">
+          <TextLink href="/mentions-legales" tone="subtle">
+            Mentions légales
+          </TextLink>
+          <span aria-hidden>·</span>
+          <span>Micro-entreprise. © {new Date().getFullYear()}</span>
+        </p>
       </Container>
     </footer>
   )
