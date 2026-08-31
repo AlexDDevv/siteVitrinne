@@ -33,12 +33,12 @@ export function Process() {
           <li
             key={step.title}
             className={`grid content-start gap-3 border-t-2 pt-[18px] ${
-              index === 0 ? "border-amber" : "border-line-input"
+              index === 0 ? "border-accent" : "border-line-input"
             }`}
           >
             <span
               aria-hidden
-              className={`font-mono text-[13px] ${index === 0 ? "text-amber" : "text-subtle"}`}
+              className={`font-mono text-[13px] ${index === 0 ? "text-accent" : "text-subtle"}`}
             >
               {String(index + 1).padStart(2, "0")}
             </span>

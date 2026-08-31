@@ -2,36 +2,123 @@
 
 /* ---------------------------------------------------------------------------
  * Design tokens repris de la maquette Claude Design « Alexis Delporte, Landing ».
- * Palette warm-dark, accent ambre, typographie IBM Plex.
+ *
+ * Le thème sombre est l'identité de référence. Le thème clair n'en est pas
+ * l'inverse mécanique : aucune couleur d'accent de la maquette ne tient le
+ * contraste AA sur fond clair (l'ambre plafonne à 2.0:1). Les rôles sont donc
+ * dédoublés — `amber` reste l'aplat de marque dans les deux thèmes, `accent`
+ * porte la version lisible en texte, bronze en clair.
  * ------------------------------------------------------------------------- */
+
 @theme {
-  /* Fonds */
-  --color-ink: #14120f; /* fond principal */
-  --color-ink-alt: #17150f; /* sections alternées */
-  --color-surface: #1d1a15; /* cartes */
-  --color-surface-accent: #201c15; /* carte mise en avant */
+  /* Invariants : identiques dans les deux thèmes. */
+  --color-amber: #e8a34a; /* aplat de marque : boutons, badges */
+  --color-amber-light: #f5c179; /* aplat au survol */
+  --color-on-amber: #14120f; /* texte posé sur un aplat ambre */
 
-  /* Bordures, du plus discret au plus marqué */
-  --color-line: #221e19;
-  --color-line-strong: #2c2721;
-  --color-line-input: #3a342c;
-  --color-line-hover: #4a4237;
-
-  /* Textes */
-  --color-cream: #f2ede6;
-  --color-muted: #b8b0a5;
-  --color-subtle: #a69e93;
-  /* Éclairci depuis le #7E756A de la maquette : la valeur d'origine plafonnait à 4.03:1
-     sur --color-ink-alt. #8A8176 est la teinte la plus proche qui tient le 4.5:1 AA. */
-  --color-faint: #8a8176;
-
-  /* Accents */
-  --color-amber: #e8a34a;
-  --color-amber-light: #f5c179;
-  --color-sage: #8fb08a; /* disponibilité, succès */
+  /* Rôles dépendant du thème : valeurs réelles définies plus bas. */
+  --color-ink: var(--ink);
+  --color-ink-alt: var(--ink-alt);
+  --color-surface: var(--surface);
+  --color-surface-accent: var(--surface-accent);
+  --color-cream: var(--cream);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-error: var(--error);
+  --color-sage: var(--sage);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-line-input: var(--line-input);
+  --color-line-hover: var(--line-hover);
 
   --font-sans: var(--font-plex-sans), system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+/* Thème sombre : les valeurs de la maquette. Sert de base. */
+:root {
+  color-scheme: dark;
+
+  --ink: #14120f;
+  --ink-alt: #17150f;
+  --surface: #1d1a15;
+  --surface-accent: #201c15;
+
+  --cream: #f2ede6;
+  --muted: #b8b0a5;
+  --subtle: #a69e93;
+  /* Éclairci depuis le #7E756A de la maquette, qui plafonnait à 4.03:1. */
+  --faint: #8a8176;
+
+  --accent: #e8a34a;
+  --accent-hover: #f5c179;
+  --error: #f5c179;
+  --sage: #8fb08a;
+
+  --line: #221e19;
+  --line-strong: #2c2721;
+  --line-input: #3a342c;
+  --line-hover: #4a4237;
+}
+
+/*
+ * Thème clair : papier chaud, cartes blanches, accents assombris.
+ * Chaque valeur a été retenue comme la plus proche de la maquette qui tienne
+ * le 4.5:1 sur les quatre fonds (et 3:1 pour les bordures de champ, WCAG 1.4.11).
+ */
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --ink: #f7f4ed;
+  --ink-alt: #efebe0;
+  --surface: #ffffff;
+  --surface-accent: #fdf5e7;
+
+  --cream: #1a1713;
+  --muted: #544c42;
+  --subtle: #6b6257;
+  --faint: #6b6357;
+
+  --accent: #8a5a0b;
+  --accent-hover: #6b4508;
+  --error: #9a3412;
+  --sage: #3e6b47;
+
+  --line: #e4dfd2;
+  --line-strong: #d8d2c4;
+  --line-input: #948c7e;
+  --line-hover: #7d7566;
+}
+
+/* Sans choix explicite, on suit la préférence système. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+
+    --ink: #f7f4ed;
+    --ink-alt: #efebe0;
+    --surface: #ffffff;
+    --surface-accent: #fdf5e7;
+
+    --cream: #1a1713;
+    --muted: #544c42;
+    --subtle: #6b6257;
+    --faint: #6b6357;
+
+    --accent: #8a5a0b;
+    --accent-hover: #6b4508;
+    --error: #9a3412;
+    --sage: #3e6b47;
+
+    --line: #e4dfd2;
+    --line-strong: #d8d2c4;
+    --line-input: #948c7e;
+    --line-hover: #7d7566;
+  }
 }
 
 html {
@@ -45,12 +132,12 @@ body {
 
 ::selection {
   background: var(--color-amber);
-  color: var(--color-ink);
+  color: var(--color-on-amber);
 }
 
 /* Anneau de focus visible et cohérent sur tous les éléments interactifs. */
 :where(a, button, input, select, textarea):focus-visible {
-  outline: 2px solid var(--color-amber);
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
   border-radius: 4px;
 }

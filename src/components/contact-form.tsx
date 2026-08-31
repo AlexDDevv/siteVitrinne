@@ -97,9 +97,9 @@ export function ContactForm() {
       */}
       <div role="alert" aria-live="assertive">
         {formError ? (
-          <p className="text-amber-light text-sm leading-relaxed">{formError}</p>
+          <p className="text-error text-sm leading-relaxed">{formError}</p>
         ) : errorCount > 0 ? (
-          <p className="text-amber-light text-sm leading-relaxed">
+          <p className="text-error text-sm leading-relaxed">
             {errorCount === 1
               ? "Un champ est à corriger avant l'envoi."
               : `${errorCount} champs sont à corriger avant l'envoi.`}

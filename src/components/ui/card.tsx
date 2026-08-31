@@ -17,7 +17,7 @@ export function Card({
   return (
     <div
       className={`rounded-xl border ${
-        accent ? "bg-surface-accent border-amber" : "bg-surface border-line-strong"
+        accent ? "bg-surface-accent border-accent" : "bg-surface border-line-strong"
       } ${interactive ? "hover:border-line-hover transition-colors" : ""} ${className}`}
     >
       {children}

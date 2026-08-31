@@ -40,7 +40,7 @@ export function Field({ id, label, error, children }: FieldProps) {
         "aria-describedby": error ? errorId : undefined,
       })}
       {error ? (
-        <span id={errorId} className="text-amber-light text-[13.5px]">
+        <span id={errorId} className="text-error text-[13.5px]">
           {error}
         </span>
       ) : null}

@@ -1,3 +1,4 @@
+import { ThemeToggle } from "@/components/theme-toggle"
 import { ButtonLink } from "@/components/ui/button"
 import { Container } from "@/components/ui/section"
 import { navLinks } from "@/lib/site"
@@ -11,7 +12,7 @@ export function SiteHeader() {
           href="#top"
           className="text-subtle hidden font-mono text-[13px] tracking-[0.06em] min-[420px]:inline"
         >
-          alexis<span className="text-amber">.</span>delporte
+          alexis<span className="text-accent">.</span>delporte
         </a>
         <nav aria-label="Navigation principale" className="flex items-center gap-3 sm:gap-[22px]">
           {/*
@@ -30,6 +31,7 @@ export function SiteHeader() {
           <ButtonLink href="#contact" variant="pill" className="text-[13px] sm:text-sm">
             Contact
           </ButtonLink>
+          <ThemeToggle />
         </nav>
       </Container>
     </header>

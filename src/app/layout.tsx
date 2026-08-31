@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next"
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google"
 import { site } from "@/lib/site"
+import { themeInitScript } from "@/lib/theme"
 import "./globals.css"
 
 const plexSans = IBM_Plex_Sans({
@@ -61,13 +62,24 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#14120F",
-  colorScheme: "dark",
+  // Une valeur par thème : la barre d'adresse mobile suit le fond de la page.
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#14120F" },
+    { media: "(prefers-color-scheme: light)", color: "#F7F4ED" },
+  ],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${plexSans.variable} ${plexMono.variable}`}>
+    <html
+      lang="fr"
+      className={`${plexSans.variable} ${plexMono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        {/* Applique le thème avant la première peinture, pour éviter le flash. */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="bg-ink text-cream font-sans antialiased">{children}</body>
     </html>
   )

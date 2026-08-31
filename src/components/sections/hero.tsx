@@ -18,7 +18,7 @@ export function Hero() {
           {site.name}
         </h1>
 
-        <p className="text-amber font-mono text-[clamp(0.875rem,2vw,1.0625rem)] tracking-[0.02em]">
+        <p className="text-accent font-mono text-[clamp(0.875rem,2vw,1.0625rem)] tracking-[0.02em]">
           {site.role}
         </p>
 

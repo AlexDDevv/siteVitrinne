@@ -18,12 +18,12 @@ export function Tarifs() {
               className="relative grid content-start gap-4 p-7"
             >
               {offer.highlight ? (
-                <span className="bg-amber text-ink absolute -top-[11px] left-6 rounded-full px-2.5 py-1 font-mono text-[11px] font-semibold tracking-[0.08em]">
+                <span className="bg-amber text-on-amber absolute -top-[11px] left-6 rounded-full px-2.5 py-1 font-mono text-[11px] font-semibold tracking-[0.08em]">
                   {offer.highlight}
                 </span>
               ) : null}
               <h3 className="text-[18px] font-semibold">{offer.title}</h3>
-              <p className="text-amber text-[32px] font-semibold tracking-[-0.02em]">
+              <p className="text-accent text-[32px] font-semibold tracking-[-0.02em]">
                 {offer.price}
                 {offer.priceSuffix ? (
                   <span className="text-subtle text-base font-normal">{offer.priceSuffix}</span>

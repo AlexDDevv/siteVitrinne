@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 /** Signale une information légale encore absente, en évidence sur la page. */
 function ToComplete({ label }: { label: string }) {
   return (
-    <mark className="bg-amber/15 text-amber-light rounded px-1.5 py-0.5 font-mono text-[13px]">
+    <mark className="bg-amber/20 text-cream rounded px-1.5 py-0.5 font-mono text-[13px]">
       à compléter : {label}
     </mark>
   )

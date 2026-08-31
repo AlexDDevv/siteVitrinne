@@ -4,11 +4,11 @@ type Variant = "primary" | "outline" | "pill"
 
 const variants: Record<Variant, string> = {
   /** CTA principal : ambre plein. */
-  primary: "bg-amber text-ink hover:bg-amber-light rounded-lg px-6 py-4 font-semibold",
+  primary: "bg-amber text-on-amber hover:bg-amber-light rounded-lg px-6 py-4 font-semibold",
   /** CTA secondaire : bordure neutre sur le fond de la page. */
   outline: "border-line-input hover:border-subtle rounded-lg border px-6 py-4 font-medium",
   /** Bouton compact de la barre de navigation. */
-  pill: "border-amber text-amber hover:bg-amber hover:text-ink rounded-full border px-3.5 py-2 font-medium",
+  pill: "border-accent text-accent hover:bg-amber hover:text-on-amber rounded-full border px-3.5 py-2 font-medium",
 }
 
 const base = "inline-block text-center text-base transition-colors"

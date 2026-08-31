@@ -13,7 +13,7 @@ type TextLinkProps = {
 }
 
 const tones = {
-  accent: "text-amber hover:text-amber-light",
+  accent: "text-accent hover:text-accent-hover",
   subtle: "text-subtle hover:text-cream",
 }
 
