@@ -118,7 +118,6 @@ Lighthouse sur le build de production :
 
 ## À compléter
 
-- Captures d'écran des projets dans `public/projets/`, puis renseigner le champ
-  `image` dans `src/lib/projects.ts` (le placeholder rayé s'affiche tant qu'elles
-  sont absentes).
-- Lien public d'Ask&Trust dans `src/lib/projects.ts`.
+- Capture d'écran de Nuit d'Encre dans `public/projets/`, puis renseigner le
+  champ `image` dans `src/lib/projects.ts` (le placeholder rayé s'affiche tant
+  qu'elle est absente).
