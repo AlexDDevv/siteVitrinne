@@ -1,4 +1,5 @@
 import { Approche } from "@/components/sections/approche"
+import { Contact } from "@/components/sections/contact"
 import { Hero } from "@/components/sections/hero"
 import { Offre } from "@/components/sections/offre"
 import { Process } from "@/components/sections/process"
@@ -24,6 +25,7 @@ export default function Home() {
         <Projets />
         <Tarifs />
         <Process />
+        <Contact />
       </main>
       <SiteFooter />
     </>
