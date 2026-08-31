@@ -8,7 +8,7 @@ const atouts = [
       <>
         Éditeur de logiciel SaaS, où j&apos;ai contribué à réduire de{" "}
         <strong className="text-cream font-semibold">80 % les temps de chargement</strong> pour plus
-        de 2 000 utilisateurs professionnels — des équipes de TotalEnergies, Crédit Agricole ou
+        de 2 000 utilisateurs professionnels : des équipes de TotalEnergies, Crédit Agricole ou
         Eiffage.
       </>
     ),
@@ -18,7 +18,7 @@ const atouts = [
     body: (
       <>
         Je développe ma propre application de tracking sportif. Résultat : je ne pense pas
-        «&nbsp;site&nbsp;», je pense produit — expérience utilisateur, rétention, ce qui fait
+        «&nbsp;site&nbsp;», je pense produit : expérience utilisateur, rétention, ce qui fait
         revenir les gens sur le long terme.
       </>
     ),
@@ -59,7 +59,7 @@ export function Approche() {
   return (
     <Section
       id="pourquoi"
-      eyebrow="02 — Pourquoi travailler avec moi"
+      eyebrow="02 · Pourquoi travailler avec moi"
       title="Un profil produit, pas seulement une paire de mains"
     >
       <ul role="list" className="mt-11 grid gap-x-11 gap-y-6 sm:grid-cols-2">

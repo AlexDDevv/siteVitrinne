@@ -33,7 +33,7 @@ export const contactSchema = z.object({
     .max(4000, "Le message ne peut pas dépasser 4000 caractères."),
   /**
    * Champ piège invisible : rempli uniquement par les bots. Volontairement sans
-   * contrainte — c'est la route qui décide quoi en faire, pour répondre 200 sans
+   * contrainte : c'est la route qui décide quoi en faire, pour répondre 200 sans
    * rien envoyer plutôt que de signaler au bot que le piège a fonctionné.
    */
   company: z.string().optional(),
@@ -45,7 +45,7 @@ export function projectTypeLabel(value: string): string {
 }
 
 /**
- * Aplatit les erreurs zod en un message par champ — le format attendu à la fois
+ * Aplatit les erreurs zod en un message par champ, au format attendu à la fois
  * par le formulaire et par la réponse de l'API.
  */
 export function collectFieldErrors(error: z.ZodError): FieldErrors {

@@ -8,7 +8,7 @@ export function Contact() {
     <section id="contact" aria-labelledby="contact-title" className="border-line-strong border-t">
       <Container className="grid items-start gap-12 py-20 sm:py-24 lg:grid-cols-2">
         <div className="grid content-start gap-4.5">
-          <Eyebrow>06 — Contact</Eyebrow>
+          <Eyebrow>06 · Contact</Eyebrow>
           <h2
             id="contact-title"
             className="text-[clamp(1.875rem,4.4vw,2.75rem)] leading-[1.1] font-semibold tracking-[-0.025em]"

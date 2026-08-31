@@ -49,7 +49,7 @@ export function buildStructuredData() {
       {
         "@type": "ProfessionalService",
         "@id": businessId,
-        name: `${site.name} — ${site.role}`,
+        name: `${site.name}, ${site.role}`,
         description:
           "Création de sites vitrines, d'applications web sur-mesure et maintenance, par un développeur full-stack freelance basé à Écully, près de Lyon.",
         url: site.url,

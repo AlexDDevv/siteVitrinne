@@ -81,7 +81,7 @@ export async function POST(request: Request): Promise<NextResponse<ContactRespon
       from,
       to,
       replyTo: parsed.data.email,
-      subject: `Nouveau contact — ${parsed.data.name} (${projectTypeLabel(parsed.data.projectType)})`,
+      subject: `Nouveau contact de ${parsed.data.name} (${projectTypeLabel(parsed.data.projectType)})`,
       html: buildEmailHtml(parsed.data),
     })
 

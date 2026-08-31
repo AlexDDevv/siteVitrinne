@@ -6,7 +6,7 @@ export function Tarifs() {
   return (
     <Section
       id="tarifs"
-      eyebrow="04 — Tarifs indicatifs"
+      eyebrow="04 · Tarifs indicatifs"
       title="Les ordres de grandeur, sans détour"
       intro="Ce sont des fourchettes indicatives. Chaque projet fait l'objet d'un devis personnalisé après un premier échange sur votre besoin réel."
     >

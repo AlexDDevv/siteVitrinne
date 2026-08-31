@@ -28,10 +28,12 @@ export function Hero() {
         </p>
 
         <p className="text-subtle max-w-[46ch] text-base leading-relaxed">
-          Basé à {site.city}, près de {site.area} — disponible à distance partout en France.
+          Basé à {site.city}, près de {site.area}. Disponible à distance partout en France.
         </p>
 
-        <div className="mt-2 flex flex-wrap gap-3">
+        {/* w-fit + auto-cols-fr : les deux boutons adoptent la largeur du plus large,
+            sans que la grille s'étire sur toute la colonne. Empilés en mobile. */}
+        <div className="mt-2 grid gap-3 sm:w-fit sm:auto-cols-fr sm:grid-flow-col">
           <ButtonLink href="#contact">Discutons de votre projet</ButtonLink>
           <ButtonLink href={site.links.malt} variant="outline" external arrow>
             Voir mon profil Malt

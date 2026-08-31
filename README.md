@@ -1,9 +1,9 @@
-# Site vitrine — Alexis Delporte
+# Site vitrine d'Alexis Delporte
 
 Landing page one-page du site vitrine freelance d'Alexis Delporte, développeur web
 full-stack basé à Écully, près de Lyon.
 
-Le design suit la maquette Claude Design « Alexis Delporte — Landing » : palette
+Le design suit la maquette Claude Design « Alexis Delporte, Landing » : palette
 warm-dark, accent ambre, typographie IBM Plex.
 
 ## Stack
@@ -49,7 +49,7 @@ Toutes documentées dans [`.env.example`](./.env.example).
 | Variable               | Rôle                                                        | Requise |
 | ---------------------- | ----------------------------------------------------------- | ------- |
 | `RESEND_API_KEY`       | Clé API Resend pour l'envoi des emails                       | oui     |
-| `CONTACT_FROM_EMAIL`   | Expéditeur — domaine vérifié dans Resend                     | oui     |
+| `CONTACT_FROM_EMAIL`   | Expéditeur, sur un domaine vérifié dans Resend                     | oui     |
 | `CONTACT_TO_EMAIL`     | Destinataire des messages du formulaire                      | oui     |
 | `NEXT_PUBLIC_SITE_URL` | URL publique (metadata, canonical, sitemap, og:image)        | oui     |
 
@@ -70,10 +70,10 @@ src/
 │   ├── ui/                    # Primitives partagées, sans duplication :
 │   │   ├── section.tsx        #   Section (aria-labelledby auto), Container,
 │   │   │                      #   Eyebrow, Body, CardGrid
-│   │   ├── button.tsx         #   Button / ButtonLink — variantes primary, outline, pill
-│   │   ├── text-link.tsx      #   TextLink — tons accent/subtle, gestion des liens externes
+│   │   ├── button.tsx         #   Button / ButtonLink : variantes primary, outline, pill
+│   │   ├── text-link.tsx      #   TextLink : tons accent/subtle, liens externes
 │   │   ├── card.tsx           #   Card, Tag, TagList
-│   │   └── field.tsx          #   Field — label, erreur et câblage ARIA d'un champ
+│   │   └── field.tsx          #   Field : label, erreur et câblage ARIA d'un champ
 │   ├── contact-form.tsx       # Formulaire client (états succès/erreur)
 │   ├── structured-data.tsx    # Injection du graphe Schema.org
 │   ├── site-header.tsx
@@ -98,7 +98,7 @@ Lighthouse sur le build de production :
 
 - Metadata complètes : title, description, mots-clés ciblés Lyon / Écully,
   canonical, Open Graph et Twitter Card.
-- `og:image` générée à la volée par `ImageResponse` — rien à maintenir à la main.
+- `og:image` générée à la volée par `ImageResponse` : rien à maintenir à la main.
 - Données structurées Schema.org (`src/lib/structured-data.ts`) : `Person`,
   `ProfessionalService` avec `areaServed` Lyon / Écully / France et le catalogue
   d'offres chiffré, `WebSite`, et un `CreativeWork` par projet publié.

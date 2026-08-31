@@ -27,7 +27,7 @@ export function Offre() {
     <Section
       id="offre"
       alt
-      eyebrow="01 — Ce que je propose"
+      eyebrow="01 · Ce que je propose"
       title="Trois façons de travailler ensemble"
     >
       <CardGrid className="mt-10">

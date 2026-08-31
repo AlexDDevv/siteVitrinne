@@ -20,7 +20,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Développeur web freelance à Lyon`,
+    default: `${site.name}, développeur web freelance à Lyon`,
     template: `%s | ${site.name}`,
   },
   description:
@@ -43,13 +43,13 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: site.url,
     siteName: site.name,
-    title: `${site.name} — Développeur web freelance à Lyon`,
+    title: `${site.name}, développeur web freelance à Lyon`,
     description:
       "Sites vitrines, applications sur-mesure et maintenance web. Développeur full-stack freelance basé à Écully, près de Lyon.",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Développeur web freelance à Lyon`,
+    title: `${site.name}, développeur web freelance à Lyon`,
     description:
       "Sites vitrines, applications sur-mesure et maintenance web. Développeur full-stack freelance près de Lyon.",
   },

@@ -11,12 +11,12 @@ export function Container({
   return <div className={`mx-auto w-full max-w-[1080px] px-6 ${className}`}>{children}</div>
 }
 
-/** Numéro + libellé en monospace au-dessus d'un titre, ex. « 01 — Ce que je propose ». */
+/** Numéro + libellé en monospace au-dessus d'un titre, ex. « 01 · Ce que je propose ». */
 export function Eyebrow({ children }: { children: ReactNode }) {
   return <p className="text-faint font-mono text-xs tracking-[0.14em] uppercase">{children}</p>
 }
 
-/** Paragraphe de corps de carte — la taille et l'interlignage de la maquette. */
+/** Paragraphe de corps de carte, à la taille et l'interlignage de la maquette. */
 export function Body({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <p className={`text-muted text-[15.5px] leading-[1.65] ${className}`}>{children}</p>
 }
@@ -62,7 +62,7 @@ type SectionProps = {
 /**
  * Section de la page avec son en-tête. Le titre est rendu ici plutôt que par
  * l'appelant, ce qui garantit que chaque `<section>` est reliée à son `<h2>`
- * via `aria-labelledby` — les lecteurs d'écran nomment alors chaque repère.
+ * via `aria-labelledby` : les lecteurs d'écran nomment alors chaque repère.
  */
 export function Section({ id, eyebrow, title, intro, children, alt = false }: SectionProps) {
   const titleId = `${id}-title`

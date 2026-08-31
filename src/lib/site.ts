@@ -26,7 +26,7 @@ export const navLinks = [
   { href: "#tarifs", label: "Tarifs" },
 ] as const
 
-/** Réseaux affichés en contact et en pied de page — une seule liste pour les deux. */
+/** Réseaux affichés en contact et en pied de page. Une seule liste pour les deux. */
 export const socialLinks = [
   { label: "Malt", href: site.links.malt },
   { label: "LinkedIn", href: site.links.linkedin },

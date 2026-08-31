@@ -7,7 +7,7 @@ export function SiteFooter() {
     <footer className="border-line bg-ink-alt border-t">
       <Container className="text-faint flex flex-wrap items-center justify-between gap-x-8 gap-y-4 py-8 text-sm">
         <p>
-          {site.name} — {site.role}, {site.city} ({site.postalCode.slice(0, 2)})
+          {site.name} · {site.role} · {site.city} ({site.postalCode.slice(0, 2)})
         </p>
         <ul role="list" className="flex gap-5">
           {socialLinks.map((social) => (
@@ -18,7 +18,7 @@ export function SiteFooter() {
             </li>
           ))}
         </ul>
-        <p>Micro-entreprise — SIRET sur demande. © {new Date().getFullYear()}</p>
+        <p>Micro-entreprise. © {new Date().getFullYear()}</p>
       </Container>
     </footer>
   )

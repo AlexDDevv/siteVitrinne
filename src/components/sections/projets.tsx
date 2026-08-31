@@ -38,7 +38,7 @@ export function Projets() {
     <Section
       id="projets"
       alt
-      eyebrow="03 — Projets"
+      eyebrow="03 · Projets"
       title="Des projets en ligne, pas des maquettes"
     >
       <CardGrid columns={2} className="mt-10">

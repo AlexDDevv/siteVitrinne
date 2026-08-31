@@ -24,7 +24,7 @@ type ButtonLinkProps = {
   arrow?: boolean
 } & Omit<ComponentPropsWithoutRef<"a">, "href" | "className">
 
-/** Bouton d'action rendu en lien — ancre interne ou URL externe. */
+/** Bouton d'action rendu en lien : ancre interne ou URL externe. */
 export function ButtonLink({
   href,
   variant = "primary",

@@ -3,7 +3,7 @@ import { Section } from "@/components/ui/section"
 const steps = [
   {
     title: "Premier contact",
-    body: "Vous remplissez le formulaire, on échange sur votre besoin — par mail ou en visio, 30 minutes suffisent souvent.",
+    body: "Vous remplissez le formulaire, on échange sur votre besoin, par mail ou en visio : 30 minutes suffisent souvent.",
   },
   {
     title: "Proposition et devis",
@@ -24,7 +24,7 @@ export function Process() {
     <Section
       id="process"
       alt
-      eyebrow="05 — Comment ça se passe"
+      eyebrow="05 · Comment ça se passe"
       title="Quatre étapes, zéro surprise"
     >
       {/* <ol> plutôt qu'<ul> : l'ordre des étapes porte le sens. */}
