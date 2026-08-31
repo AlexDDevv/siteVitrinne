@@ -14,7 +14,7 @@ export function Projets() {
       <CardGrid columns={2} className="mt-10">
         {projects.map((project) => (
           <li key={project.title} className="grid">
-            <article className="bg-surface border-line-strong grid content-start gap-3.5 rounded-xl border p-6 sm:p-[26px]">
+            <article className="bg-surface border-line-strong shadow-card hover:shadow-card-raised grid content-start gap-3.5 rounded-xl border p-6 transition-shadow sm:p-[26px]">
               <h3 className="text-[22px] font-semibold">{project.title}</h3>
               <Body>{project.description}</Body>
               <TagList

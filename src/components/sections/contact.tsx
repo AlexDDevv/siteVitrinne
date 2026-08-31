@@ -37,7 +37,7 @@ export function Contact() {
           </ul>
         </div>
 
-        <div className="bg-surface border-line-strong rounded-2xl border p-6 sm:p-7">
+        <div className="bg-surface border-line-strong shadow-card rounded-2xl border p-6 sm:p-7">
           <ContactForm />
         </div>
       </Container>

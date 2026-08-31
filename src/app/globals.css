@@ -34,6 +34,9 @@
   --color-line-input: var(--line-input);
   --color-line-hover: var(--line-hover);
 
+  --shadow-card: var(--card-shadow);
+  --shadow-card-raised: var(--card-shadow-raised);
+
   --font-sans: var(--font-plex-sans), system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 }
@@ -62,6 +65,10 @@
   --line-strong: #2c2721;
   --line-input: #3a342c;
   --line-hover: #4a4237;
+
+  /* Sur fond sombre, une ombre ne se voit pas : les bordures portent le relief. */
+  --card-shadow: 0 0 0 0 transparent;
+  --card-shadow-raised: 0 0 0 0 transparent;
 }
 
 /*
@@ -92,6 +99,9 @@
   --line-strong: #d8d2c4;
   --line-input: #948c7e;
   --line-hover: #7d7566;
+
+  --card-shadow: 0 1px 2px rgb(26 23 19 / 0.04), 0 4px 10px -2px rgb(26 23 19 / 0.05);
+  --card-shadow-raised: 0 2px 4px rgb(26 23 19 / 0.05), 0 10px 24px -6px rgb(26 23 19 / 0.09);
 }
 
 /* Sans choix explicite, on suit la préférence système. */
@@ -118,6 +128,9 @@
     --line-strong: #d8d2c4;
     --line-input: #948c7e;
     --line-hover: #7d7566;
+
+    --card-shadow: 0 1px 2px rgb(26 23 19 / 0.04), 0 4px 10px -2px rgb(26 23 19 / 0.05);
+    --card-shadow-raised: 0 2px 4px rgb(26 23 19 / 0.05), 0 10px 24px -6px rgb(26 23 19 / 0.09);
   }
 }
 

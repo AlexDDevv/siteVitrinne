@@ -23,10 +23,22 @@ export function Tarifs() {
                 </span>
               ) : null}
               <h3 className="text-[18px] font-semibold">{offer.title}</h3>
+              {/*
+                Le prix est une valeur, pas un titre de section : le passer en <h4>
+                casserait la hiérarchie et le mettrait en concurrence avec le <h3>.
+                Le préfixe lu lève l'ambiguïté sans changer le rendu — un montant
+                annoncé seul par un lecteur d'écran ne dit pas ce qu'il désigne.
+              */}
               <p className="text-accent text-[32px] font-semibold tracking-[-0.02em]">
+                <span className="sr-only">Tarif : </span>
                 {offer.price}
                 {offer.priceSuffix ? (
-                  <span className="text-subtle text-base font-normal">{offer.priceSuffix}</span>
+                  <>
+                    <span aria-hidden className="text-subtle text-base font-normal">
+                      {offer.priceSuffix}
+                    </span>
+                    <span className="sr-only"> par mois</span>
+                  </>
                 ) : null}
               </p>
               <ul
