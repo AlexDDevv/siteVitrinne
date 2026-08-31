@@ -11,7 +11,7 @@ export const site = {
   region: "Auvergne-Rhône-Alpes",
   country: "FR",
   email: "alexddevs@gmail.com",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://alexisdelporte.fr",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://alexisdelporte.dev",
   links: {
     malt: "https://www.malt.fr/profile/alexisdelporte?overview",
     github: "https://github.com/AlexDDevv",
