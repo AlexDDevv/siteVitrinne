@@ -6,12 +6,18 @@
  * oubli se remarque immédiatement plutôt que de passer inaperçu.
  */
 export const legal = {
-  /** Numéro SIRET à 14 chiffres. */
-  siret: "92825974600016",
-  /** Adresse du siège. En micro-entreprise, c'est en général le domicile. */
-  address: "6 chemin du vallon du Roy, 13400 Aubagne, France",
-  /** Facultatif : la LCEN se contente d'un moyen de contact, l'email suffit. */
-  phone: "0668053483",
+  /** Numéro SIRET à 14 chiffres. Change si le siège est transféré. */
+  siret: "92825974600016" as string | null,
+  /** Adresse du siège social déclaré, la seule que la LCEN impose de publier. */
+  address: "6 chemin du vallon du Roy, 13400 Aubagne, France" as string | null,
+  /**
+   * Commune depuis laquelle l'activité est réellement exercée, quand elle diffère
+   * du siège déclaré. Évite qu'un prospect bute sur l'écart entre l'adresse
+   * administrative et le « près de Lyon » affiché sur le reste du site.
+   */
+  workplace: "Écully (69130), métropole de Lyon" as string | null,
+  /** Facultatif : la LCEN se contente d'un moyen de contact, et l'email suffit. */
+  phone: null as string | null,
   /** Date de dernière révision du texte. */
   updatedAt: "2026-08-31",
 } as const

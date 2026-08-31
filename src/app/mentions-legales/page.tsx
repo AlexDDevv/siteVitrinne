@@ -67,9 +67,10 @@ export default function MentionsLegales() {
           <Article title="Éditeur du site">
             <Row label="Responsable de la publication">{site.name}</Row>
             <Row label="Statut">Entrepreneur individuel (micro-entreprise)</Row>
-            <Row label="Adresse du siège">
+            <Row label="Adresse du siège social">
               {legal.address ?? <ToComplete label="adresse du siège" />}
             </Row>
+            {legal.workplace ? <Row label="Lieu d'exercice">{legal.workplace}</Row> : null}
             <Row label="SIRET">
               {legal.siret ?? <ToComplete label="numéro SIRET à 14 chiffres" />}
             </Row>
