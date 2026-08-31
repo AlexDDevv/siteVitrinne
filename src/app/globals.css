@@ -1,1 +1,74 @@
 @import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+ * Design tokens — repris de la maquette Claude Design « Alexis Delporte — Landing ».
+ * Palette warm-dark, accent ambre, typographie IBM Plex.
+ * ------------------------------------------------------------------------- */
+@theme {
+  /* Fonds */
+  --color-ink: #14120f; /* fond principal */
+  --color-ink-alt: #17150f; /* sections alternées */
+  --color-surface: #1d1a15; /* cartes */
+  --color-surface-accent: #201c15; /* carte mise en avant */
+
+  /* Bordures, du plus discret au plus marqué */
+  --color-line: #221e19;
+  --color-line-strong: #2c2721;
+  --color-line-input: #3a342c;
+  --color-line-hover: #4a4237;
+
+  /* Textes */
+  --color-cream: #f2ede6;
+  --color-muted: #b8b0a5;
+  --color-subtle: #a69e93;
+  /* Éclairci depuis le #7E756A de la maquette : la valeur d'origine plafonnait à 4.03:1
+     sur --color-ink-alt. #8A8176 est la teinte la plus proche qui tient le 4.5:1 AA. */
+  --color-faint: #8a8176;
+
+  /* Accents */
+  --color-amber: #e8a34a;
+  --color-amber-light: #f5c179;
+  --color-sage: #8fb08a; /* disponibilité, succès */
+
+  --font-sans: var(--font-plex-sans), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-cream);
+}
+
+::selection {
+  background: var(--color-amber);
+  color: var(--color-ink);
+}
+
+/* Anneau de focus visible et cohérent sur tous les éléments interactifs. */
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Compense le header sticky quand on arrive sur une ancre. */
+:where(section[id]) {
+  scroll-margin-top: 72px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
