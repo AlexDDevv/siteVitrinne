@@ -7,11 +7,11 @@
  */
 export const legal = {
   /** Numéro SIRET à 14 chiffres. */
-  siret: null as string | null,
+  siret: "92825974600016",
   /** Adresse du siège. En micro-entreprise, c'est en général le domicile. */
-  address: null as string | null,
+  address: "6 chemin du vallon du Roy, 13400 Aubagne, France",
   /** Facultatif : la LCEN se contente d'un moyen de contact, l'email suffit. */
-  phone: null as string | null,
+  phone: "0668053483",
   /** Date de dernière révision du texte. */
   updatedAt: "2026-08-31",
 } as const

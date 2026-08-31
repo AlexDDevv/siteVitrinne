@@ -44,12 +44,12 @@ export default function MentionsLegales() {
   return (
     <>
       <main id="main">
-        <Container className="grid max-w-[760px] gap-8 py-16 sm:py-20">
+        <Container className="grid max-w-190 gap-8 py-16 sm:py-20">
           <header className="grid gap-4">
             <TextLink href="/" tone="subtle" className="font-mono text-[13px]">
               <span aria-hidden>←</span> Retour à l&apos;accueil
             </TextLink>
-            <h1 className="text-[clamp(1.875rem,4.4vw,2.5rem)] leading-[1.1] font-semibold tracking-[-0.025em]">
+            <h1 className="text-[clamp(1.875rem,4.4vw,2.5rem)] leading-[1.1] font-semibold tracking-tight">
               Mentions légales
             </h1>
             <p className="text-subtle text-[15.5px]">
@@ -76,7 +76,13 @@ export default function MentionsLegales() {
             <Row label="Email">
               <TextLink href={`mailto:${site.email}`}>{site.email}</TextLink>
             </Row>
-            {legal.phone ? <Row label="Téléphone">{legal.phone}</Row> : null}
+            {legal.phone ? (
+              <Row label="Téléphone">
+                <TextLink href={`tel:+33${legal.phone.slice(1)}`}>
+                  {legal.phone.replace(/(\d{2})(?=\d)/g, "$1 ")}
+                </TextLink>
+              </Row>
+            ) : null}
             <p>
               L&apos;activité de développement web n&apos;est pas une profession réglementée : elle
               n&apos;est soumise ni à un ordre professionnel, ni à une autorisation d&apos;exercice.
