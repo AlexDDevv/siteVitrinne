@@ -1,6 +1,6 @@
 export type PricingTier = {
   title: string
-  /** Libellé affiché, ex. « 800 € – 1 500 € ». */
+  /** Libellé affiché, ex. « 750 € – 1 200 € ». */
   price: string
   /** Suffixe en plus petit après le prix, ex. « /mois ». */
   priceSuffix?: string
@@ -14,12 +14,18 @@ export type PricingTier = {
 export const pricing: PricingTier[] = [
   {
     title: "Site vitrine",
-    price: "800 € – 1 500 €",
-    features: ["Pages statiques", "Formulaire de contact", "SEO de base", "Responsive mobile"],
-    amount: { min: 800, max: 1500 },
+    price: "750 € – 1 200 €",
+    features: [
+      "Pages statiques",
+      "Formulaire de contact",
+      "SEO de base",
+      "Responsive mobile",
+      "Design sur-mesure en option",
+    ],
+    amount: { min: 750, max: 1200 },
   },
   {
-    title: "Site sur-mesure avec back & BDD",
+    title: "Application sur-mesure",
     price: "à partir de 3 000 €",
     highlight: "SUR DEVIS",
     features: [
