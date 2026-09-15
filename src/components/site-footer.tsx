@@ -23,7 +23,7 @@ export function SiteFooter() {
             Mentions légales
           </TextLink>
           <span aria-hidden>·</span>
-          <span>Micro-entreprise. © {new Date().getFullYear()}</span>
+          <span>Alexis Delporte. © {new Date().getFullYear()}</span>
         </p>
       </Container>
     </footer>

@@ -13,7 +13,7 @@ export const site = {
   email: "alexddevs@gmail.com",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://alexisdelporte.dev",
   links: {
-    malt: "https://www.malt.fr/profile/alexisdelporte?overview",
+    malt: "https://www.malt.fr/profile/alexisdelporte",
     github: "https://github.com/AlexDDevv",
     linkedin: "https://www.linkedin.com/in/alexis-delporte/",
   },
