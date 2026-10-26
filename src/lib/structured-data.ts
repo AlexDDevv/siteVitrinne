@@ -114,7 +114,7 @@ export function buildStructuredData(lang: Lang) {
       },
       {
         "@type": "FAQPage",
-        "@id": `${url}#${c.ids.faq}`,
+        "@id": `${site.url}${paths.home[lang]}#${c.ids.faq}`,
         url,
         inLanguage: htmlLang[lang],
         isPartOf: { "@id": websiteId },
@@ -211,7 +211,7 @@ export function buildProfileStructuredData(lang: Lang) {
         mainEntity: { ...author, jobTitle: p.subtitle },
         breadcrumb: { "@id": `${url}#breadcrumb` },
       },
-      breadcrumb(lang, url, site.name),
+      breadcrumb(lang, url, ui[lang].profile),
     ],
   }
 }
