@@ -5,14 +5,14 @@ import { paths } from "@/content/i18n"
 
 const atouts = [
   {
-    title: "-80 % de temps de chargement chez Likewatt",
+    title: "Des temps de chargement divisés par deux chez Likewatt",
     body: (
       <>
         Développeur full-stack chez Likewatt, éditeur SaaS. Refonte de l&apos;interface, migration
-        Firebase → MongoDB, découpage en micro-services :{" "}
-        <strong className="text-cream font-semibold">-80 % de temps de chargement</strong> pour plus
-        de 2 000 utilisateurs professionnels, dont des équipes de TotalEnergies, du Crédit Agricole
-        et d&apos;Eiffage.
+        Firebase → MongoDB, découpage en micro-services : temps de chargement{" "}
+        <strong className="text-cream font-semibold">réduits de moitié</strong> pour plus de 2 000
+        utilisateurs professionnels, dont des équipes de TotalEnergies, du Crédit Agricole et
+        d&apos;Eiffage.
       </>
     ),
     link: { href: paths.project("fr", "likewatt"), label: "L'étude de cas Likewatt" },

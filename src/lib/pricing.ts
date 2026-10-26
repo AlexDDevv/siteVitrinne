@@ -1,6 +1,6 @@
 export type PricingTier = {
   title: string
-  /** Libellé affiché. Peut contenir un marqueur « [À COMPLÉTER] ». */
+  /** Libellé affiché. */
   price: string
   features: string[]
   /** Badge de mise en avant ; sa présence bascule la carte en style accentué. */
@@ -11,7 +11,7 @@ export type PricingTier = {
 export const pricing: PricingTier[] = [
   {
     title: "Mission au temps passé",
-    price: "TJM [À COMPLÉTER]",
+    price: "450 € / jour",
     features: [
       "Refonte, performance, renfort technique",
       "Facturation au temps passé",
@@ -20,7 +20,7 @@ export const pricing: PricingTier[] = [
   },
   {
     title: "MVP",
-    price: "à partir de [À COMPLÉTER] €",
+    price: "à partir de 6 000 €",
     highlight: "SUR PROPOSITION",
     features: [
       "Front, API, base de données, auth, paiement",

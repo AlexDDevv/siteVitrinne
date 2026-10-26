@@ -19,7 +19,7 @@ export const likewatt: Project = {
     fr: {
       title: "Likewatt",
       summary:
-        "Éditeur SaaS dans les énergies renouvelables. Refonte de l'interface, migration Firebase → MongoDB et découpage en micro-services : -80 % de temps de chargement pour plus de 2 000 utilisateurs professionnels.",
+        "Éditeur SaaS dans les énergies renouvelables. Refonte de l'interface, migration Firebase → MongoDB et découpage en micro-services : temps de chargement réduits de moitié pour plus de 2 000 utilisateurs professionnels.",
       dates: "Sept. 2024 → aujourd'hui",
       context: [
         "Likewatt est un éditeur SaaS dans les énergies renouvelables, basé à Villeurbanne. Ses utilisateurs sont des professionnels, dont des équipes de TotalEnergies, du Crédit Agricole et d'Eiffage.",
@@ -40,7 +40,7 @@ export const likewatt: Project = {
       ],
       technical: [],
       result: [
-        "-80 % de temps de chargement pour plus de 2 000 utilisateurs professionnels, dont des équipes de TotalEnergies, du Crédit Agricole et d'Eiffage.",
+        "Des temps de chargement réduits de moitié pour plus de 2 000 utilisateurs professionnels, dont des équipes de TotalEnergies, du Crédit Agricole et d'Eiffage.",
         "Nettement moins de bugs, sur une base de code modernisée que l'équipe fait évoluer plus facilement.",
       ],
       gallery: [],
@@ -48,7 +48,7 @@ export const likewatt: Project = {
     en: {
       title: "Likewatt",
       summary:
-        "SaaS vendor in renewable energy. Interface redesign, Firebase → MongoDB migration and split into microservices: 80% faster load times for more than 2,000 professional users.",
+        "SaaS vendor in renewable energy. Interface redesign, Firebase → MongoDB migration and split into microservices: load times cut in half for more than 2,000 professional users.",
       dates: "Sept. 2024 → present",
       context: [
         "Likewatt is a SaaS vendor in renewable energy, based in Villeurbanne, France. Its users are professionals, including teams at TotalEnergies, Crédit Agricole and Eiffage.",
@@ -69,7 +69,7 @@ export const likewatt: Project = {
       ],
       technical: [],
       result: [
-        "80% faster load times for more than 2,000 professional users, including teams at TotalEnergies, Crédit Agricole and Eiffage.",
+        "Load times cut in half for more than 2,000 professional users, including teams at TotalEnergies, Crédit Agricole and Eiffage.",
         "Far fewer bugs, on a modernized codebase the team can evolve more easily.",
       ],
       gallery: [],

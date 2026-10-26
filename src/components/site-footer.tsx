@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui/section"
 import { TextLink } from "@/components/ui/text-link"
-import { ui, type Lang } from "@/content/i18n"
+import { paths, ui, type Lang } from "@/content/i18n"
 import { site, socialLinks } from "@/lib/site"
 
 export function SiteFooter({ lang = "fr" }: { lang?: Lang }) {
@@ -21,7 +21,7 @@ export function SiteFooter({ lang = "fr" }: { lang?: Lang }) {
           ))}
         </ul>
         <p className="flex flex-wrap items-center gap-x-3 gap-y-1">
-          <TextLink href="/mentions-legales" tone="subtle">
+          <TextLink href={paths.legal[lang]} tone="subtle">
             {ui[lang].legal}
           </TextLink>
           <span aria-hidden>·</span>

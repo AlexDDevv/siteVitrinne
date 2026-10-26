@@ -10,7 +10,7 @@ export const offres = [
     slug: "refonte",
     title: "Refonte & performance",
     description:
-      "Reprise de code existant, modernisation, migrations, découpage en services, temps de chargement. C'est ce que je fais chez Likewatt : -80 % de temps de chargement.",
+      "Reprise de code existant, modernisation, migrations, découpage en services, temps de chargement. C'est ce que je fais chez Likewatt : des temps de chargement réduits de moitié.",
   },
   {
     slug: "agences",

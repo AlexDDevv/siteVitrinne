@@ -34,11 +34,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
         0.7
       )
     ),
-    {
-      url: `${site.url}/mentions-legales`,
+    ...bilingual(paths.legal, 0.3).map((entry) => ({
+      ...entry,
       lastModified: new Date(legal.updatedAt),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
+      changeFrequency: "yearly" as const,
+    })),
   ]
 }

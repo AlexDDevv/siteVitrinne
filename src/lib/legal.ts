@@ -16,16 +16,18 @@ export const legal = {
    * administrative et le « près de Lyon » affiché sur le reste du site.
    */
   workplace: "Écully (69130), métropole de Lyon" as string | null,
+  workplaceEn: "Écully (69130), Lyon metropolitan area, France",
   /** Facultatif : la LCEN se contente d'un moyen de contact, et l'email suffit. */
   phone: null as string | null,
   /** Date de dernière révision du texte. */
-  updatedAt: "2026-08-31",
+  updatedAt: "2026-10-26",
 } as const
 
 /** Hébergeur du site. À revérifier sur vercel.com si Vercel déménage. */
 export const host = {
   name: "Vercel Inc.",
   address: "340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis",
+  addressEn: "340 S Lemon Ave #4133, Walnut, CA 91789, United States",
   url: "https://vercel.com",
 } as const
 
@@ -33,5 +35,6 @@ export const host = {
 export const mailProcessor = {
   name: "Resend (Plus Five Five, Inc.)",
   region: "Union européenne (eu-west-1)",
+  regionEn: "European Union (eu-west-1)",
   url: "https://resend.com/legal/privacy-policy",
 } as const

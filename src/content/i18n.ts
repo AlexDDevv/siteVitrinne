@@ -11,6 +11,7 @@ export const ogLocale: Record<Lang, string> = { fr: "fr_FR", en: "en_US" }
 /** Chemins des pages bilingues. Une seule définition, utilisée par la nav, le sitemap et les hreflang. */
 export const paths = {
   profile: { fr: "/parcours", en: "/en/profile" } satisfies Record<Lang, string>,
+  legal: { fr: "/mentions-legales", en: "/en/legal-notice" } satisfies Record<Lang, string>,
   project: (lang: Lang, slug: string) =>
     lang === "fr" ? `/projets/${slug}` : `/en/projects/${slug}`,
 }
@@ -85,7 +86,7 @@ export const ui = {
       toLight: "Switch to light theme",
       toDark: "Switch to dark theme",
     },
-    legal: "Legal notice (FR)",
+    legal: "Legal notice",
   },
 } as const
 
