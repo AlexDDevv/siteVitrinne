@@ -20,6 +20,7 @@ export type Alternates = Record<Lang, string>
 export const ui = {
   fr: {
     skipLink: "Aller au contenu",
+    home: "Accueil",
     mainNav: "Navigation principale",
     langSwitch: "Langue",
     projects: "Projets",
@@ -54,6 +55,7 @@ export const ui = {
   },
   en: {
     skipLink: "Skip to content",
+    home: "Home",
     mainNav: "Main navigation",
     langSwitch: "Language",
     projects: "Projects",

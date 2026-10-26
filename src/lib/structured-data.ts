@@ -1,7 +1,9 @@
 import { home } from "@/content/home"
-import { htmlLang, paths, type Lang } from "@/content/i18n"
+import { htmlLang, paths, ui, type Lang } from "@/content/i18n"
+import { profile } from "@/content/profile"
 import { projects } from "@/content/projects"
 import { site } from "@/lib/site"
+import type { Project } from "@/types/project"
 
 const personId = `${site.url}/#person`
 const businessId = `${site.url}/#business`
@@ -132,6 +134,79 @@ export function buildStructuredData(lang: Lang) {
         keywords: project.stack.join(", "),
         ...(project.repo ? { codeRepository: project.repo } : {}),
       })),
+    ],
+  }
+}
+
+/**
+ * Auteur des pages hors accueil : référence au `Person` du graphe de l'accueil
+ * par son `@id`, avec le nom pour rester lisible sans ce graphe.
+ */
+const author = { "@type": "Person", "@id": personId, name: site.name, url: site.url }
+
+/** Fil d'Ariane Accueil › page, dans la langue de la page. */
+function breadcrumb(lang: Lang, url: string, name: string) {
+  return {
+    "@type": "BreadcrumbList",
+    "@id": `${url}#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: ui[lang].home,
+        item: `${site.url}${paths.home[lang]}`,
+      },
+      { "@type": "ListItem", position: 2, name, item: url },
+    ],
+  }
+}
+
+/** Graphe d'une étude de cas : l'article et son fil d'Ariane. */
+export function buildProjectStructuredData(project: Project, lang: Lang) {
+  const c = project.content[lang]
+  const url = `${site.url}${paths.project(lang, project.slug)}`
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": `${url}#article`,
+        headline: `${c.title}, ${ui[lang].caseStudy.toLowerCase()}`,
+        description: c.summary,
+        url,
+        mainEntityOfPage: url,
+        image: `${url}/opengraph-image`,
+        inLanguage: htmlLang[lang],
+        author,
+        publisher: { "@id": personId },
+        isPartOf: { "@id": websiteId },
+        keywords: project.stack.join(", "),
+        breadcrumb: { "@id": `${url}#breadcrumb` },
+      },
+      breadcrumb(lang, url, c.title),
+    ],
+  }
+}
+
+/** Graphe de /parcours et /en/profile : une page profil dont le sujet est le `Person`. */
+export function buildProfileStructuredData(lang: Lang) {
+  const p = profile[lang]
+  const url = `${site.url}${paths.profile[lang]}`
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfilePage",
+        "@id": url,
+        url,
+        name: `${site.name} · ${p.subtitle}`,
+        description: p.intro,
+        inLanguage: htmlLang[lang],
+        isPartOf: { "@id": websiteId },
+        mainEntity: { ...author, jobTitle: p.subtitle },
+        breadcrumb: { "@id": `${url}#breadcrumb` },
+      },
+      breadcrumb(lang, url, site.name),
     ],
   }
 }

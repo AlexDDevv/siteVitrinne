@@ -9,12 +9,13 @@ import { Projets } from "@/components/sections/projets"
 import { Tarifs } from "@/components/sections/tarifs"
 import { StructuredData } from "@/components/structured-data"
 import { paths, type Lang } from "@/content/i18n"
+import { buildStructuredData } from "@/lib/structured-data"
 
 /** Accueil freelance (/ et /en). */
 export function HomePage({ lang }: { lang: Lang }) {
   return (
     <>
-      <StructuredData lang={lang} />
+      <StructuredData data={buildStructuredData(lang)} />
       <PageShell lang={lang} alternates={paths.home}>
         <Hero lang={lang} />
         <Offre lang={lang} />

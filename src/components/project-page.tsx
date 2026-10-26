@@ -1,6 +1,7 @@
 import type { ReactNode } from "react"
 import { PageShell } from "@/components/page-shell"
 import { ProjectCard } from "@/components/project-card"
+import { StructuredData } from "@/components/structured-data"
 import { TagList } from "@/components/ui/card"
 import { Gallery } from "@/components/ui/gallery"
 import { ProjectLinks } from "@/components/ui/project-links"
@@ -9,6 +10,7 @@ import { StatusBadge } from "@/components/ui/status-badge"
 import { WithTodos } from "@/components/ui/todo"
 import { paths, ui, type Lang } from "@/content/i18n"
 import { projects } from "@/content/projects"
+import { buildProjectStructuredData } from "@/lib/structured-data"
 import type { Project } from "@/types/project"
 
 /**
@@ -87,72 +89,78 @@ export function ProjectPage({ project, lang }: { project: Project; lang: Lang })
   ]
 
   return (
-    <PageShell
-      lang={lang}
-      alternates={{ fr: paths.project("fr", project.slug), en: paths.project("en", project.slug) }}
-    >
-      <article aria-labelledby="project-title">
-        <header>
-          <Container className="grid gap-6 py-20 sm:py-24">
-            <Eyebrow>{t.caseStudy}</Eyebrow>
-            <h1
-              id="project-title"
-              className="text-[clamp(2.375rem,7vw,4.25rem)] leading-[1.03] font-semibold tracking-[-0.03em]"
-            >
-              {c.title}
-            </h1>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-              <p className="text-accent font-mono text-[15px] tracking-[0.02em]">{c.dates}</p>
-              {project.status ? <StatusBadge status={project.status} lang={lang} /> : null}
-            </div>
-            <p className="max-w-[44ch] text-[clamp(1.1875rem,2.6vw,1.5rem)] leading-[1.5] text-pretty">
-              {c.summary}
-            </p>
-            <ProjectLinks repo={project.repo} demo={project.demo} lang={lang} />
-          </Container>
-        </header>
-
-        {blocks.map((block, i) => (
-          <section
-            key={block.id}
-            id={block.id}
-            aria-labelledby={`${block.id}-title`}
-            className={`border-line border-t ${i % 2 === 0 ? "bg-ink-alt" : ""}`}
-          >
-            <Container className="grid gap-6 py-12 sm:py-16 md:grid-cols-[220px_1fr] md:gap-12">
-              <div className="grid content-start gap-2">
-                <Eyebrow>{String(i + 1).padStart(2, "0")}</Eyebrow>
-                <h2
-                  id={`${block.id}-title`}
-                  className="text-[clamp(1.5rem,3vw,1.875rem)] leading-[1.2] font-semibold tracking-[-0.02em]"
-                >
-                  {block.title}
-                </h2>
+    <>
+      <StructuredData data={buildProjectStructuredData(project, lang)} />
+      <PageShell
+        lang={lang}
+        alternates={{
+          fr: paths.project("fr", project.slug),
+          en: paths.project("en", project.slug),
+        }}
+      >
+        <article aria-labelledby="project-title">
+          <header>
+            <Container className="grid gap-6 py-20 sm:py-24">
+              <Eyebrow>{t.caseStudy}</Eyebrow>
+              <h1
+                id="project-title"
+                className="text-[clamp(2.375rem,7vw,4.25rem)] leading-[1.03] font-semibold tracking-[-0.03em]"
+              >
+                {c.title}
+              </h1>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                <p className="text-accent font-mono text-[15px] tracking-[0.02em]">{c.dates}</p>
+                {project.status ? <StatusBadge status={project.status} lang={lang} /> : null}
               </div>
-              <div className="max-w-[760px] min-w-0">{block.content}</div>
+              <p className="max-w-[44ch] text-[clamp(1.1875rem,2.6vw,1.5rem)] leading-[1.5] text-pretty">
+                {c.summary}
+              </p>
+              <ProjectLinks repo={project.repo} demo={project.demo} lang={lang} />
             </Container>
-          </section>
-        ))}
-      </article>
+          </header>
 
-      <section aria-labelledby="others-title" className="border-line border-t">
-        <Container className="py-16 sm:py-20">
-          <h2
-            id="others-title"
-            className="text-[clamp(1.5rem,3vw,1.875rem)] leading-[1.2] font-semibold tracking-[-0.02em]"
-          >
-            {t.otherProjects}
-          </h2>
-          <CardGrid columns={2} className="mt-8">
-            {others.map((other) => (
-              <li key={other.slug} className="grid">
-                <ProjectCard project={other} lang={lang} />
-              </li>
-            ))}
-          </CardGrid>
-        </Container>
-      </section>
-    </PageShell>
+          {blocks.map((block, i) => (
+            <section
+              key={block.id}
+              id={block.id}
+              aria-labelledby={`${block.id}-title`}
+              className={`border-line border-t ${i % 2 === 0 ? "bg-ink-alt" : ""}`}
+            >
+              <Container className="grid gap-6 py-12 sm:py-16 md:grid-cols-[220px_1fr] md:gap-12">
+                <div className="grid content-start gap-2">
+                  <Eyebrow>{String(i + 1).padStart(2, "0")}</Eyebrow>
+                  <h2
+                    id={`${block.id}-title`}
+                    className="text-[clamp(1.5rem,3vw,1.875rem)] leading-[1.2] font-semibold tracking-[-0.02em]"
+                  >
+                    {block.title}
+                  </h2>
+                </div>
+                <div className="max-w-[760px] min-w-0">{block.content}</div>
+              </Container>
+            </section>
+          ))}
+        </article>
+
+        <section aria-labelledby="others-title" className="border-line border-t">
+          <Container className="py-16 sm:py-20">
+            <h2
+              id="others-title"
+              className="text-[clamp(1.5rem,3vw,1.875rem)] leading-[1.2] font-semibold tracking-[-0.02em]"
+            >
+              {t.otherProjects}
+            </h2>
+            <CardGrid columns={2} className="mt-8">
+              {others.map((other) => (
+                <li key={other.slug} className="grid">
+                  <ProjectCard project={other} lang={lang} />
+                </li>
+              ))}
+            </CardGrid>
+          </Container>
+        </section>
+      </PageShell>
+    </>
   )
 }
 
