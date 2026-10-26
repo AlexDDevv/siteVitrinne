@@ -26,8 +26,8 @@ export type ProjectContent = {
   technical: { label: string; value: string }[]
   result: string[]
   gallery: GalleryItem[]
-  /** Visuels pas encore disponibles : affiche un placeholder à la place de la galerie. */
-  galleryTodo?: string
+  /** Ce que le projet montre à un client : affiché sur la carte de l'accueil. */
+  highlights?: string[]
 }
 
 export type Project = {

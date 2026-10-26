@@ -6,7 +6,7 @@ import { Gallery } from "@/components/ui/gallery"
 import { ProjectLinks } from "@/components/ui/project-links"
 import { CardGrid, Container, Eyebrow } from "@/components/ui/section"
 import { StatusBadge } from "@/components/ui/status-badge"
-import { Todo, WithTodos } from "@/components/ui/todo"
+import { WithTodos } from "@/components/ui/todo"
 import { paths, ui, type Lang } from "@/content/i18n"
 import { projects } from "@/content/projects"
 import type { Project } from "@/types/project"
@@ -20,7 +20,6 @@ export function ProjectPage({ project, lang }: { project: Project; lang: Lang })
   const c = project.content[lang]
   const others = projects.filter((other) => other.slug !== project.slug)
   const hasLinks = Boolean(project.repo || project.demo)
-  const hasPreviews = c.gallery.length > 0 || Boolean(c.galleryTodo)
 
   // Numérotation continue : les blocs absents (liens, aperçus) ne laissent pas de trou.
   const blocks: { id: string; title: string; content: ReactNode }[] = [
@@ -76,19 +75,12 @@ export function ProjectPage({ project, lang }: { project: Project; lang: Lang })
           },
         ]
       : []),
-    ...(hasPreviews
+    ...(c.gallery.length > 0
       ? [
           {
             id: "apercus",
             title: t.previews,
-            content:
-              c.gallery.length > 0 ? (
-                <Gallery items={c.gallery} lang={lang} idPrefix={`${project.slug}-shot`} />
-              ) : (
-                <p>
-                  <Todo>{c.galleryTodo}</Todo>
-                </p>
-              ),
+            content: <Gallery items={c.gallery} lang={lang} idPrefix={`${project.slug}-shot`} />,
           },
         ]
       : []),

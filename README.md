@@ -1,7 +1,8 @@
-# Site vitrine d'Alexis Delporte
+# alexisdelporte.dev
 
-Landing page one-page du site vitrine freelance d'Alexis Delporte, développeur web
-full-stack basé à Écully, près de Lyon.
+Site d'Alexis Delporte, développeur full-stack React / TypeScript / NestJS basé à
+Écully, près de Lyon : accueil freelance (startups, équipes produit, agences),
+études de cas et page parcours en français et en anglais.
 
 Le design suit la maquette Claude Design « Alexis Delporte, Landing » : palette
 warm-dark, accent ambre, typographie IBM Plex.
@@ -103,12 +104,12 @@ Lighthouse sur le build de production :
 
 ### SEO
 
-- Metadata complètes : title, description, mots-clés ciblés Lyon / Écully,
-  canonical, Open Graph et Twitter Card.
+- Metadata complètes par page : title, description, canonical, hreflang FR / EN,
+  Open Graph et Twitter Card.
 - `og:image` générée à la volée par `ImageResponse` : rien à maintenir à la main.
 - Données structurées Schema.org (`src/lib/structured-data.ts`) : `Person`,
-  `ProfessionalService` avec `areaServed` Lyon / Écully / France et le catalogue
-  d'offres chiffré, `WebSite`, et un `CreativeWork` par projet publié.
+  `ProfessionalService` avec le catalogue d'offres (sans prix), `WebSite`, et un
+  `CreativeWork` par étude de cas.
 - `sitemap.xml` et `robots.txt` générés, un seul `h1`, hiérarchie de titres linéaire.
 
 ### Accessibilité

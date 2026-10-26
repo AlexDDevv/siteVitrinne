@@ -1,14 +1,15 @@
 import { Card } from "@/components/ui/card"
 import { CardGrid, Section } from "@/components/ui/section"
+import { WithTodos } from "@/components/ui/todo"
 import { pricing } from "@/lib/pricing"
 
 export function Tarifs() {
   return (
     <Section
       id="tarifs"
-      eyebrow="04 · Tarifs indicatifs"
-      title="Les ordres de grandeur, sans détour"
-      intro="Ce sont des fourchettes indicatives. Chaque projet fait l'objet d'un devis personnalisé après un premier échange sur votre besoin réel."
+      eyebrow="04 · Tarifs"
+      title="Une proposition écrite, après un premier échange"
+      intro="Pas de grille figée : après un premier échange sur votre besoin, vous recevez une proposition écrite avec le périmètre, les livrables, le planning et le prix."
     >
       <CardGrid className="mt-10">
         {pricing.map((offer) => (
@@ -29,17 +30,9 @@ export function Tarifs() {
                 Le préfixe lu lève l'ambiguïté sans changer le rendu — un montant
                 annoncé seul par un lecteur d'écran ne dit pas ce qu'il désigne.
               */}
-              <p className="text-accent text-[32px] font-semibold tracking-[-0.02em]">
+              <p className="text-accent text-[26px] leading-tight font-semibold tracking-[-0.02em]">
                 <span className="sr-only">Tarif : </span>
-                {offer.price}
-                {offer.priceSuffix ? (
-                  <>
-                    <span aria-hidden className="text-subtle text-base font-normal">
-                      {offer.priceSuffix}
-                    </span>
-                    <span className="sr-only"> par mois</span>
-                  </>
-                ) : null}
+                <WithTodos text={offer.price} />
               </p>
               <ul
                 role="list"

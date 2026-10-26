@@ -1,34 +1,39 @@
 import { TagList } from "@/components/ui/card"
 import { Body, Section } from "@/components/ui/section"
+import { TextLink } from "@/components/ui/text-link"
+import { paths } from "@/content/i18n"
 
 const atouts = [
   {
-    title: "Full-stack en poste chez Likewatt",
+    title: "-80 % de temps de chargement chez Likewatt",
     body: (
       <>
-        Éditeur de logiciel SaaS, où j&apos;ai contribué à réduire de{" "}
-        <strong className="text-cream font-semibold">80 % les temps de chargement</strong> pour plus
-        de 2 000 utilisateurs professionnels : des équipes de TotalEnergies, Crédit Agricole ou
-        Eiffage.
+        Développeur full-stack chez Likewatt, éditeur SaaS. Refonte de l&apos;interface, migration
+        Firebase → MongoDB, découpage en micro-services :{" "}
+        <strong className="text-cream font-semibold">-80 % de temps de chargement</strong> pour plus
+        de 2 000 utilisateurs professionnels, dont des équipes de TotalEnergies, du Crédit Agricole
+        et d&apos;Eiffage.
       </>
     ),
+    link: { href: paths.project("fr", "likewatt"), label: "L'étude de cas Likewatt" },
   },
   {
-    title: "Créateur d'un SaaS en parallèle",
+    title: "Je construis Grindrise, mon propre produit",
     body: (
       <>
-        Je développe ma propre application de tracking sportif. Résultat : je ne pense pas
-        «&nbsp;site&nbsp;», je pense produit : expérience utilisateur, rétention, ce qui fait
-        revenir les gens sur le long terme.
+        Une application mobile de suivi sportif en React Native et NestJS, avec un modèle
+        anti-triche arbitré par le serveur. Construire mon produit m&apos;oblige à penser engagement
+        et rétention, pas seulement code.
       </>
     ),
+    link: { href: paths.project("fr", "grindrise"), label: "L'étude de cas Grindrise" },
   },
   {
-    title: "Concepteur Développeur d'Applications",
+    title: "Un code qu'une équipe peut reprendre",
     body: (
       <>
-        Diplôme RNCP niveau 6 : conception, développement, mise en production. Le cadre
-        méthodologique derrière le code.
+        Code typé de bout en bout, tests sur la logique sensible, CI, revues de code, documentation.
+        Diplômé Concepteur Développeur d&apos;Applications (RNCP niveau 6).
       </>
     ),
   },
@@ -36,9 +41,8 @@ const atouts = [
     title: "Stack moderne, outillage assumé",
     body: (
       <>
-        React, Next.js, TypeScript, NestJS, PostgreSQL. J&apos;utilise aussi des outils IA comme
-        Claude Code pour livrer plus vite, sans rien lâcher sur la qualité ni sur la relecture du
-        code.
+        React, Next.js, TypeScript, NestJS, React Native, PostgreSQL, MongoDB. J&apos;utilise des
+        outils IA comme Claude Code pour livrer plus vite, avec une relecture systématique du code.
       </>
     ),
   },
@@ -49,7 +53,9 @@ export const stack = [
   "Next.js",
   "TypeScript",
   "NestJS",
+  "React Native",
   "PostgreSQL",
+  "MongoDB",
   "GraphQL",
   "Docker",
 ] as const
@@ -71,6 +77,13 @@ export function Approche() {
           >
             <h3 className="text-[18px] font-semibold">{atout.title}</h3>
             <Body>{atout.body}</Body>
+            {atout.link ? (
+              <p>
+                <TextLink href={atout.link.href} arrow className="text-[15px] font-medium">
+                  {atout.link.label}
+                </TextLink>
+              </p>
+            ) : null}
           </li>
         ))}
       </ul>

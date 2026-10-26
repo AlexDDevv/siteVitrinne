@@ -1,5 +1,5 @@
-import { pricing } from "@/lib/pricing"
 import { paths } from "@/content/i18n"
+import { offres } from "@/lib/offres"
 import { projects } from "@/content/projects"
 import { site } from "@/lib/site"
 
@@ -7,9 +7,8 @@ const personId = `${site.url}/#person`
 const businessId = `${site.url}/#business`
 
 /**
- * Graphe Schema.org du site : identité, activité locale et catalogue d'offres.
- * Donne à Google de quoi comprendre « développeur web freelance à Lyon / Écully »
- * autrement qu'en devinant depuis le texte de la page.
+ * Graphe Schema.org du site : identité, activité et catalogue d'offres.
+ * Pas de prix : chaque mission fait l'objet d'une proposition écrite.
  */
 export function buildStructuredData() {
   const sameAs = [site.links.malt, site.links.linkedin, site.links.github]
@@ -37,9 +36,12 @@ export function buildStructuredData() {
           "Next.js",
           "TypeScript",
           "NestJS",
+          "React Native",
           "PostgreSQL",
-          "GraphQL",
-          "Développement web full-stack",
+          "MongoDB",
+          "Développement full-stack",
+          "Développement de MVP",
+          "Performance web",
         ],
         hasCredential: {
           "@type": "EducationalOccupationalCredential",
@@ -52,12 +54,11 @@ export function buildStructuredData() {
         "@id": businessId,
         name: `${site.name}, ${site.role}`,
         description:
-          "Création de sites vitrines, d'applications web sur-mesure et maintenance, par un développeur full-stack freelance basé à Écully, près de Lyon.",
+          "MVP, refonte et performance d'applications web, sous-traitance pour agences et renfort technique, par un développeur full-stack freelance React / TypeScript / NestJS basé près de Lyon.",
         url: site.url,
         image: `${site.url}/opengraph-image`,
         email: `mailto:${site.email}`,
         founder: { "@id": personId },
-        priceRange: "€€",
         sameAs,
         address: {
           "@type": "PostalAddress",
@@ -74,17 +75,11 @@ export function buildStructuredData() {
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "Prestations",
-          itemListElement: pricing.map((tier) => ({
+          itemListElement: offres.map((offre) => ({
             "@type": "Offer",
-            name: tier.title,
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              priceCurrency: "EUR",
-              minPrice: tier.amount.min,
-              ...(tier.amount.max ? { maxPrice: tier.amount.max } : {}),
-              ...(tier.amount.unit ? { unitCode: tier.amount.unit } : {}),
-            },
-            itemOffered: { "@type": "Service", name: tier.title, serviceType: tier.title },
+            name: offre.title,
+            description: offre.description,
+            itemOffered: { "@type": "Service", name: offre.title, serviceType: offre.title },
           })),
         },
       },

@@ -1,46 +1,40 @@
 export type PricingTier = {
   title: string
-  /** Libellé affiché, ex. « 750 € – 1 200 € ». */
+  /** Libellé affiché. Peut contenir un marqueur « [À COMPLÉTER] ». */
   price: string
-  /** Suffixe en plus petit après le prix, ex. « /mois ». */
-  priceSuffix?: string
   features: string[]
   /** Badge de mise en avant ; sa présence bascule la carte en style accentué. */
   highlight?: string
-  /** Bornes en euros, pour les données structurées Schema.org. */
-  amount: { min: number; max?: number; unit?: "MON" }
 }
 
+/** Pas de fourchette affichée : chaque mission fait l'objet d'une proposition écrite. */
 export const pricing: PricingTier[] = [
   {
-    title: "Site vitrine",
-    price: "750 € – 1 200 €",
+    title: "Mission au temps passé",
+    price: "TJM [À COMPLÉTER]",
     features: [
-      "Pages statiques",
-      "Formulaire de contact",
-      "SEO de base",
-      "Responsive mobile",
-      "Design sur-mesure en option",
+      "Refonte, performance, renfort technique",
+      "Facturation au temps passé",
+      "Périmètre ajustable en cours de mission",
     ],
-    amount: { min: 750, max: 1200 },
   },
   {
-    title: "Application sur-mesure",
-    price: "à partir de 3 000 €",
-    highlight: "SUR DEVIS",
+    title: "MVP",
+    price: "à partir de [À COMPLÉTER] €",
+    highlight: "SUR PROPOSITION",
     features: [
-      "Selon le scope du projet",
-      "Authentification utilisateurs",
-      "Base de données",
-      "Logique métier spécifique",
+      "Front, API, base de données, auth, paiement",
+      "Périmètre, livrables et planning fixés par écrit",
+      "Code documenté, prêt à être repris par une équipe",
     ],
-    amount: { min: 3000 },
   },
   {
-    title: "Maintenance mensuelle",
-    price: "50 € – 150 €",
-    priceSuffix: "/mois",
-    features: ["Hébergement", "Mises à jour", "Petites modifications", "Support"],
-    amount: { min: 50, max: 150, unit: "MON" },
+    title: "Agences",
+    price: "Forfait ou TJM",
+    features: [
+      "Selon votre fonctionnement",
+      "Sous-traitance en marque blanche",
+      "Vos conventions, vos outils",
+    ],
   },
 ]

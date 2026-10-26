@@ -13,13 +13,21 @@ export function Contact() {
             id="contact-title"
             className="text-[clamp(1.875rem,4.4vw,2.75rem)] leading-[1.1] font-semibold tracking-[-0.025em]"
           >
-            Parlez-moi de votre projet
+            Parlons de votre projet
           </h2>
           <p className="text-muted max-w-[40ch] text-[17px] leading-relaxed">
-            Deux lignes suffisent pour démarrer. Je réponds sous 24 h ouvrées, et le premier échange
-            ne vous engage à rien.
+            Le contexte, la stack, l&apos;échéance : quelques lignes suffisent pour démarrer. Le
+            premier échange ne vous engage à rien.
           </p>
           <ul role="list" className="mt-2 grid gap-2.5 text-[15.5px]">
+            {/* Masqué tant que l'URL de réservation n'est pas renseignée dans site.ts. */}
+            {site.links.booking ? (
+              <li>
+                <TextLink href={site.links.booking} external arrow>
+                  Réserver un appel de 20 min
+                </TextLink>
+              </li>
+            ) : null}
             <li>
               <TextLink href={site.links.malt} external arrow>
                 Passer par mon profil Malt

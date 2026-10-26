@@ -27,6 +27,11 @@ export const grindrise: Project = {
       title: "Grindrise",
       summary:
         "Application mobile de suivi sportif qui transforme chaque séance en progression RPG (classes, XP, niveaux, récit à débloquer), avec un modèle anti-triche entièrement arbitré par le serveur.",
+      highlights: [
+        "Le mobile en plus du web : React Native et Expo.",
+        "Une logique serveur robuste : anti-triche arbitré par l'API, jobs en file d'attente avec BullMQ et Redis.",
+        "Une réflexion produit : engagement, régularité, rétention.",
+      ],
       dates: "2026 → en cours",
       context: [
         "Grindrise est une application mobile de suivi sportif : course, musculation et autres sports d'endurance. Elle ajoute une couche de gamification RPG pour entretenir la régularité.",
@@ -88,6 +93,11 @@ export const grindrise: Project = {
       title: "Grindrise",
       summary:
         "Mobile fitness tracker that turns every workout into RPG progression (classes, XP, levels, unlockable story), backed by an anti-cheat model enforced entirely server-side.",
+      highlights: [
+        "Mobile on top of web: React Native and Expo.",
+        "Robust server logic: anti-cheat enforced by the API, queued jobs with BullMQ and Redis.",
+        "Product thinking: engagement, consistency, retention.",
+      ],
       dates: "2026 → ongoing",
       context: [
         "Grindrise is a mobile fitness tracker for running, strength training and other endurance sports. It adds an RPG gamification layer to keep users consistent.",

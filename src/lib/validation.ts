@@ -3,10 +3,11 @@ import type { ContactInput, FieldErrors } from "@/types/contact"
 
 /** Options du select « type de projet ». Partagées entre le formulaire et la validation. */
 export const projectTypes = [
-  { value: "site-vitrine", label: "Site vitrine" },
-  { value: "application", label: "Application sur-mesure" },
-  { value: "maintenance", label: "Maintenance & évolution" },
-  { value: "autre", label: "Autre / je ne sais pas encore" },
+  { value: "mvp", label: "MVP / nouveau produit" },
+  { value: "refonte", label: "Refonte / performance" },
+  { value: "agence", label: "Sous-traitance agence" },
+  { value: "renfort", label: "Renfort technique ponctuel" },
+  { value: "autre", label: "Autre" },
 ] as const
 
 const projectTypeValues = projectTypes.map((type) => type.value) as [string, ...string[]]

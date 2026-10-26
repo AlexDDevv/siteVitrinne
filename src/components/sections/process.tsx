@@ -2,20 +2,20 @@ import { Section } from "@/components/ui/section"
 
 const steps = [
   {
-    title: "Premier contact",
-    body: "Vous remplissez le formulaire, on échange sur votre besoin, par mail ou en visio : 30 minutes suffisent souvent.",
+    title: "Cadrage",
+    body: "30 minutes en visio : le besoin, le contexte technique, les contraintes et l'échéance.",
   },
   {
-    title: "Proposition et devis",
-    body: "Je vous écris ce qui sera fait, à quel prix et dans quel délai. Un devis clair, sans ligne obscure.",
+    title: "Proposition écrite",
+    body: "Périmètre, livrables, planning et prix. Par écrit, pour partir tous de la même base.",
   },
   {
     title: "Développement",
-    body: "Je développe avec des points d'étape réguliers : vous voyez le site avancer, vous pouvez réagir avant la fin.",
+    body: "Dans votre repo ou un repo dédié. Pull requests, revues de code, CI. Des points réguliers et une communication écrite : Slack, Notion, tickets.",
   },
   {
     title: "Livraison",
-    body: "Mise en ligne, prise en main ensemble, et l'option maintenance si vous préférez ne pas vous en occuper.",
+    body: "Mise en production, documentation et passation à votre équipe.",
   },
 ]
 

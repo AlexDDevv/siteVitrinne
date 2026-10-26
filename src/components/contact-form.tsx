@@ -78,10 +78,7 @@ export function ContactForm() {
       <div className="grid gap-3 py-6" role="status">
         <p className="text-sage font-mono text-[13px]">Message envoyé</p>
         <h3 className="text-[22px] font-semibold">Merci, c&apos;est bien parti.</h3>
-        <Body>
-          Je reviens vers vous sous 24 h ouvrées. En attendant, vous pouvez aussi me joindre via
-          Malt.
-        </Body>
+        <Body>Je reviens vers vous par email. Vous pouvez aussi me joindre via Malt.</Body>
       </div>
     )
   }
@@ -143,7 +140,7 @@ export function ContactForm() {
             {...props}
             name="message"
             rows={5}
-            placeholder="Votre activité, ce que vous aimeriez, votre échéance si vous en avez une."
+            placeholder="Le contexte, la stack, le périmètre, l'échéance si vous en avez une."
             className={`${props.className} resize-y leading-[1.5]`}
           />
         )}

@@ -4,7 +4,7 @@
  */
 export const site = {
   name: "Alexis Delporte",
-  role: "Développeur web full-stack freelance",
+  role: "Développeur full-stack freelance",
   city: "Écully",
   postalCode: "69130",
   area: "Lyon",
@@ -17,6 +17,8 @@ export const site = {
     malt: "https://www.malt.fr/profile/alexisdelporte",
     github: "https://github.com/AlexDDevv",
     linkedin: "https://www.linkedin.com/in/alexis-delporte/",
+    /** [À COMPLÉTER : lien de réservation d'un appel de 20 min]. Vide : le lien est masqué. */
+    booking: "" as string,
   },
 } as const
 
