@@ -246,7 +246,8 @@ export const home: Record<Lang, HomeContent> = {
         {
           question: "En combien de temps un projet est-il livré ?",
           answer: [
-            "Le délai dépend du périmètre : il est fixé par écrit dans la proposition, avec le planning. [À COMPLÉTER : durée indicative d'un MVP et délai de démarrage]",
+            "Un MVP se livre généralement en 4 à 8 semaines, selon le périmètre.",
+            "Le délai exact est fixé par écrit dans la proposition, avec le planning.",
             "Tout commence par un cadrage de 30 minutes en visio sur le besoin, les contraintes et l'échéance.",
           ],
         },
@@ -274,8 +275,8 @@ export const home: Record<Lang, HomeContent> = {
         {
           question: "Qui est propriétaire du code ?",
           answer: [
-            "[À COMPLÉTER : qui détient le code et les droits à la fin de la mission]",
-            "Le développement se fait dans votre repo ou dans un repo dédié, et la livraison comprend la documentation et la passation à votre équipe.",
+            "Vous : les droits sur le code développé pour vous vous sont cédés à la fin de la mission, une fois la facture réglée.",
+            "Les briques génériques que j'ai créées avant la mission restent les miennes, et vous pouvez les utiliser librement dans votre projet. Le développement se fait dans votre repo ou dans un repo dédié, et la livraison comprend la documentation et la passation à votre équipe.",
           ],
         },
       ],
@@ -450,7 +451,8 @@ export const home: Record<Lang, HomeContent> = {
         {
           question: "How long does a project take?",
           answer: [
-            "It depends on the scope: the timeline is set in writing in the proposal, with the schedule. [À COMPLÉTER : typical MVP duration and start date]",
+            "An MVP usually ships in 4 to 8 weeks, depending on the scope.",
+            "The exact timeline is set in writing in the proposal, with the schedule.",
             "Everything starts with a 30-minute video call about the need, the constraints and the deadline.",
           ],
         },
@@ -478,8 +480,8 @@ export const home: Record<Lang, HomeContent> = {
         {
           question: "Who owns the code?",
           answer: [
-            "[À COMPLÉTER : who owns the code and the rights at the end of the engagement]",
-            "Development happens in your repo or a dedicated one, and delivery includes documentation and handover to your team.",
+            "You do: the rights to the code built for you are transferred to you at the end of the engagement, once the invoice is paid.",
+            "Generic building blocks I created before the engagement remain mine, and you can use them freely in your project. Development happens in your repo or a dedicated one, and delivery includes documentation and handover to your team.",
           ],
         },
       ],
