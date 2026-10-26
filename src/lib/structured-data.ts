@@ -83,6 +83,7 @@ export function buildStructuredData(lang: Lang) {
         url,
         image: `${url}/opengraph-image`,
         email: `mailto:${site.email}`,
+        telephone: site.phone.international,
         founder: { "@id": personId },
         sameAs,
         address,
