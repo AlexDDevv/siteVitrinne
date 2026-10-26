@@ -19,6 +19,7 @@ export const grindrise: Project = {
     "CapRover",
     "Jest",
   ],
+  updatedAt: "2026-10-26",
   repo: "https://github.com/AlexDDevv/GrindRise",
   // [À COMPLÉTER : lien store / démo]. Vide : le lien Démo est masqué.
   demo: "",

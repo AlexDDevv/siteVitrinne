@@ -1,6 +1,6 @@
 import { home } from "@/content/home"
 import { htmlLang, paths, ui, type Lang } from "@/content/i18n"
-import { profile } from "@/content/profile"
+import { profile, profileUpdatedAt } from "@/content/profile"
 import { projects } from "@/content/projects"
 import { site } from "@/lib/site"
 import type { Project } from "@/types/project"
@@ -177,6 +177,7 @@ export function buildProjectStructuredData(project: Project, lang: Lang) {
         mainEntityOfPage: url,
         image: `${url}/opengraph-image`,
         inLanguage: htmlLang[lang],
+        dateModified: project.updatedAt,
         author,
         publisher: { "@id": personId },
         isPartOf: { "@id": websiteId },
@@ -202,6 +203,7 @@ export function buildProfileStructuredData(lang: Lang) {
         name: `${site.name} · ${p.subtitle}`,
         description: p.intro,
         inLanguage: htmlLang[lang],
+        dateModified: profileUpdatedAt,
         isPartOf: { "@id": websiteId },
         mainEntity: { ...author, jobTitle: p.subtitle },
         breadcrumb: { "@id": `${url}#breadcrumb` },

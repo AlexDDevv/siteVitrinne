@@ -34,6 +34,7 @@ export const nuitDEncre: Project = {
     "nginx",
     "Cloudinary",
   ],
+  updatedAt: "2026-10-26",
   repo: "https://github.com/AlexDDevv/Nuit-d-Encre",
   demo: "https://nuitdencre.fr/",
   content: {

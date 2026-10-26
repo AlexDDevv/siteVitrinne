@@ -36,6 +36,8 @@ export type Project = {
   kind: "personal" | "work"
   status?: ProjectStatus
   stack: string[]
+  /** Dernière révision de l'étude de cas (AAAA-MM-JJ) : sitemap et JSON-LD. */
+  updatedAt: string
   /** Liens Code / Démo : une chaîne vide masque le lien. */
   repo?: string
   demo?: string

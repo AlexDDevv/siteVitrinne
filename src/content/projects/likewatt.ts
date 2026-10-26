@@ -15,6 +15,7 @@ export const likewatt: Project = {
     "PostgreSQL",
     "Docker",
   ],
+  updatedAt: "2026-10-26",
   content: {
     fr: {
       title: "Likewatt",

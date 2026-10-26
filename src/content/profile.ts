@@ -7,6 +7,9 @@ export const cvPaths: Record<Lang, string> = {
   en: "/cv/alexis-delporte-en.pdf",
 }
 
+/** Dernière révision du contenu de /parcours et /en/profile (AAAA-MM-JJ). */
+export const profileUpdatedAt = "2026-10-26"
+
 export type TimelineItem = {
   title: string
   org: string

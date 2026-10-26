@@ -7,6 +7,9 @@ import { site } from "@/lib/site"
  * langues restent alignées.
  */
 
+/** Dernière révision du contenu de l'accueil (AAAA-MM-JJ), pour le sitemap. */
+export const homeUpdatedAt = "2026-10-26"
+
 export type Offer = { slug: string; title: string; description: string }
 
 export type PricingTier = {
