@@ -81,7 +81,9 @@ export function buildStructuredData(lang: Lang) {
         name: `${site.name}, ${c.role}`,
         description: t.business,
         url,
-        image: `${url}/opengraph-image`,
+        // Seule l'image OG racine a une URL stable : celles des sous-pages
+        // (/en compris) portent un suffixe de hash généré par Next.
+        image: `${site.url}/opengraph-image`,
         email: `mailto:${site.email}`,
         telephone: site.phone.international,
         founder: { "@id": personId },
@@ -176,7 +178,7 @@ export function buildProjectStructuredData(project: Project, lang: Lang) {
         description: c.summary,
         url,
         mainEntityOfPage: url,
-        image: `${url}/opengraph-image`,
+        image: `${site.url}/opengraph-image`,
         inLanguage: htmlLang[lang],
         dateModified: project.updatedAt,
         author,
