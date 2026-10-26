@@ -65,8 +65,9 @@ export function Approche() {
         {atouts.map((atout, index) => (
           <li
             key={atout.title}
-            className={`grid content-start gap-2.5 border-t pt-5 ${index === 0 ? "border-accent" : "border-line-strong"
-              }`}
+            className={`grid content-start gap-2.5 border-t pt-5 ${
+              index === 0 ? "border-accent" : "border-line-strong"
+            }`}
           >
             <h3 className="text-[18px] font-semibold">{atout.title}</h3>
             <Body>{atout.body}</Body>

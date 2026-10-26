@@ -58,30 +58,37 @@ Toutes documentées dans [`.env.example`](./.env.example).
 ```
 src/
 ├── app/
-│   ├── api/contact/route.ts   # Envoi Resend + validation serveur + honeypot
-│   ├── layout.tsx             # Metadata SEO, polices, tokens
-│   ├── page.tsx               # Assemblage des sections
-│   ├── opengraph-image.tsx    # og:image générée à la volée
-│   ├── icon.svg               # Favicon
-│   └── sitemap.ts / robots.ts
-│   └── globals.css            # Design tokens issus de la maquette
+│   ├── (fr)/                    # Root layout FR (<html lang="fr-FR">)
+│   │   ├── page.tsx             #   Accueil freelance
+│   │   ├── parcours/            #   Profil / candidature
+│   │   ├── projets/[slug]/      #   Études de cas FR
+│   │   └── mentions-legales/
+│   ├── (en)/en/                 # Root layout EN (<html lang="en-US">)
+│   │   ├── profile/             #   Profil EN
+│   │   └── projects/[slug]/     #   Études de cas EN
+│   ├── global-not-found.tsx     # 404 commune aux deux root layouts
+│   ├── api/contact/route.ts     # Envoi Resend + validation serveur + honeypot
+│   ├── opengraph-image.tsx      # og:image (une par page, via src/lib/og.tsx)
+│   └── sitemap.ts / robots.ts   # sitemap avec hreflang FR / EN
+├── content/                     # Source unique des contenus
+│   ├── projects/*.ts            #   Une étude de cas par fichier, FR + EN
+│   ├── profile.ts               #   Expériences, formations, contact, chemins des CV
+│   └── i18n.ts                  #   Langues, chemins, libellés d'interface
 ├── components/
-│   ├── sections/              # Une section de la page par fichier
-│   ├── ui/                    # Primitives partagées, sans duplication :
-│   │   ├── section.tsx        #   Section (aria-labelledby auto), Container,
-│   │   │                      #   Eyebrow, Body, CardGrid
-│   │   ├── button.tsx         #   Button / ButtonLink : variantes primary, outline, pill
-│   │   ├── text-link.tsx      #   TextLink : tons accent/subtle, liens externes
-│   │   ├── card.tsx           #   Card, Tag, TagList
-│   │   └── field.tsx          #   Field : label, erreur et câblage ARIA d'un champ
-│   ├── contact-form.tsx       # Formulaire client (états succès/erreur)
-│   ├── structured-data.tsx    # Injection du graphe Schema.org
-│   ├── site-header.tsx
-│   └── site-footer.tsx
-├── lib/                       # site.ts, validation.ts, projects.ts, pricing.ts,
-│                              # structured-data.ts
-└── types/
+│   ├── sections/                # Sections de l'accueil
+│   ├── profile-page.tsx         # Gabarit /parcours et /en/profile
+│   ├── project-page.tsx         # Gabarit des études de cas
+│   ├── project-card.tsx         # Carte projet (accueil, parcours, autres projets)
+│   └── ui/                      # Primitives : section, button, card/tag, text-link,
+│                                # field, status-badge, timeline, project-links,
+│                                # gallery, lang-switcher, todo
+├── assets/projets/              # Captures, optimisées par next/image
+└── lib/                         # site, metadata, og, pricing, validation, structured-data
+public/cv/                       # alexis-delporte-{fr,en}.pdf (URL stables)
 ```
+
+Les marqueurs `[À COMPLÉTER : …]` dans les contenus sont mis en évidence à
+l'écran : rien ne passe inaperçu une fois en ligne.
 
 ## Qualité vérifiée
 
@@ -115,9 +122,3 @@ Lighthouse sur le build de production :
   réservée aux lecteurs d'écran.
 - Navigation visible dès 320 px, contrastes AA vérifiés, focus visibles,
   `prefers-reduced-motion` respecté, lien d'évitement vers le contenu.
-
-## À compléter
-
-- Capture d'écran de Nuit d'Encre dans `public/projets/`, puis renseigner le
-  champ `image` dans `src/lib/projects.ts` (le placeholder rayé s'affiche tant
-  qu'elle est absente).

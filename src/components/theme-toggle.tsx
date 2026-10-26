@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { ui, type Lang } from "@/content/i18n"
 import { THEME_KEY, type Theme } from "@/lib/theme"
 
 /** Lit le thème effectivement appliqué : choix explicite, sinon préférence système. */
@@ -10,7 +11,7 @@ function readTheme(): Theme {
   return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"
 }
 
-export function ThemeToggle() {
+export function ThemeToggle({ lang = "fr" }: { lang?: Lang }) {
   // `null` tant que le composant n'est pas monté : le rendu serveur ne connaît
   // pas le thème, afficher une icône arbitraire provoquerait un saut visuel.
   const [theme, setTheme] = useState<Theme | null>(null)
@@ -38,12 +39,8 @@ export function ThemeToggle() {
     }
   }
 
-  const label =
-    theme === null
-      ? "Changer de thème"
-      : theme === "dark"
-        ? "Activer le thème clair"
-        : "Activer le thème sombre"
+  const labels = ui[lang].theme
+  const label = theme === null ? labels.unknown : theme === "dark" ? labels.toLight : labels.toDark
 
   return (
     <button

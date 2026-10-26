@@ -1,4 +1,5 @@
 import type { ReactNode } from "react"
+import { ui, type Lang } from "@/content/i18n"
 
 type TextLinkProps = {
   href: string
@@ -10,6 +11,8 @@ type TextLinkProps = {
   /** Flèche décorative « → ». Indépendante de `external` : la maquette n'en met pas partout. */
   arrow?: boolean
   className?: string
+  /** Langue de la mention « nouvel onglet » lue par les lecteurs d'écran. */
+  lang?: Lang
 }
 
 const tones = {
@@ -24,6 +27,7 @@ export function TextLink({
   external = false,
   arrow = false,
   className = "",
+  lang = "fr",
 }: TextLinkProps) {
   return (
     <a
@@ -33,7 +37,7 @@ export function TextLink({
     >
       {children}
       {arrow ? <span aria-hidden> →</span> : null}
-      {external ? <span className="sr-only"> (nouvel onglet)</span> : null}
+      {external ? <span className="sr-only"> {ui[lang].newTab}</span> : null}
     </a>
   )
 }

@@ -11,6 +11,7 @@ export const site = {
   region: "Auvergne-Rhône-Alpes",
   country: "FR",
   email: "alexddevs@gmail.com",
+  phone: { display: "06 68 05 34 83", international: "+33 6 68 05 34 83" },
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://alexisdelporte.dev",
   links: {
     malt: "https://www.malt.fr/profile/alexisdelporte",
@@ -19,12 +20,25 @@ export const site = {
   },
 } as const
 
-/** Liens de la barre de navigation. « Contact » est traité à part, en bouton. */
-export const navLinks = [
-  { href: "#offre", label: "Offre" },
-  { href: "#projets", label: "Projets" },
-  { href: "#tarifs", label: "Tarifs" },
-] as const
+export type NavLink = { href: string; label: string }
+
+/**
+ * Liens de la barre de navigation, par langue. « Contact » est traité à part,
+ * en bouton. Les ancres sont absolues (`/#offre`) pour fonctionner depuis les
+ * sous-pages. L'anglais n'a pas d'accueil freelance : sa nav reste sur /en/profile.
+ */
+export const navLinks = {
+  fr: [
+    { href: "/#offre", label: "Offre" },
+    { href: "/#projets", label: "Projets" },
+    { href: "/#tarifs", label: "Tarifs" },
+    { href: "/parcours", label: "Parcours" },
+  ],
+  en: [
+    { href: "/en/profile#projects", label: "Projects" },
+    { href: "/en/profile#experience", label: "Experience" },
+  ],
+} as const satisfies Record<"fr" | "en", NavLink[]>
 
 /** Réseaux affichés en contact et en pied de page. Une seule liste pour les deux. */
 export const socialLinks = [

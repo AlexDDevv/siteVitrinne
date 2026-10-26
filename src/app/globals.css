@@ -172,3 +172,14 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* L'en-tête collant passe sur deux lignes en mobile : les ancres ne doivent pas glisser dessous. */
+html {
+  scroll-padding-top: 6rem;
+}
+
+@media (min-width: 640px) {
+  html {
+    scroll-padding-top: 4.5rem;
+  }
+}

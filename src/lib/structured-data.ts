@@ -1,5 +1,6 @@
 import { pricing } from "@/lib/pricing"
-import { projects } from "@/lib/projects"
+import { paths } from "@/content/i18n"
+import { projects } from "@/content/projects"
 import { site } from "@/lib/site"
 
 const personId = `${site.url}/#person`
@@ -95,16 +96,15 @@ export function buildStructuredData() {
         inLanguage: "fr-FR",
         publisher: { "@id": personId },
       },
-      ...projects
-        .filter((project) => project.links.length > 0)
-        .map((project) => ({
-          "@type": "CreativeWork",
-          name: project.title,
-          description: project.description,
-          url: project.links[0].href,
-          author: { "@id": personId },
-          keywords: project.stack.join(", "),
-        })),
+      ...projects.map((project) => ({
+        "@type": "CreativeWork",
+        name: project.content.fr.title,
+        description: project.content.fr.summary,
+        url: `${site.url}${paths.project("fr", project.slug)}`,
+        author: { "@id": personId },
+        keywords: project.stack.join(", "),
+        ...(project.repo ? { codeRepository: project.repo } : {}),
+      })),
     ],
   }
 }
