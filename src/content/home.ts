@@ -39,6 +39,8 @@ type HomeContent = {
   role: string
   hero: {
     available: string
+    /** Métier et ville, affichés dans la h1 sous le nom. */
+    headline: (role: string, area: string) => string
     lead: string
     /** Phrase produit, avec le lien Grindrise entre les deux morceaux. */
     productBefore: string
@@ -86,6 +88,7 @@ export const home: Record<Lang, HomeContent> = {
     role: "Développeur full-stack freelance",
     hero: {
       available: "Disponible pour de nouveaux projets",
+      headline: (role, area) => `${role} à ${area}`,
       lead: "J'aide les startups, les équipes produit et les agences à livrer, refondre et accélérer leurs applications web.",
       productBefore: "Je développe aussi mes propres produits, comme ",
       productAfter: ". Je pense produit, pas seulement code.",
@@ -240,6 +243,7 @@ export const home: Record<Lang, HomeContent> = {
     role: "Freelance full-stack developer",
     hero: {
       available: "Available for new projects",
+      headline: (role, area) => `${role} in ${area}`,
       lead: "I help startups, product teams and agencies ship, rebuild and speed up their web applications.",
       productBefore: "I also build my own products, like ",
       productAfter: ". I think product, not just code.",

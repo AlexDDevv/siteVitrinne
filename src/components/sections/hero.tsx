@@ -17,16 +17,16 @@ export function Hero({ lang }: { lang: Lang }) {
           {t.available}
         </p>
 
-        <h1
-          id="hero-title"
-          className="max-w-[16ch] text-[clamp(2.375rem,7vw,4.25rem)] leading-[1.03] font-semibold tracking-[-0.03em] text-pretty"
-        >
-          {site.name}
+        {/* Le métier et la ville font partie de la h1 : le titre principal porte
+            la requête visée, sans changer le rendu du nom. */}
+        <h1 id="hero-title" className="grid gap-7">
+          <span className="max-w-[16ch] text-[clamp(2.375rem,7vw,4.25rem)] leading-[1.03] font-semibold tracking-[-0.03em] text-pretty">
+            {site.name}
+          </span>
+          <span className="text-accent font-mono text-[clamp(0.875rem,2vw,1.0625rem)] font-normal tracking-[0.02em]">
+            {t.headline(c.role, site.area)} · React / TypeScript / NestJS
+          </span>
         </h1>
-
-        <p className="text-accent font-mono text-[clamp(0.875rem,2vw,1.0625rem)] tracking-[0.02em]">
-          {c.role} · React / TypeScript / NestJS
-        </p>
 
         <p className="max-w-[34ch] text-[clamp(1.1875rem,2.6vw,1.625rem)] leading-[1.45] text-pretty">
           {t.lead}

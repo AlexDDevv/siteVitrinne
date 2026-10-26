@@ -5,7 +5,7 @@ import { site } from "@/lib/site"
 
 export const metadata = pageMetadata({
   lang: "fr",
-  title: `${site.name}, développeur full-stack freelance React / NestJS`,
+  title: `Développeur freelance React / NestJS à ${site.area} | ${site.name}`,
   absoluteTitle: true,
   description:
     "Développeur full-stack freelance React, TypeScript et NestJS. MVP, refonte et performance d'applications web pour startups, équipes produit et agences. Basé près de Lyon, missions à distance.",
