@@ -90,7 +90,6 @@ export function ProjectPage({ project, lang }: { project: Project; lang: Lang })
     <PageShell
       lang={lang}
       alternates={{ fr: paths.project("fr", project.slug), en: paths.project("en", project.slug) }}
-      contactHref={lang === "fr" ? "/#contact" : `${paths.profile.en}#contact`}
     >
       <article aria-labelledby="project-title">
         <header>

@@ -21,12 +21,7 @@ function bilingual(alternates: Alternates, priority: number): MetadataRoute.Site
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    {
-      url: site.url,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
+    ...bilingual(paths.home, 1),
     ...bilingual(paths.profile, 0.8),
     ...projects.flatMap((project) =>
       bilingual(

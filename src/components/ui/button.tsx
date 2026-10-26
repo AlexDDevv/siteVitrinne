@@ -1,4 +1,5 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react"
+import { ui, type Lang } from "@/content/i18n"
 
 type Variant = "primary" | "outline" | "pill"
 
@@ -8,7 +9,7 @@ const variants: Record<Variant, string> = {
   /** CTA secondaire : bordure neutre sur le fond de la page. */
   outline: "border-line-input hover:border-subtle rounded-lg border px-6 py-4 font-medium",
   /** Bouton compact de la barre de navigation. */
-  pill: "border-accent text-accent hover:bg-amber hover:text-on-amber rounded-full border px-3.5 py-2 font-medium",
+  pill: "border-accent text-accent hover:bg-amber hover:text-on-amber rounded-lg border px-3.5 py-2 font-medium",
 }
 
 const base = "inline-block text-center text-base transition-colors"
@@ -22,7 +23,9 @@ type ButtonLinkProps = {
   external?: boolean
   /** Flèche décorative « → ». */
   arrow?: boolean
-} & Omit<ComponentPropsWithoutRef<"a">, "href" | "className">
+  /** Langue de la mention « nouvel onglet » lue par les lecteurs d'écran. */
+  lang?: Lang
+} & Omit<ComponentPropsWithoutRef<"a">, "href" | "className" | "lang">
 
 /** Bouton d'action rendu en lien : ancre interne ou URL externe. */
 export function ButtonLink({
@@ -32,6 +35,7 @@ export function ButtonLink({
   className = "",
   external = false,
   arrow = false,
+  lang = "fr",
   ...props
 }: ButtonLinkProps) {
   return (
@@ -43,7 +47,7 @@ export function ButtonLink({
     >
       {children}
       {arrow ? <span aria-hidden> →</span> : null}
-      {external ? <span className="sr-only"> (nouvel onglet)</span> : null}
+      {external ? <span className="sr-only"> {ui[lang].newTab}</span> : null}
     </a>
   )
 }

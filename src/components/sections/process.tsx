@@ -1,35 +1,14 @@
 import { Section } from "@/components/ui/section"
+import { home } from "@/content/home"
+import type { Lang } from "@/content/i18n"
 
-const steps = [
-  {
-    title: "Cadrage",
-    body: "30 minutes en visio : le besoin, le contexte technique, les contraintes et l'échéance.",
-  },
-  {
-    title: "Proposition écrite",
-    body: "Périmètre, livrables, planning et prix. Par écrit, pour partir tous de la même base.",
-  },
-  {
-    title: "Développement",
-    body: "Dans votre repo ou un repo dédié. Pull requests, revues de code, CI. Des points réguliers et une communication écrite : Slack, Notion, tickets.",
-  },
-  {
-    title: "Livraison",
-    body: "Mise en production, documentation et passation à votre équipe.",
-  },
-]
-
-export function Process() {
+export function Process({ lang }: { lang: Lang }) {
+  const c = home[lang]
   return (
-    <Section
-      id="process"
-      alt
-      eyebrow="05 · Comment ça se passe"
-      title="Quatre étapes, zéro surprise"
-    >
+    <Section id={c.ids.process} alt eyebrow={c.process.eyebrow} title={c.process.title}>
       {/* <ol> plutôt qu'<ul> : l'ordre des étapes porte le sens. */}
       <ol className="mt-11 grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
-        {steps.map((step, index) => (
+        {c.process.steps.map((step, index) => (
           <li
             key={step.title}
             className={`grid content-start gap-3 border-t-2 pt-[18px] ${

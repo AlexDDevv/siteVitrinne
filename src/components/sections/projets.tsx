@@ -1,26 +1,29 @@
 import { ProjectCard } from "@/components/project-card"
 import { CardGrid, Section } from "@/components/ui/section"
+import { home } from "@/content/home"
+import type { Lang } from "@/content/i18n"
 import { projects } from "@/content/projects"
 
-export function Projets() {
+export function Projets({ lang }: { lang: Lang }) {
+  const c = home[lang]
   return (
     <Section
-      id="projets"
+      id={c.ids.projects}
       alt
-      eyebrow="03 · Projets"
-      title="Trois études de cas, du contexte au résultat"
-      intro="Un logiciel en production chez Likewatt, une plateforme en ligne, une application mobile en cours. Chacune détaille le problème, les choix techniques et le résultat."
+      eyebrow={c.projects.eyebrow}
+      title={c.projects.title}
+      intro={c.projects.intro}
     >
       <CardGrid columns={3} className="mt-10">
         {projects.map((project) => {
-          const highlights = project.content.fr.highlights
+          const highlights = project.content[lang].highlights
           return (
             <li key={project.slug} className="grid">
-              <ProjectCard project={project} lang="fr">
+              <ProjectCard project={project} lang={lang}>
                 {highlights ? (
                   <div className="border-line-strong grid gap-2 border-t pt-3.5">
                     <p className="text-faint font-mono text-xs tracking-[0.14em] uppercase">
-                      Ce que ça montre
+                      {c.projects.highlights}
                     </p>
                     <ul role="list" className="grid gap-2">
                       {highlights.map((item) => (

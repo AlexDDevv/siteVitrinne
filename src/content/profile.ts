@@ -27,7 +27,7 @@ type Profile = {
 export const profile: Record<Lang, Profile> = {
   fr: {
     subtitle: "Concepteur Développeur d'Applications · Développeur full-stack",
-    location: "Écully, Auvergne-Rhône-Alpes, France",
+    location: "Francheville, Auvergne-Rhône-Alpes, France",
     intro:
       "Développeur full-stack chez Likewatt depuis 2024 (React, TypeScript, NestJS). En parallèle, je conçois et développe mes propres applications : en voici une sélection, avec le code, les démos et mes choix techniques.",
     experiences: [
@@ -58,7 +58,7 @@ export const profile: Record<Lang, Profile> = {
   },
   en: {
     subtitle: "Application Designer-Developer · Full-stack developer",
-    location: "Écully, Auvergne-Rhône-Alpes, France",
+    location: "Francheville, Auvergne-Rhône-Alpes, France",
     intro:
       "Full-stack developer at Likewatt since 2024 (React, TypeScript, NestJS). On the side, I design and build my own applications: here is a selection, with the code, the demos and the technical choices behind them.",
     experiences: [

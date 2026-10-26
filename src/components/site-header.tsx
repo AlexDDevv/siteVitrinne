@@ -2,13 +2,14 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { ButtonLink } from "@/components/ui/button"
 import { LangSwitcher } from "@/components/ui/lang-switcher"
 import { Container } from "@/components/ui/section"
-import { ui, type Alternates, type Lang } from "@/content/i18n"
+import { home as homeContent } from "@/content/home"
+import { paths, ui, type Alternates, type Lang } from "@/content/i18n"
 import { navLinks } from "@/lib/site"
 
 export function SiteHeader({
   lang = "fr",
   alternates,
-  contactHref = "/#contact",
+  contactHref,
 }: {
   lang?: Lang
   /** Équivalents FR / EN de la page : affiche le sélecteur de langue. */
@@ -17,7 +18,9 @@ export function SiteHeader({
   contactHref?: string
 }) {
   const t = ui[lang]
-  const home = lang === "fr" ? "/" : "/en/profile"
+  const home = paths.home[lang]
+  // Par défaut, le formulaire de l'accueil de la langue courante.
+  const contact = contactHref ?? `${home}#${homeContent[lang].ids.contact}`
 
   return (
     <header className="border-line-strong/70 bg-ink/85 sticky top-0 z-20 border-b backdrop-blur-md">
@@ -47,7 +50,7 @@ export function SiteHeader({
           </ul>
         </nav>
         <div className="flex items-center gap-2.5 sm:gap-[18px]">
-          <ButtonLink href={contactHref} variant="pill" className="text-[13px] sm:text-sm">
+          <ButtonLink href={contact} variant="pill" className="text-[13px] sm:text-sm">
             {t.contact}
           </ButtonLink>
           {alternates ? <LangSwitcher lang={lang} alternates={alternates} /> : null}

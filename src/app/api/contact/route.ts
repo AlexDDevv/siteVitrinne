@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
+import type { Lang } from "@/content/i18n"
 import { collectFieldErrors, contactSchema, projectTypeLabel } from "@/lib/validation"
 import type { ContactInput, ContactResponse } from "@/types/contact"
 
@@ -12,11 +13,28 @@ function escapeHtml(value: string): string {
     .replace(/"/g, "&quot;")
 }
 
-function buildEmailHtml(data: ContactInput): string {
+/** Réponses de l'API, dans la langue de la page qui a envoyé le formulaire. */
+const errors = {
+  fr: {
+    badRequest: "Requête invalide.",
+    invalid: "Certains champs sont invalides.",
+    unavailable: "Le formulaire est momentanément indisponible. Écrivez-moi par email.",
+    failed: "L'envoi a échoué. Réessayez ou écrivez-moi directement par email.",
+  },
+  en: {
+    badRequest: "Invalid request.",
+    invalid: "Some fields are invalid.",
+    unavailable: "The form is temporarily unavailable. Please email me instead.",
+    failed: "Sending failed. Try again or email me directly.",
+  },
+} satisfies Record<Lang, Record<string, string>>
+
+function buildEmailHtml(data: ContactInput, lang: Lang): string {
   const rows: Array<[string, string]> = [
     ["Nom", data.name],
     ["Email", data.email],
     ["Type de projet", projectTypeLabel(data.projectType)],
+    ["Langue du site", lang === "fr" ? "Français" : "Anglais"],
   ]
 
   return `
@@ -42,16 +60,22 @@ export async function POST(request: Request): Promise<NextResponse<ContactRespon
   try {
     payload = await request.json()
   } catch {
-    return NextResponse.json({ ok: false, error: "Requête invalide." }, { status: 400 })
+    return NextResponse.json({ ok: false, error: errors.fr.badRequest }, { status: 400 })
   }
 
-  const parsed = contactSchema.safeParse(payload)
+  // La langue n'est pas un champ du formulaire : elle ne sert qu'à choisir les messages.
+  const lang: Lang =
+    typeof payload === "object" && payload !== null && "lang" in payload && payload.lang === "en"
+      ? "en"
+      : "fr"
+  const t = errors[lang]
+  const parsed = contactSchema(lang).safeParse(payload)
 
   if (!parsed.success) {
     return NextResponse.json(
       {
         ok: false,
-        error: "Certains champs sont invalides.",
+        error: t.invalid,
         fieldErrors: collectFieldErrors(parsed.error),
       },
       { status: 400 }
@@ -69,10 +93,7 @@ export async function POST(request: Request): Promise<NextResponse<ContactRespon
 
   if (!apiKey || !to || !from) {
     console.error("[contact] Variables d'environnement Resend manquantes.")
-    return NextResponse.json(
-      { ok: false, error: "Le formulaire est momentanément indisponible. Écrivez-moi par email." },
-      { status: 500 }
-    )
+    return NextResponse.json({ ok: false, error: t.unavailable }, { status: 500 })
   }
 
   try {
@@ -82,22 +103,16 @@ export async function POST(request: Request): Promise<NextResponse<ContactRespon
       to,
       replyTo: parsed.data.email,
       subject: `Nouveau contact de ${parsed.data.name} (${projectTypeLabel(parsed.data.projectType)})`,
-      html: buildEmailHtml(parsed.data),
+      html: buildEmailHtml(parsed.data, lang),
     })
 
     if (error) {
       console.error("[contact] Resend a renvoyé une erreur:", error)
-      return NextResponse.json(
-        { ok: false, error: "L'envoi a échoué. Réessayez ou écrivez-moi directement par email." },
-        { status: 502 }
-      )
+      return NextResponse.json({ ok: false, error: t.failed }, { status: 502 })
     }
   } catch (error) {
     console.error("[contact] Envoi impossible:", error)
-    return NextResponse.json(
-      { ok: false, error: "L'envoi a échoué. Réessayez ou écrivez-moi directement par email." },
-      { status: 502 }
-    )
+    return NextResponse.json({ ok: false, error: t.failed }, { status: 502 })
   }
 
   return NextResponse.json({ ok: true })

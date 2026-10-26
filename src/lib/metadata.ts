@@ -38,18 +38,24 @@ export function pageMetadata({
   description,
   alternates,
   type = "website",
+  absoluteTitle = false,
+  keywords,
 }: {
   lang: Lang
   title: string
   description: string
   alternates: Alternates
   type?: "website" | "article"
+  /** Titre affiché tel quel, sans le suffixe « | Alexis Delporte » (accueil). */
+  absoluteTitle?: boolean
+  keywords?: string[]
 }): Metadata {
   const path = alternates[lang]
-  const fullTitle = `${title} | ${site.name}`
+  const fullTitle = absoluteTitle ? title : `${title} | ${site.name}`
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
+    ...(keywords ? { keywords } : {}),
     alternates: {
       canonical: path,
       languages: {

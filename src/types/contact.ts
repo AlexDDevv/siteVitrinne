@@ -3,7 +3,7 @@ import type { contactSchema, projectTypes } from "@/lib/validation"
 
 export type ProjectType = (typeof projectTypes)[number]["value"]
 
-export type ContactInput = z.infer<typeof contactSchema>
+export type ContactInput = z.infer<ReturnType<typeof contactSchema>>
 
 /** Un message d'erreur par champ du formulaire. */
 export type FieldErrors = Partial<Record<keyof ContactInput, string>>

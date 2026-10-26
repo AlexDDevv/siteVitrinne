@@ -34,8 +34,8 @@ export default function GlobalNotFound() {
               </TextLink>
             </li>
             <li lang="en">
-              <TextLink href={paths.profile.en} arrow lang="en">
-                Profile (EN)
+              <TextLink href={paths.home.en} arrow lang="en">
+                Home (EN)
               </TextLink>
             </li>
           </ul>

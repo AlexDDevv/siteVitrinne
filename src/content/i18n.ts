@@ -1,7 +1,4 @@
-/**
- * Langues du site. L'accueil freelance, les tarifs et le formulaire restent en
- * français ; /parcours et les études de cas existent aussi en anglais.
- */
+/** Langues du site. Chaque page existe en français et en anglais. */
 export const languages = ["fr", "en"] as const
 export type Lang = (typeof languages)[number]
 
@@ -10,6 +7,7 @@ export const ogLocale: Record<Lang, string> = { fr: "fr_FR", en: "en_US" }
 
 /** Chemins des pages bilingues. Une seule définition, utilisée par la nav, le sitemap et les hreflang. */
 export const paths = {
+  home: { fr: "/", en: "/en" } satisfies Record<Lang, string>,
   profile: { fr: "/parcours", en: "/en/profile" } satisfies Record<Lang, string>,
   legal: { fr: "/mentions-legales", en: "/en/legal-notice" } satisfies Record<Lang, string>,
   project: (lang: Lang, slug: string) =>

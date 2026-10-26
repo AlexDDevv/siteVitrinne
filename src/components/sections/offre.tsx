@@ -1,17 +1,14 @@
 import { Card } from "@/components/ui/card"
 import { Body, CardGrid, Section } from "@/components/ui/section"
-import { offres } from "@/lib/offres"
+import { home } from "@/content/home"
+import type { Lang } from "@/content/i18n"
 
-export function Offre() {
+export function Offre({ lang }: { lang: Lang }) {
+  const c = home[lang]
   return (
-    <Section
-      id="offre"
-      alt
-      eyebrow="01 · Ce que je propose"
-      title="Quatre façons de travailler ensemble"
-    >
+    <Section id={c.ids.offer} alt eyebrow={c.offer.eyebrow} title={c.offer.title}>
       <CardGrid columns={2} className="mt-10">
-        {offres.map((offre) => (
+        {c.offer.items.map((offre) => (
           <li key={offre.slug} className="grid">
             <Card interactive className="grid content-start gap-3.5 p-7">
               <span className="text-accent font-mono text-xs">/ {offre.slug}</span>

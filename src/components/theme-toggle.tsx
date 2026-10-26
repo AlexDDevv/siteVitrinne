@@ -48,7 +48,7 @@ export function ThemeToggle({ lang = "fr" }: { lang?: Lang }) {
       onClick={toggle}
       aria-label={label}
       title={label}
-      className="border-line-strong text-subtle hover:text-cream hover:border-line-hover grid size-9 shrink-0 place-items-center rounded-full border transition-colors"
+      className="border-line-strong text-subtle hover:text-cream hover:border-line-hover grid size-9 shrink-0 place-items-center rounded-lg border transition-colors"
     >
       {/* Les deux icônes sont rendues, seule celle du thème courant est visible :
           évite de dépendre de l'état avant l'hydratation. */}

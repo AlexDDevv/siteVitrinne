@@ -1,7 +1,7 @@
 # alexisdelporte.dev
 
 Site d'Alexis Delporte, développeur full-stack React / TypeScript / NestJS basé à
-Écully, près de Lyon : accueil freelance (startups, équipes produit, agences),
+Francheville, près de Lyon : accueil freelance (startups, équipes produit, agences),
 études de cas et page parcours en français et en anglais.
 
 Le design suit la maquette Claude Design « Alexis Delporte, Landing » : palette
@@ -65,13 +65,16 @@ src/
 │   │   ├── projets/[slug]/      #   Études de cas FR
 │   │   └── mentions-legales/
 │   ├── (en)/en/                 # Root layout EN (<html lang="en-US">)
+│   │   ├── page.tsx             #   Accueil freelance EN
 │   │   ├── profile/             #   Profil EN
+│   │   ├── legal-notice/        #   Mentions légales EN
 │   │   └── projects/[slug]/     #   Études de cas EN
 │   ├── global-not-found.tsx     # 404 commune aux deux root layouts
 │   ├── api/contact/route.ts     # Envoi Resend + validation serveur + honeypot
 │   ├── opengraph-image.tsx      # og:image (une par page, via src/lib/og.tsx)
 │   └── sitemap.ts / robots.ts   # sitemap avec hreflang FR / EN
 ├── content/                     # Source unique des contenus
+│   ├── home.ts                  #   Textes de l'accueil FR + EN (offres, tarifs, process…)
 │   ├── projects/*.ts            #   Une étude de cas par fichier, FR + EN
 │   ├── profile.ts               #   Expériences, formations, contact, chemins des CV
 │   └── i18n.ts                  #   Langues, chemins, libellés d'interface

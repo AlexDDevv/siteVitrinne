@@ -1,18 +1,14 @@
 import { Card } from "@/components/ui/card"
 import { CardGrid, Section } from "@/components/ui/section"
-import { WithTodos } from "@/components/ui/todo"
-import { pricing } from "@/lib/pricing"
+import { home } from "@/content/home"
+import type { Lang } from "@/content/i18n"
 
-export function Tarifs() {
+export function Tarifs({ lang }: { lang: Lang }) {
+  const c = home[lang]
   return (
-    <Section
-      id="tarifs"
-      eyebrow="04 · Tarifs"
-      title="Une proposition écrite, après un premier échange"
-      intro="Pas de grille figée : après un premier échange sur votre besoin, vous recevez une proposition écrite avec le périmètre, les livrables, le planning et le prix."
-    >
+    <Section id={c.ids.rates} eyebrow={c.rates.eyebrow} title={c.rates.title} intro={c.rates.intro}>
       <CardGrid className="mt-10">
-        {pricing.map((offer) => (
+        {c.rates.tiers.map((offer) => (
           <li key={offer.title} className="grid">
             <Card
               accent={Boolean(offer.highlight)}
@@ -31,8 +27,8 @@ export function Tarifs() {
                 annoncé seul par un lecteur d'écran ne dit pas ce qu'il désigne.
               */}
               <p className="text-accent text-[26px] leading-tight font-semibold tracking-[-0.02em]">
-                <span className="sr-only">Tarif : </span>
-                <WithTodos text={offer.price} />
+                <span className="sr-only">{c.rates.priceLabel}</span>
+                {offer.price}
               </p>
               <ul
                 role="list"

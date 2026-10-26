@@ -15,8 +15,8 @@ export const legal = {
    * du siège déclaré. Évite qu'un prospect bute sur l'écart entre l'adresse
    * administrative et le « près de Lyon » affiché sur le reste du site.
    */
-  workplace: "Écully (69130), métropole de Lyon" as string | null,
-  workplaceEn: "Écully (69130), Lyon metropolitan area, France",
+  workplace: "Francheville (69340), métropole de Lyon" as string | null,
+  workplaceEn: "Francheville (69340), Lyon metropolitan area, France",
   /** Facultatif : la LCEN se contente d'un moyen de contact, et l'email suffit. */
   phone: null as string | null,
   /** Date de dernière révision du texte. */

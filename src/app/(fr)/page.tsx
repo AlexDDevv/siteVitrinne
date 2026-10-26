@@ -1,22 +1,14 @@
-import type { Metadata } from "next"
-import { PageShell } from "@/components/page-shell"
-import { Approche } from "@/components/sections/approche"
-import { Contact } from "@/components/sections/contact"
-import { Hero } from "@/components/sections/hero"
-import { Offre } from "@/components/sections/offre"
-import { Process } from "@/components/sections/process"
-import { Projets } from "@/components/sections/projets"
-import { Tarifs } from "@/components/sections/tarifs"
-import { StructuredData } from "@/components/structured-data"
+import { HomePage } from "@/components/home-page"
+import { paths } from "@/content/i18n"
+import { pageMetadata } from "@/lib/metadata"
 import { site } from "@/lib/site"
 
-const title = `${site.name}, développeur full-stack freelance React / NestJS`
-const description =
-  "Développeur full-stack freelance React, TypeScript et NestJS. MVP, refonte et performance d'applications web pour startups, équipes produit et agences. Basé près de Lyon, missions à distance."
-
-export const metadata: Metadata = {
-  title: { absolute: title },
-  description,
+export const metadata = pageMetadata({
+  lang: "fr",
+  title: `${site.name}, développeur full-stack freelance React / NestJS`,
+  absoluteTitle: true,
+  description:
+    "Développeur full-stack freelance React, TypeScript et NestJS. MVP, refonte et performance d'applications web pour startups, équipes produit et agences. Basé près de Lyon, missions à distance.",
   keywords: [
     "développeur full-stack freelance",
     "freelance React TypeScript",
@@ -28,37 +20,9 @@ export const metadata: Metadata = {
     "développeur freelance startup",
     "développeur full-stack Lyon",
   ],
-  alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    locale: "fr_FR",
-    url: "/",
-    siteName: site.name,
-    title,
-    description:
-      "MVP, refonte et performance d'applications web pour startups, équipes produit et agences. React, TypeScript, NestJS.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description:
-      "MVP, refonte et performance d'applications web pour startups, équipes produit et agences. React, TypeScript, NestJS.",
-  },
-}
+  alternates: paths.home,
+})
 
 export default function Home() {
-  return (
-    <>
-      <StructuredData />
-      <PageShell>
-        <Hero />
-        <Offre />
-        <Approche />
-        <Projets />
-        <Tarifs />
-        <Process />
-        <Contact />
-      </PageShell>
-    </>
-  )
+  return <HomePage lang="fr" />
 }

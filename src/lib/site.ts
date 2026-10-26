@@ -5,8 +5,8 @@
 export const site = {
   name: "Alexis Delporte",
   role: "Développeur full-stack freelance",
-  city: "Écully",
-  postalCode: "69130",
+  city: "Francheville",
+  postalCode: "69340",
   area: "Lyon",
   region: "Auvergne-Rhône-Alpes",
   country: "FR",
@@ -27,7 +27,7 @@ export type NavLink = { href: string; label: string }
 /**
  * Liens de la barre de navigation, par langue. « Contact » est traité à part,
  * en bouton. Les ancres sont absolues (`/#offre`) pour fonctionner depuis les
- * sous-pages. L'anglais n'a pas d'accueil freelance : sa nav reste sur /en/profile.
+ * sous-pages.
  */
 export const navLinks = {
   fr: [
@@ -37,8 +37,10 @@ export const navLinks = {
     { href: "/parcours", label: "Parcours" },
   ],
   en: [
-    { href: "/en/profile#projects", label: "Projects" },
-    { href: "/en/profile#experience", label: "Experience" },
+    { href: "/en#offer", label: "Offer" },
+    { href: "/en#projects", label: "Projects" },
+    { href: "/en#rates", label: "Rates" },
+    { href: "/en/profile", label: "Profile" },
   ],
 } as const satisfies Record<"fr" | "en", NavLink[]>
 

@@ -6,7 +6,7 @@ export const metadata = pageMetadata({
   lang: "fr",
   title: "Parcours et projets",
   description:
-    "Alexis Delporte, développeur full-stack (React, TypeScript, NestJS) basé à Écully, près de Lyon. Projets, expériences, formations, CV et contact.",
+    "Alexis Delporte, développeur full-stack (React, TypeScript, NestJS) basé à Francheville, près de Lyon. Projets, expériences, formations, CV et contact.",
   alternates: paths.profile,
 })
 
