@@ -1,4 +1,5 @@
 import type { Lang } from "@/content/i18n"
+import { site } from "@/lib/site"
 
 /**
  * Textes de l'accueil freelance, en français et en anglais. Les sections ne
@@ -26,6 +27,9 @@ type Atout = {
   linkLabel?: string
 }
 
+/** Question de la FAQ. La réponse commence par la réponse directe, en une phrase. */
+export type FaqItem = { question: string; answer: string[] }
+
 type HomeContent = {
   /** Ancres des sections : la nav et les CTA en dépendent. */
   ids: {
@@ -34,6 +38,7 @@ type HomeContent = {
     projects: string
     rates: string
     process: string
+    faq: string
     contact: string
   }
   role: string
@@ -54,6 +59,7 @@ type HomeContent = {
   projects: { eyebrow: string; title: string; intro: string; highlights: string }
   rates: { eyebrow: string; title: string; intro: string; priceLabel: string; tiers: PricingTier[] }
   process: { eyebrow: string; title: string; steps: { title: string; body: string }[] }
+  faq: { eyebrow: string; title: string; items: FaqItem[] }
   contact: {
     eyebrow: string
     title: string
@@ -83,6 +89,7 @@ export const home: Record<Lang, HomeContent> = {
       projects: "projets",
       rates: "tarifs",
       process: "process",
+      faq: "faq",
       contact: "contact",
     },
     role: "Développeur full-stack freelance",
@@ -222,8 +229,56 @@ export const home: Record<Lang, HomeContent> = {
         },
       ],
     },
+    faq: {
+      eyebrow: "06 · Questions fréquentes",
+      title: "Les questions qu'on me pose avant de démarrer",
+      items: [
+        {
+          question: "Combien coûte un MVP ?",
+          answer: [
+            "Un MVP démarre à partir de 6 000 €, sur proposition.",
+            "Il couvre le front, l'API, la base de données, l'authentification et le paiement. Après un premier échange, vous recevez une proposition écrite avec le périmètre, les livrables, le planning et le prix.",
+          ],
+        },
+        {
+          question: "En combien de temps un projet est-il livré ?",
+          answer: [
+            "Le délai dépend du périmètre : il est fixé par écrit dans la proposition, avec le planning. [À COMPLÉTER : durée indicative d'un MVP et délai de démarrage]",
+            "Tout commence par un cadrage de 30 minutes en visio sur le besoin, les contraintes et l'échéance.",
+          ],
+        },
+        {
+          question: "Travaillez-vous avec des agences en marque blanche ?",
+          answer: [
+            "Oui, je fais de la sous-traitance technique en marque blanche pour les agences.",
+            "Je travaille dans vos conventions et avec vos outils, au forfait ou au TJM selon votre fonctionnement.",
+          ],
+        },
+        {
+          question: "Travaillez-vous à distance ?",
+          answer: [
+            `Oui, je travaille à distance partout en France, depuis ${site.city}, près de ${site.area}.`,
+            "Des points réguliers et une communication écrite (Slack, Notion, tickets) rythment la mission.",
+          ],
+        },
+        {
+          question: "Avec quelle stack travaillez-vous ?",
+          answer: [
+            "Je travaille en React, Next.js, TypeScript et NestJS, avec React Native pour le mobile.",
+            "Côté données et infrastructure : PostgreSQL, MongoDB, GraphQL et Docker.",
+          ],
+        },
+        {
+          question: "Qui est propriétaire du code ?",
+          answer: [
+            "[À COMPLÉTER : qui détient le code et les droits à la fin de la mission]",
+            "Le développement se fait dans votre repo ou dans un repo dédié, et la livraison comprend la documentation et la passation à votre équipe.",
+          ],
+        },
+      ],
+    },
     contact: {
-      eyebrow: "06 · Contact",
+      eyebrow: "07 · Contact",
       title: "Parlons de votre projet",
       intro:
         "Le contexte, la stack, l'échéance : quelques lignes suffisent pour démarrer. Le premier échange ne vous engage à rien.",
@@ -238,6 +293,7 @@ export const home: Record<Lang, HomeContent> = {
       projects: "projects",
       rates: "rates",
       process: "process",
+      faq: "faq",
       contact: "contact",
     },
     role: "Freelance full-stack developer",
@@ -377,8 +433,56 @@ export const home: Record<Lang, HomeContent> = {
         },
       ],
     },
+    faq: {
+      eyebrow: "06 · FAQ",
+      title: "Questions I get before we start",
+      items: [
+        {
+          question: "How much does an MVP cost?",
+          answer: [
+            "An MVP starts from €6,000, on proposal.",
+            "It covers the front end, API, database, authentication and payments. After a first conversation, you get a written proposal with the scope, deliverables, schedule and price.",
+          ],
+        },
+        {
+          question: "How long does a project take?",
+          answer: [
+            "It depends on the scope: the timeline is set in writing in the proposal, with the schedule. [À COMPLÉTER : typical MVP duration and start date]",
+            "Everything starts with a 30-minute video call about the need, the constraints and the deadline.",
+          ],
+        },
+        {
+          question: "Do you work with agencies on a white-label basis?",
+          answer: [
+            "Yes, I do white-label technical subcontracting for agencies.",
+            "I work within your conventions and with your tools, on a fixed price or a day rate depending on how you work.",
+          ],
+        },
+        {
+          question: "Do you work remotely?",
+          answer: [
+            `Yes, I work remotely anywhere in France, from ${site.city}, near ${site.area}.`,
+            "Regular check-ins and written communication (Slack, Notion, tickets) keep the engagement on track.",
+          ],
+        },
+        {
+          question: "What stack do you work with?",
+          answer: [
+            "I work with React, Next.js, TypeScript and NestJS, plus React Native for mobile.",
+            "On the data and infrastructure side: PostgreSQL, MongoDB, GraphQL and Docker.",
+          ],
+        },
+        {
+          question: "Who owns the code?",
+          answer: [
+            "[À COMPLÉTER : who owns the code and the rights at the end of the engagement]",
+            "Development happens in your repo or a dedicated one, and delivery includes documentation and handover to your team.",
+          ],
+        },
+      ],
+    },
     contact: {
-      eyebrow: "06 · Contact",
+      eyebrow: "07 · Contact",
       title: "Let's talk about your project",
       intro:
         "Context, stack, deadline: a few lines are enough to get started. The first conversation doesn't commit you to anything.",

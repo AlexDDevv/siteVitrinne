@@ -1,6 +1,7 @@
 import { PageShell } from "@/components/page-shell"
 import { Approche } from "@/components/sections/approche"
 import { Contact } from "@/components/sections/contact"
+import { Faq } from "@/components/sections/faq"
 import { Hero } from "@/components/sections/hero"
 import { Offre } from "@/components/sections/offre"
 import { Process } from "@/components/sections/process"
@@ -21,6 +22,7 @@ export function HomePage({ lang }: { lang: Lang }) {
         <Projets lang={lang} />
         <Tarifs lang={lang} />
         <Process lang={lang} />
+        <Faq lang={lang} />
         <Contact lang={lang} />
       </PageShell>
     </>

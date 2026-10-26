@@ -5,6 +5,8 @@ import { site } from "@/lib/site"
 
 const personId = `${site.url}/#person`
 const businessId = `${site.url}/#business`
+const websiteId = `${site.url}/#website`
+const todoMarker = "[À COMPLÉTER"
 
 const copy = {
   fr: {
@@ -99,11 +101,26 @@ export function buildStructuredData(lang: Lang) {
       },
       {
         "@type": "WebSite",
-        "@id": `${site.url}/#website`,
+        "@id": websiteId,
         url: site.url,
         name: site.name,
         inLanguage: [htmlLang.fr, htmlLang.en],
         publisher: { "@id": personId },
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${url}#${c.ids.faq}`,
+        url,
+        inLanguage: htmlLang[lang],
+        isPartOf: { "@id": websiteId },
+        // Une réponse encore à compléter n'est pas publiée dans le balisage.
+        mainEntity: c.faq.items
+          .filter((item) => !item.answer.some((paragraph) => paragraph.includes(todoMarker)))
+          .map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer.join(" ") },
+          })),
       },
       ...projects.map((project) => ({
         "@type": "CreativeWork",
