@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/section"
 import { TextLink } from "@/components/ui/text-link"
 import { home } from "@/content/home"
 import { paths, ui, type Lang } from "@/content/i18n"
+import { services } from "@/content/services"
 import { site, socialLinks } from "@/lib/site"
 
 export function SiteFooter({ lang = "fr" }: { lang?: Lang }) {
@@ -11,6 +12,17 @@ export function SiteFooter({ lang = "fr" }: { lang?: Lang }) {
         <p>
           {site.name} · {home[lang].role} · {site.city} ({site.postalCode.slice(0, 2)})
         </p>
+        <nav aria-label={ui[lang].services}>
+          <ul role="list" className="flex flex-wrap gap-x-5 gap-y-1">
+            {services.map((service) => (
+              <li key={service.key}>
+                <TextLink href={paths.service(lang, service.content[lang].slug)} tone="subtle">
+                  {service.content[lang].shortName}
+                </TextLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
         <ul role="list" className="flex gap-5">
           {socialLinks.map((social) => (
             <li key={social.label}>

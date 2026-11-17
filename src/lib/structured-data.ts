@@ -3,6 +3,7 @@ import { htmlLang, paths, ui, type Lang } from "@/content/i18n"
 import { profile, profileUpdatedAt } from "@/content/profile"
 import { projects } from "@/content/projects"
 import { site } from "@/lib/site"
+import type { Service } from "@/content/services"
 import type { Project } from "@/types/project"
 
 const personId = `${site.url}/#person`
@@ -212,6 +213,58 @@ export function buildProfileStructuredData(lang: Lang) {
         breadcrumb: { "@id": `${url}#breadcrumb` },
       },
       breadcrumb(lang, url, ui[lang].profile),
+    ],
+  }
+}
+
+/**
+ * Graphe d'une page service : le service (rattaché à l'activité de l'accueil),
+ * sa FAQ et son fil d'Ariane.
+ */
+export function buildServiceStructuredData(service: Service, lang: Lang) {
+  const c = service.content[lang]
+  const url = `${site.url}${paths.service(lang, c.slug)}`
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": url,
+        url,
+        name: c.metaTitle,
+        description: c.metaDescription,
+        inLanguage: htmlLang[lang],
+        dateModified: service.updatedAt,
+        isPartOf: { "@id": websiteId },
+        about: { "@id": `${url}#service` },
+        breadcrumb: { "@id": `${url}#breadcrumb` },
+      },
+      {
+        "@type": "Service",
+        "@id": `${url}#service`,
+        name: c.shortName,
+        serviceType: c.serviceType,
+        description: c.lead,
+        url,
+        provider: { "@id": businessId },
+        areaServed: [
+          { "@type": "City", name: site.area },
+          { "@type": "Country", name: "France" },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${url}#faq`,
+        url,
+        inLanguage: htmlLang[lang],
+        isPartOf: { "@id": websiteId },
+        mainEntity: c.faq.items.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: { "@type": "Answer", text: item.answer.join(" ") },
+        })),
+      },
+      breadcrumb(lang, url, c.shortName),
     ],
   }
 }

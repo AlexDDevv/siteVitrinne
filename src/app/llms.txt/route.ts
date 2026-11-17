@@ -1,6 +1,7 @@
 import { home } from "@/content/home"
 import { paths, type Lang } from "@/content/i18n"
 import { projects } from "@/content/projects"
+import { services } from "@/content/services"
 import { site } from "@/lib/site"
 
 /** Généré au build : un fichier statique, servi comme public/llms.txt. */
@@ -55,6 +56,10 @@ function section(lang: Lang) {
     ),
     "",
     `## ${t.links}`,
+    ...services.map((service) => {
+      const sc = service.content[lang]
+      return `- [${sc.shortName}](${site.url}${paths.service(lang, sc.slug)}): ${sc.metaDescription}`
+    }),
     `- [${t.profile}](${site.url}${paths.profile[lang]})`,
     `- [${t.faq}](${homeUrl}#${c.ids.faq})`,
     `- [Contact](${homeUrl}#${c.ids.contact})`,

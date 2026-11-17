@@ -1,7 +1,9 @@
 import { Card } from "@/components/ui/card"
 import { Body, CardGrid, Section } from "@/components/ui/section"
+import { TextLink } from "@/components/ui/text-link"
 import { home } from "@/content/home"
-import type { Lang } from "@/content/i18n"
+import { paths, type Lang } from "@/content/i18n"
+import { getService } from "@/content/services"
 
 export function Offre({ lang }: { lang: Lang }) {
   const c = home[lang]
@@ -14,6 +16,15 @@ export function Offre({ lang }: { lang: Lang }) {
               <span className="text-accent font-mono text-xs">/ {offre.slug}</span>
               <h3 className="text-[21px] font-semibold">{offre.title}</h3>
               <Body>{offre.description}</Body>
+              {offre.service ? (
+                <TextLink
+                  href={paths.service(lang, getService(offre.service).content[lang].slug)}
+                  arrow
+                  className="text-[15px] font-medium"
+                >
+                  {getService(offre.service).content[lang].shortName}
+                </TextLink>
+              ) : null}
             </Card>
           </li>
         ))}

@@ -1,4 +1,5 @@
 import type { Lang } from "@/content/i18n"
+import type { ServiceKey } from "@/content/services"
 import { site } from "@/lib/site"
 
 /**
@@ -8,9 +9,15 @@ import { site } from "@/lib/site"
  */
 
 /** Dernière révision du contenu de l'accueil (AAAA-MM-JJ), pour le sitemap. */
-export const homeUpdatedAt = "2026-10-26"
+export const homeUpdatedAt = "2026-11-17"
 
-export type Offer = { slug: string; title: string; description: string }
+export type Offer = {
+  slug: string
+  title: string
+  description: string
+  /** Page service détaillée, liée depuis la carte. */
+  service?: ServiceKey
+}
 
 export type PricingTier = {
   title: string
@@ -113,6 +120,7 @@ export const home: Record<Lang, HomeContent> = {
       items: [
         {
           slug: "mvp",
+          service: "mvp",
           title: "MVP & produit sur-mesure",
           description:
             "D'une idée ou d'une maquette à une V1 en production : front, API, base de données, auth, paiement. Sur une base de code qu'une équipe pourra reprendre.",
@@ -318,6 +326,7 @@ export const home: Record<Lang, HomeContent> = {
       items: [
         {
           slug: "mvp",
+          service: "mvp",
           title: "MVP & custom product",
           description:
             "From an idea or a mockup to a V1 in production: front end, API, database, auth, payments. On a codebase a team can take over.",

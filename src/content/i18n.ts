@@ -12,6 +12,8 @@ export const paths = {
   legal: { fr: "/mentions-legales", en: "/en/legal-notice" } satisfies Record<Lang, string>,
   project: (lang: Lang, slug: string) =>
     lang === "fr" ? `/projets/${slug}` : `/en/projects/${slug}`,
+  /** Page service : le slug change avec la langue (il porte le mot-clé visé). */
+  service: (lang: Lang, slug: string) => (lang === "fr" ? `/${slug}` : `/en/${slug}`),
 }
 
 /** Équivalent d'une page dans chaque langue, pour les hreflang et le sélecteur FR · EN. */
@@ -53,6 +55,8 @@ export const ui = {
       toDark: "Activer le thème sombre",
     },
     legal: "Mentions légales",
+    services: "Services",
+    relatedService: "Voir aussi",
   },
   en: {
     skipLink: "Skip to content",
@@ -89,6 +93,8 @@ export const ui = {
       toDark: "Switch to dark theme",
     },
     legal: "Legal notice",
+    services: "Services",
+    relatedService: "See also",
   },
 } as const
 
