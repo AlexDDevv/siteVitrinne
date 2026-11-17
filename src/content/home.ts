@@ -127,12 +127,14 @@ export const home: Record<Lang, HomeContent> = {
         },
         {
           slug: "refonte",
+          service: "react",
           title: "Refonte & performance",
           description:
             "Reprise de code existant, modernisation, migrations, découpage en services, temps de chargement. C'est ce que je fais chez Likewatt : des temps de chargement réduits de moitié.",
         },
         {
           slug: "agences",
+          service: "agences",
           title: "Agences",
           description:
             "Sous-traitance technique en marque blanche. Je travaille dans vos conventions et avec vos outils.",
@@ -333,12 +335,14 @@ export const home: Record<Lang, HomeContent> = {
         },
         {
           slug: "rebuild",
+          service: "react",
           title: "Rebuild & performance",
           description:
             "Taking over existing code, modernization, migrations, splitting into services, load times. That's what I do at Likewatt: load times cut in half.",
         },
         {
           slug: "agencies",
+          service: "agences",
           title: "Agencies",
           description:
             "White-label technical subcontracting. I work within your conventions and with your tools.",

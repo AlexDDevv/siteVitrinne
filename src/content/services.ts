@@ -7,7 +7,7 @@ import type { Lang } from "@/content/i18n"
  * porte sa requête dans le title, la h1, le contenu et sa propre FAQ.
  */
 
-export type ServiceKey = "nestjs" | "mvp"
+export type ServiceKey = "nestjs" | "mvp" | "react" | "agences"
 
 export type ServiceSection = {
   id: string
@@ -524,8 +524,434 @@ const mvp: Service = {
   },
 }
 
+const react: Service = {
+  key: "react",
+  updatedAt: "2026-11-17",
+  projects: ["likewatt", "nuit-d-encre"],
+  content: {
+    fr: {
+      slug: "developpeur-react-freelance-lyon",
+      metaTitle: "Développeur React freelance à Lyon | Alexis Delporte",
+      metaDescription:
+        "Développeur React freelance à Lyon (Francheville) : applications React et Next.js, refonte d'interface, migration de code legacy, performance. 450 € / jour, missions à distance depuis la métropole de Lyon.",
+      eyebrow: "Service · Front-end React",
+      title: "Développeur React freelance à Lyon, pour vos applications web",
+      lead: "Je développe, refonds et accélère des applications React et Next.js pour les startups, les éditeurs SaaS et les agences de la région lyonnaise et d'ailleurs. Des interfaces rapides, un code typé en TypeScript, et une base qu'une équipe peut reprendre.",
+      facts: [
+        { label: "Tarif", value: "450 € / jour" },
+        { label: "Stack", value: "React · Next.js · TypeScript" },
+        { label: "Lieu", value: "Francheville, métropole de Lyon" },
+      ],
+      cta: "Parler de votre projet React",
+      sections: [
+        {
+          id: "missions",
+          title: "Ce que je fais en React",
+          bullets: [
+            "Développement d'applications web en React et Next.js : tableaux de bord, outils métier, plateformes SaaS, sites rapides et bien référencés.",
+            "Refonte d'interface : de la maquette à l'intégration, avec un design system cohérent et accessible.",
+            "Migration de code legacy : composants de classe vers les hooks, montée de version de React, passage à TanStack Query ou à Next.js.",
+            "Performance : temps de chargement, découpage du bundle, cache des données, rendu côté serveur.",
+            "Gestion des données côté front : TanStack Query, Apollo Client, Zustand, formulaires avec React Hook Form.",
+            "Mobile en React Native quand le produit en a besoin, avec le même socle TypeScript.",
+          ],
+        },
+        {
+          id: "likewatt",
+          title: "Une refonte React qui a divisé les temps de chargement par deux",
+          paragraphs: [
+            "Chez Likewatt, éditeur SaaS basé à Villeurbanne, j'ai migré une application legacy écrite en composants de classe React vers React 18, TanStack Router et TanStack Query, puis refondu l'interface et l'expérience utilisateur, de la maquette à l'intégration.",
+            "Avec la migration de la base de données et le découpage en micro-services, le résultat est net : des temps de chargement réduits de moitié pour plus de 2 000 utilisateurs professionnels, dont des équipes de TotalEnergies, du Crédit Agricole et d'Eiffage.",
+          ],
+        },
+        {
+          id: "lyon",
+          title: "Un freelance React basé à Lyon",
+          paragraphs: [
+            "Je suis basé à Francheville, dans la métropole de Lyon. Pour une entreprise lyonnaise, c'est un interlocuteur qui connaît l'écosystème local et qui travaille dans le même fuseau horaire, avec les mêmes habitudes.",
+            "La plupart de mes missions se font à distance, avec des points réguliers et une communication écrite (Slack, Notion, tickets). Je travaille aussi pour des entreprises partout en France.",
+          ],
+        },
+        {
+          id: "full-stack",
+          title: "Full-stack, pas seulement front",
+          paragraphs: [
+            "Je travaille aussi côté back-end, en NestJS, PostgreSQL et MongoDB. Une fonctionnalité peut donc être livrée de bout en bout, de l'API à l'écran, sans attendre une autre équipe.",
+            "Sur Nuit d'Encre, une plateforme de lecture en ligne, j'ai construit seul le front React 19 et l'API GraphQL typée de bout en bout, jusqu'au déploiement.",
+          ],
+        },
+      ],
+      proof: {
+        title: "Des projets React concrets",
+        intro:
+          "Un logiciel SaaS en production et une plateforme en ligne, tous deux construits en React et TypeScript.",
+      },
+      faq: {
+        title: "Questions fréquentes sur une mission React",
+        items: [
+          {
+            question: "Quel est le tarif d'un développeur React freelance à Lyon ?",
+            answer: [
+              "Mon tarif est de 450 € par jour pour une mission au temps passé.",
+              "Pour un périmètre bien défini, comme une refonte ou un MVP, je propose aussi un prix fixe, par écrit, après un premier échange.",
+            ],
+          },
+          {
+            question: "Pouvez-vous reprendre une application React existante ?",
+            answer: [
+              "Oui, c'est ce que j'ai fait chez Likewatt, avec une application legacy en composants de classe.",
+              "Je commence par lire le code, puis je propose une migration progressive : on modernise écran par écran, sans arrêter les livraisons.",
+            ],
+          },
+          {
+            question: "React ou Next.js ?",
+            answer: [
+              "Next.js dès que le référencement ou le temps de premier affichage comptent : site vitrine, plateforme publique, e-commerce.",
+              "Une application React classique suffit pour un outil interne ou un tableau de bord derrière une connexion.",
+            ],
+          },
+          {
+            question: "Travaillez-vous sur site à Lyon ?",
+            answer: [
+              "Je travaille principalement à distance, depuis Francheville, dans la métropole de Lyon.",
+              "Le format de la mission se décide ensemble lors du premier échange.",
+            ],
+          },
+          {
+            question: "Faites-vous aussi le back-end ?",
+            answer: [
+              "Oui, je suis développeur full-stack : NestJS, PostgreSQL, MongoDB et GraphQL côté serveur.",
+            ],
+          },
+        ],
+      },
+      shortName: "Développeur React freelance à Lyon",
+      serviceType: "Développement front-end React",
+      og: {
+        kicker: "Service · Front-end React",
+        subtitle: "Développeur React freelance à Lyon · React, Next.js, TypeScript",
+        footer: "450 € / jour · Francheville, métropole de Lyon",
+      },
+    },
+    en: {
+      slug: "freelance-react-developer-lyon",
+      metaTitle: "Freelance React Developer in Lyon, France | Alexis Delporte",
+      metaDescription:
+        "Freelance React developer in Lyon, France: React and Next.js applications, interface redesigns, legacy code migration, performance. €450 / day, remote engagements from the Lyon area.",
+      eyebrow: "Service · React front end",
+      title: "Freelance React developer in Lyon, for your web applications",
+      lead: "I build, redesign and speed up React and Next.js applications for startups, SaaS vendors and agencies in the Lyon area and beyond. Fast interfaces, typed TypeScript code, and a codebase a team can take over.",
+      facts: [
+        { label: "Rate", value: "€450 / day" },
+        { label: "Stack", value: "React · Next.js · TypeScript" },
+        { label: "Location", value: "Francheville, Lyon metropolitan area" },
+      ],
+      cta: "Talk about your React project",
+      sections: [
+        {
+          id: "missions",
+          title: "What I do with React",
+          bullets: [
+            "Web applications in React and Next.js: dashboards, business tools, SaaS platforms, fast and search-friendly websites.",
+            "Interface redesigns: from mockup to implementation, with a consistent and accessible design system.",
+            "Legacy code migration: class components to hooks, React upgrades, moving to TanStack Query or Next.js.",
+            "Performance: load times, bundle splitting, data caching, server-side rendering.",
+            "Front-end data handling: TanStack Query, Apollo Client, Zustand, forms with React Hook Form.",
+            "Mobile with React Native when the product needs it, on the same TypeScript foundation.",
+          ],
+        },
+        {
+          id: "likewatt",
+          title: "A React rebuild that cut load times in half",
+          paragraphs: [
+            "At Likewatt, a SaaS vendor based in Villeurbanne, I migrated a legacy application written with React class components to React 18, TanStack Router and TanStack Query, then redesigned the interface and user experience, from mockup to implementation.",
+            "Together with the database migration and the split into microservices, the result is clear: load times cut in half for more than 2,000 professional users, including teams at TotalEnergies, Crédit Agricole and Eiffage.",
+          ],
+        },
+        {
+          id: "lyon",
+          title: "A freelance React developer based in Lyon",
+          paragraphs: [
+            "I am based in Francheville, in the Lyon metropolitan area. For a company in Lyon, that means a contact who knows the local ecosystem and works in the same time zone.",
+            "Most of my engagements are remote, with regular check-ins and written communication (Slack, Notion, tickets). I also work with companies across France.",
+          ],
+        },
+        {
+          id: "full-stack",
+          title: "Full-stack, not just front end",
+          paragraphs: [
+            "I also work on the back end, with NestJS, PostgreSQL and MongoDB. A feature can be shipped end to end, from the API to the screen, without waiting on another team.",
+            "On Nuit d'Encre, an online reading platform, I built the React 19 front end and the end-to-end typed GraphQL API on my own, all the way to deployment.",
+          ],
+        },
+      ],
+      proof: {
+        title: "Real React projects",
+        intro:
+          "SaaS software in production and a live platform, both built with React and TypeScript.",
+      },
+      faq: {
+        title: "Frequently asked questions about a React engagement",
+        items: [
+          {
+            question: "What is the rate of a freelance React developer in Lyon?",
+            answer: [
+              "My rate is €450 per day for a time-based engagement.",
+              "For a well-defined scope, such as a redesign or an MVP, I also offer a fixed price, in writing, after a first conversation.",
+            ],
+          },
+          {
+            question: "Can you take over an existing React application?",
+            answer: [
+              "Yes, that is what I did at Likewatt, with a legacy application built on class components.",
+              "I start by reading the code, then suggest an incremental migration: we modernize screen by screen, without stopping releases.",
+            ],
+          },
+          {
+            question: "React or Next.js?",
+            answer: [
+              "Next.js whenever SEO or first-load time matters: marketing site, public platform, e-commerce.",
+              "A plain React application is enough for an internal tool or a dashboard behind a login.",
+            ],
+          },
+          {
+            question: "Do you work on site in Lyon?",
+            answer: [
+              "I mainly work remotely, from Francheville, in the Lyon metropolitan area.",
+              "We decide on the format of the engagement together during the first conversation.",
+            ],
+          },
+          {
+            question: "Do you also handle the back end?",
+            answer: [
+              "Yes, I am a full-stack developer: NestJS, PostgreSQL, MongoDB and GraphQL on the server side.",
+            ],
+          },
+        ],
+      },
+      shortName: "Freelance React developer in Lyon",
+      serviceType: "React front-end development",
+      og: {
+        kicker: "Service · React front end",
+        subtitle: "Freelance React developer in Lyon · React, Next.js, TypeScript",
+        footer: "€450 / day · Lyon, France",
+      },
+    },
+  },
+}
+
+const agences: Service = {
+  key: "agences",
+  updatedAt: "2026-11-17",
+  projects: ["likewatt", "grindrise"],
+  content: {
+    fr: {
+      slug: "sous-traitance-agence-web",
+      metaTitle: "Sous-traitance développement web en marque blanche | Alexis Delporte",
+      metaDescription:
+        "Développeur full-stack freelance en sous-traitance pour agences web : marque blanche, vos conventions et vos outils. React, Next.js, NestJS. Au forfait ou au TJM (450 € / jour).",
+      eyebrow: "Service · Agences",
+      title: "Sous-traitance de développement web en marque blanche pour les agences",
+      lead: "Votre agence a signé un projet et manque de bras, ou d'un profil full-stack pour la partie applicative ? Je développe en marque blanche, dans vos conventions et avec vos outils. Votre client ne voit que votre agence.",
+      facts: [
+        { label: "Tarif", value: "Forfait ou 450 € / jour" },
+        { label: "Stack", value: "React · Next.js · NestJS" },
+        { label: "Format", value: "Marque blanche, à distance" },
+      ],
+      cta: "Parler de votre projet client",
+      sections: [
+        {
+          id: "cas",
+          title: "Quand faire appel à moi",
+          bullets: [
+            "Un pic de charge : plusieurs projets signés en même temps, et pas assez de développeurs en interne.",
+            "Une partie applicative : espace client, back-office, API, application métier derrière le site que vous concevez.",
+            "Un profil manquant : votre équipe fait du front ou du CMS, et le projet demande un vrai back-end.",
+            "Une reprise : un projet client existant à maintenir, faire évoluer ou remettre d'aplomb.",
+            "Une application mobile en React Native, à côté du site web.",
+          ],
+        },
+        {
+          id: "marque-blanche",
+          title: "Comment se passe la marque blanche",
+          paragraphs: [
+            "Vous restez l'interlocuteur de votre client : je ne le contacte pas sans votre accord, et le travail est livré sous le nom de votre agence.",
+            "Je m'intègre à votre fonctionnement : votre repo, vos conventions de code, vos outils de gestion de projet (Slack, Notion, Jira, tickets) et votre process de revue. Si vous n'avez pas de conventions établies, je vous propose les miennes : code typé en TypeScript, pull requests, revues de code, CI et documentation.",
+          ],
+        },
+        {
+          id: "tarifs",
+          title: "Au forfait ou au TJM",
+          paragraphs: [
+            "Deux formats, selon votre façon de vendre à vos clients. Au forfait, pour un périmètre défini : le prix, les livrables et le planning sont fixés par écrit, ce qui vous permet de construire votre propre devis en toute sécurité.",
+            "Au temps passé, à 450 € par jour, pour un renfort sur la durée ou un périmètre qui évolue.",
+          ],
+        },
+        {
+          id: "qualite",
+          title: "Un code que votre équipe peut maintenir",
+          paragraphs: [
+            "Un projet sous-traité ne doit pas devenir une boîte noire. Le code est typé, testé sur la logique sensible et documenté, et la livraison comprend une passation à votre équipe.",
+            "C'est la même exigence que sur mes propres produits et chez Likewatt, où la refonte sur laquelle j'ai travaillé a divisé par deux les temps de chargement pour plus de 2 000 utilisateurs professionnels.",
+          ],
+        },
+      ],
+      proof: {
+        title: "Ce que je livre",
+        intro:
+          "Un logiciel SaaS en production et une application mobile en développement actif : le niveau d'exigence que vous retrouverez sur vos projets clients.",
+      },
+      faq: {
+        title: "Questions fréquentes des agences",
+        items: [
+          {
+            question: "Travaillez-vous en marque blanche ?",
+            answer: [
+              "Oui, je fais de la sous-traitance technique en marque blanche pour les agences.",
+              "Vous restez l'interlocuteur de votre client, et le travail est livré sous le nom de votre agence.",
+            ],
+          },
+          {
+            question: "Quel est votre tarif pour une agence ?",
+            answer: [
+              "Au forfait pour un périmètre défini, ou au temps passé à 450 € par jour, selon votre fonctionnement.",
+              "Le forfait est fixé par écrit avant le début du développement.",
+            ],
+          },
+          {
+            question: "Pouvez-vous travailler avec nos outils et nos conventions ?",
+            answer: [
+              "Oui : votre repo, vos conventions de code, vos outils de gestion de projet et votre process de revue.",
+            ],
+          },
+          {
+            question: "Quelles technologies maîtrisez-vous ?",
+            answer: [
+              "React, Next.js et TypeScript côté front, NestJS, PostgreSQL et MongoDB côté back-end, React Native pour le mobile.",
+            ],
+          },
+          {
+            question: "Qui est propriétaire du code ?",
+            answer: [
+              "Votre agence, ou votre client selon votre contrat : les droits sur le code développé vous sont cédés à la fin de la mission, une fois la facture réglée.",
+            ],
+          },
+        ],
+      },
+      shortName: "Sous-traitance pour agences",
+      serviceType: "Sous-traitance de développement web",
+      og: {
+        kicker: "Service · Agences",
+        subtitle: "Sous-traitance de développement web en marque blanche",
+        footer: "Forfait ou 450 € / jour · React, Next.js, NestJS",
+      },
+    },
+    en: {
+      slug: "white-label-development-agencies",
+      metaTitle: "White-Label Web Development for Agencies | Alexis Delporte",
+      metaDescription:
+        "Freelance full-stack developer for web agencies: white-label subcontracting, your conventions and your tools. React, Next.js, NestJS. Fixed price or €450 / day.",
+      eyebrow: "Service · Agencies",
+      title: "White-label web development subcontracting for agencies",
+      lead: "Your agency has signed a project and is short on hands, or needs a full-stack profile for the application side? I build under your brand, within your conventions and with your tools. Your client only sees your agency.",
+      facts: [
+        { label: "Rate", value: "Fixed price or €450 / day" },
+        { label: "Stack", value: "React · Next.js · NestJS" },
+        { label: "Format", value: "White label, remote" },
+      ],
+      cta: "Talk about your client project",
+      sections: [
+        {
+          id: "cases",
+          title: "When to bring me in",
+          bullets: [
+            "A workload peak: several projects signed at once, and not enough in-house developers.",
+            "An application layer: customer portal, back office, API, business app behind the website you design.",
+            "A missing profile: your team does front end or CMS work, and the project needs a real back end.",
+            "A takeover: an existing client project to maintain, evolve or get back on track.",
+            "A React Native mobile app alongside the website.",
+          ],
+        },
+        {
+          id: "white-label",
+          title: "How white label works",
+          paragraphs: [
+            "You remain your client's contact: I do not reach out to them without your agreement, and the work is delivered under your agency's name.",
+            "I fit into how you work: your repo, your code conventions, your project tools (Slack, Notion, Jira, tickets) and your review process. If you have no established conventions, I bring mine: typed TypeScript code, pull requests, code reviews, CI and documentation.",
+          ],
+        },
+        {
+          id: "pricing",
+          title: "Fixed price or day rate",
+          paragraphs: [
+            "Two formats, depending on how you sell to your clients. Fixed price, for a defined scope: price, deliverables and schedule are set in writing, so you can build your own quote safely.",
+            "Time-based, at €450 per day, for ongoing support or a scope that evolves.",
+          ],
+        },
+        {
+          id: "quality",
+          title: "Code your team can maintain",
+          paragraphs: [
+            "A subcontracted project should not become a black box. The code is typed, tested on sensitive logic and documented, and delivery includes a handover to your team.",
+            "It is the same standard as on my own products and at Likewatt, where the rebuild I worked on cut load times in half for more than 2,000 professional users.",
+          ],
+        },
+      ],
+      proof: {
+        title: "What I deliver",
+        intro:
+          "SaaS software in production and a mobile app in active development: the standard you will get on your client projects.",
+      },
+      faq: {
+        title: "Frequently asked questions from agencies",
+        items: [
+          {
+            question: "Do you work white label?",
+            answer: [
+              "Yes, I do white-label technical subcontracting for agencies.",
+              "You remain your client's contact, and the work is delivered under your agency's name.",
+            ],
+          },
+          {
+            question: "What are your rates for agencies?",
+            answer: [
+              "Fixed price for a defined scope, or time-based at €450 per day, depending on how you work.",
+              "The fixed price is set in writing before development begins.",
+            ],
+          },
+          {
+            question: "Can you work with our tools and conventions?",
+            answer: [
+              "Yes: your repo, your code conventions, your project management tools and your review process.",
+            ],
+          },
+          {
+            question: "Which technologies do you work with?",
+            answer: [
+              "React, Next.js and TypeScript on the front end, NestJS, PostgreSQL and MongoDB on the back end, React Native for mobile.",
+            ],
+          },
+          {
+            question: "Who owns the code?",
+            answer: [
+              "Your agency, or your client depending on your contract: the rights to the code developed are transferred to you at the end of the engagement, once the invoice is paid.",
+            ],
+          },
+        ],
+      },
+      shortName: "White-label for agencies",
+      serviceType: "White-label web development subcontracting",
+      og: {
+        kicker: "Service · Agencies",
+        subtitle: "White-label web development subcontracting",
+        footer: "Fixed price or €450 / day · React, Next.js, NestJS",
+      },
+    },
+  },
+}
+
 /** Pages service, dans l'ordre d'affichage (pied de page, llms.txt, sitemap). */
-export const services: Service[] = [mvp, nestjs]
+export const services: Service[] = [mvp, react, nestjs, agences]
 
 export function getService(key: ServiceKey): Service {
   const service = services.find((s) => s.key === key)
