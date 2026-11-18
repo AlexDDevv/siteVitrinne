@@ -5,6 +5,7 @@ import { StructuredData } from "@/components/structured-data"
 import { ButtonLink } from "@/components/ui/button"
 import { Body, CardGrid, Container, Eyebrow } from "@/components/ui/section"
 import { TextLink } from "@/components/ui/text-link"
+import { articles } from "@/content/articles"
 import { home } from "@/content/home"
 import { paths, ui, type Lang } from "@/content/i18n"
 import { getProject } from "@/content/projects"
@@ -28,6 +29,7 @@ export function ServicePage({ service, lang }: { service: Service; lang: Lang })
   const proof = service.projects
     .map((slug) => getProject(slug))
     .filter((project): project is Project => Boolean(project))
+  const article = articles.find((a) => a.key === service.article)
   const others = services.filter((other) => other.key !== service.key)
 
   return (
@@ -93,6 +95,18 @@ export function ServicePage({ service, lang }: { service: Service; lang: Lang })
                   </li>
                 ))}
               </CardGrid>
+              {article ? (
+                <p className="text-subtle mt-8 text-[15.5px]">
+                  {lang === "fr" ? "À lire : " : "Read: "}
+                  <TextLink
+                    href={paths.article(lang, article.content[lang].slug)}
+                    arrow
+                    className="font-medium"
+                  >
+                    {article.content[lang].title}
+                  </TextLink>
+                </p>
+              ) : null}
             </Container>
           </section>
 

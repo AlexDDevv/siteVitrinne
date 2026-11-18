@@ -1,3 +1,4 @@
+import { articles, type Article } from "@/content/articles"
 import { home } from "@/content/home"
 import { htmlLang, paths, ui, type Lang } from "@/content/i18n"
 import { profile, profileUpdatedAt } from "@/content/profile"
@@ -265,6 +266,72 @@ export function buildServiceStructuredData(service: Service, lang: Lang) {
         })),
       },
       breadcrumb(lang, url, c.shortName),
+    ],
+  }
+}
+
+/** Graphe d'un article : le BlogPosting et son fil d'Ariane (Accueil › Articles › article). */
+export function buildArticleStructuredData(article: Article, lang: Lang) {
+  const c = article.content[lang]
+  const url = `${site.url}${paths.article(lang, c.slug)}`
+  const listUrl = `${site.url}${paths.articles[lang]}`
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `${url}#article`,
+        headline: c.title,
+        description: c.description,
+        url,
+        mainEntityOfPage: url,
+        image: `${site.url}/opengraph-image`,
+        inLanguage: htmlLang[lang],
+        datePublished: article.publishedAt,
+        dateModified: article.updatedAt,
+        author,
+        publisher: { "@id": personId },
+        isPartOf: { "@id": websiteId },
+        keywords: c.keywords.join(", "),
+        breadcrumb: { "@id": `${url}#breadcrumb` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: ui[lang].home,
+            item: `${site.url}${paths.home[lang]}`,
+          },
+          { "@type": "ListItem", position: 2, name: ui[lang].articles, item: listUrl },
+          { "@type": "ListItem", position: 3, name: c.title, item: url },
+        ],
+      },
+    ],
+  }
+}
+
+/** Graphe de la liste des articles. */
+export function buildArticlesIndexStructuredData(lang: Lang) {
+  const url = `${site.url}${paths.articles[lang]}`
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Blog",
+        "@id": `${url}#blog`,
+        url,
+        name: `${ui[lang].articles} · ${site.name}`,
+        inLanguage: htmlLang[lang],
+        publisher: { "@id": personId },
+        isPartOf: { "@id": websiteId },
+        blogPost: articles.map((article) => ({
+          "@id": `${site.url}${paths.article(lang, article.content[lang].slug)}#article`,
+        })),
+      },
+      breadcrumb(lang, url, ui[lang].articles),
     ],
   }
 }

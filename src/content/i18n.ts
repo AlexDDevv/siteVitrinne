@@ -12,6 +12,9 @@ export const paths = {
   legal: { fr: "/mentions-legales", en: "/en/legal-notice" } satisfies Record<Lang, string>,
   project: (lang: Lang, slug: string) =>
     lang === "fr" ? `/projets/${slug}` : `/en/projects/${slug}`,
+  articles: { fr: "/articles", en: "/en/articles" } satisfies Record<Lang, string>,
+  article: (lang: Lang, slug: string) =>
+    lang === "fr" ? `/articles/${slug}` : `/en/articles/${slug}`,
   /** Page service : le slug change avec la langue (il porte le mot-clé visé). */
   service: (lang: Lang, slug: string) => (lang === "fr" ? `/${slug}` : `/en/${slug}`),
 }
@@ -57,6 +60,7 @@ export const ui = {
     legal: "Mentions légales",
     services: "Services",
     relatedService: "Voir aussi",
+    articles: "Articles",
   },
   en: {
     skipLink: "Skip to content",
@@ -95,6 +99,7 @@ export const ui = {
     legal: "Legal notice",
     services: "Services",
     relatedService: "See also",
+    articles: "Articles",
   },
 } as const
 

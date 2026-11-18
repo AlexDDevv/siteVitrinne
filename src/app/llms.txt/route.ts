@@ -1,3 +1,4 @@
+import { articles } from "@/content/articles"
 import { home } from "@/content/home"
 import { paths, type Lang } from "@/content/i18n"
 import { projects } from "@/content/projects"
@@ -13,6 +14,7 @@ const heading = {
     rates: "Tarifs",
     area: "Zone d'intervention",
     caseStudies: "Études de cas",
+    articles: "Articles",
     links: "Liens",
     colon: " : ",
     profile: "Parcours, expériences et formations",
@@ -23,6 +25,7 @@ const heading = {
     rates: "Rates (English)",
     area: "Area (English)",
     caseStudies: "Case studies (English)",
+    articles: "Articles (English)",
     links: "Links (English)",
     colon: ": ",
     profile: "Profile, experience and education",
@@ -54,6 +57,12 @@ function section(lang: Lang) {
       (project) =>
         `- [${project.content[lang].title}](${site.url}${paths.project(lang, project.slug)}): ${project.content[lang].summary}`
     ),
+    "",
+    `## ${t.articles}`,
+    ...articles.map((article) => {
+      const ac = article.content[lang]
+      return `- [${ac.title}](${site.url}${paths.article(lang, ac.slug)}): ${ac.description}`
+    }),
     "",
     `## ${t.links}`,
     ...services.map((service) => {

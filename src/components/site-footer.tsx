@@ -21,6 +21,11 @@ export function SiteFooter({ lang = "fr" }: { lang?: Lang }) {
                 </TextLink>
               </li>
             ))}
+            <li>
+              <TextLink href={paths.articles[lang]} tone="subtle">
+                {ui[lang].articles}
+              </TextLink>
+            </li>
           </ul>
         </nav>
         <ul role="list" className="flex gap-5">

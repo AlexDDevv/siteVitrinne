@@ -45,12 +45,15 @@ export type Service = {
   updatedAt: string
   /** Études de cas citées en preuve, dans l'ordre d'affichage. */
   projects: string[]
+  /** Article technique lié (clé de l'article). */
+  article?: string
   content: Record<Lang, ServiceContent>
 }
 
 const nestjs: Service = {
   key: "nestjs",
-  updatedAt: "2026-11-17",
+  updatedAt: "2026-11-18",
+  article: "anti-triche-serveur",
   projects: ["grindrise", "likewatt"],
   content: {
     fr: {
