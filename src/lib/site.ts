@@ -17,6 +17,8 @@ export const site = {
     malt: "https://www.malt.fr/profile/alexisdelporte",
     github: "https://github.com/AlexDDevv",
     linkedin: "https://www.linkedin.com/in/alexis-delporte/",
+    /** Fiche Google Business Profile (lien de partage). */
+    googleBusiness: "https://share.google/8Y4EaujvVE0JYHqDM",
     /** [À COMPLÉTER : lien de réservation d'un appel de 20 min]. Vide : le lien est masqué. */
     booking: "" as string,
   },

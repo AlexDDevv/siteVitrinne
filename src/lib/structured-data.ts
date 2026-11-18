@@ -89,7 +89,8 @@ export function buildStructuredData(lang: Lang) {
         email: `mailto:${site.email}`,
         telephone: site.phone.international,
         founder: { "@id": personId },
-        sameAs,
+        sameAs: [...sameAs, site.links.googleBusiness],
+        hasMap: site.links.googleBusiness,
         address,
         areaServed: [
           { "@type": "City", name: site.area },
