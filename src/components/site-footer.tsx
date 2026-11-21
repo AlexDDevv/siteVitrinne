@@ -37,7 +37,7 @@ export function SiteFooter({ lang = "fr" }: { lang?: Lang }) {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr]">
           <div className="grid content-start gap-2">
             <p>
-              <Logo size={32} />
+              <Logo size={40} />
             </p>
             <p className="max-w-[30ch] leading-relaxed">
               {site.role[lang]} · {site.city}, {lang === "fr" ? "près de" : "near"} {site.area}
