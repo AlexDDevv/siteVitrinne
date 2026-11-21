@@ -20,8 +20,8 @@ export const grindrise: Project = {
     "Jest",
   ],
   updatedAt: "2026-11-21",
-  repo: "https://github.com/AlexDDevv/GrindRise",
-  // Projet arrêté avant publication sur les stores : pas de démo.
+  // Projet arrêté et dépôts supprimés : ni lien Code ni lien Démo.
+  repo: "",
   demo: "",
   content: {
     fr: {
