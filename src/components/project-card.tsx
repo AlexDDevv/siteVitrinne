@@ -7,9 +7,10 @@ import { paths, ui, type Lang } from "@/content/i18n"
 import type { Project } from "@/types/project"
 
 /**
- * Carte d'une étude de cas, partagée par l'accueil, /parcours et les pages projet.
+ * Carte d'une étude de cas, partagée par l'accueil et les pages projet.
  * Toute la carte mène à l'étude de cas ; les liens Code / Démo restent cliquables
- * au-dessus du lien étiré.
+ * au-dessus du lien étiré. La ligne de liens est poussée en bas (`mt-auto`) pour
+ * rester alignée entre des cartes de hauteurs de contenu différentes.
  */
 export function ProjectCard({
   project,
@@ -26,7 +27,7 @@ export function ProjectCard({
   const href = paths.project(lang, project.slug)
 
   return (
-    <article className="bg-surface border-line-strong shadow-card hover:border-line-hover hover:shadow-card-raised relative grid h-full content-start gap-3.5 rounded-xl border p-6 transition-[box-shadow,border-color] sm:p-[26px]">
+    <article className="bg-surface border-line-strong shadow-card hover:border-line-hover hover:shadow-card-raised relative flex h-full flex-col gap-3.5 rounded-xl border p-6 transition-[box-shadow,border-color] sm:p-[26px]">
       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <p className="text-faint font-mono text-[13px]">{content.dates}</p>
         {project.status ? <StatusBadge status={project.status} lang={lang} /> : null}
@@ -44,7 +45,7 @@ export function ProjectCard({
         label={t.technologiesOf(content.title)}
         className="gap-1.5"
       />
-      <div className="mt-1 flex flex-wrap items-center justify-between gap-x-5 gap-y-2">
+      <div className="mt-auto flex flex-wrap items-center justify-between gap-x-5 gap-y-2 pt-1">
         <p aria-hidden className="text-accent text-[15px] font-medium">
           {t.readCaseStudy} →
         </p>
