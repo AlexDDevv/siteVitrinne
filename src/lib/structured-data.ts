@@ -1,66 +1,64 @@
 import { articles, type Article } from "@/content/articles"
-import { home } from "@/content/home"
 import { htmlLang, paths, ui, type Lang } from "@/content/i18n"
 import { profile, profileUpdatedAt } from "@/content/profile"
 import { projects } from "@/content/projects"
 import { site } from "@/lib/site"
-import type { Service } from "@/content/services"
 import type { Project } from "@/types/project"
 
 const personId = `${site.url}/#person`
-const businessId = `${site.url}/#business`
 const websiteId = `${site.url}/#website`
-const todoMarker = "[À COMPLÉTER"
 
 const copy = {
   fr: {
-    knowsAbout: ["Développement full-stack", "Développement de MVP", "Performance web"],
+    knowsAbout: ["Développement full-stack", "Architecture d'API", "Performance web"],
     credential: "Concepteur Développeur d'Applications",
     credentialCategory: "RNCP niveau 6",
-    business:
-      "MVP, refonte et performance d'applications web, sous-traitance pour agences et renfort technique, par un développeur full-stack freelance React / TypeScript / NestJS basé près de Lyon.",
-    catalog: "Prestations",
   },
   en: {
-    knowsAbout: ["Full-stack development", "MVP development", "Web performance"],
+    knowsAbout: ["Full-stack development", "API architecture", "Web performance"],
     credential: "Application Designer-Developer",
     credentialCategory: "RNCP level 6 (France)",
-    business:
-      "MVPs, rebuilds and performance work on web applications, white-label subcontracting for agencies and technical support, by a freelance React / TypeScript / NestJS full-stack developer based near Lyon, France.",
-    catalog: "Services",
   },
 } satisfies Record<Lang, unknown>
 
 /**
- * Graphe Schema.org de l'accueil, dans la langue de la page : identité,
- * activité et catalogue d'offres (sans prix : chaque mission fait l'objet
- * d'une proposition écrite).
+ * Graphe Schema.org de l'accueil, dans la langue de la page : une page profil
+ * dont le sujet est le `Person`, le site, et un `CreativeWork` par projet.
  */
-export function buildStructuredData(lang: Lang) {
-  const c = home[lang]
+export function buildHomeStructuredData(lang: Lang) {
+  const p = profile[lang]
   const t = copy[lang]
   const url = `${site.url}${lang === "fr" ? "" : paths.home.en}`
-  const sameAs = [site.links.malt, site.links.linkedin, site.links.github]
-  const address = {
-    "@type": "PostalAddress",
-    addressLocality: site.city,
-    postalCode: site.postalCode,
-    addressRegion: site.region,
-    addressCountry: site.country,
-  }
 
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "ProfilePage",
+        "@id": `${url}#profile`,
+        url,
+        name: `${site.name} · ${p.subtitle}`,
+        description: p.intro,
+        inLanguage: htmlLang[lang],
+        dateModified: profileUpdatedAt,
+        isPartOf: { "@id": websiteId },
+        mainEntity: { "@id": personId },
+      },
+      {
         "@type": "Person",
         "@id": personId,
         name: site.name,
-        jobTitle: c.role,
+        jobTitle: site.role[lang],
         email: `mailto:${site.email}`,
         url,
-        sameAs,
-        address,
+        image: `${site.url}/opengraph-image`,
+        sameAs: [site.links.linkedin, site.links.github],
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: site.city,
+          addressRegion: site.region,
+          addressCountry: site.country,
+        },
         knowsAbout: [
           "React",
           "Next.js",
@@ -78,57 +76,12 @@ export function buildStructuredData(lang: Lang) {
         },
       },
       {
-        "@type": "ProfessionalService",
-        "@id": businessId,
-        name: `${site.name}, ${c.role}`,
-        description: t.business,
-        url,
-        // Seule l'image OG racine a une URL stable : celles des sous-pages
-        // (/en compris) portent un suffixe de hash généré par Next.
-        image: `${site.url}/opengraph-image`,
-        email: `mailto:${site.email}`,
-        telephone: site.phone.international,
-        founder: { "@id": personId },
-        sameAs: [...sameAs, site.links.googleBusiness],
-        hasMap: site.links.googleBusiness,
-        address,
-        areaServed: [
-          { "@type": "City", name: site.area },
-          { "@type": "Country", name: "France" },
-        ],
-        hasOfferCatalog: {
-          "@type": "OfferCatalog",
-          name: t.catalog,
-          itemListElement: c.offer.items.map((offre) => ({
-            "@type": "Offer",
-            name: offre.title,
-            description: offre.description,
-            itemOffered: { "@type": "Service", name: offre.title, serviceType: offre.title },
-          })),
-        },
-      },
-      {
         "@type": "WebSite",
         "@id": websiteId,
         url: site.url,
         name: site.name,
         inLanguage: [htmlLang.fr, htmlLang.en],
         publisher: { "@id": personId },
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `${site.url}${paths.home[lang]}#${c.ids.faq}`,
-        url,
-        inLanguage: htmlLang[lang],
-        isPartOf: { "@id": websiteId },
-        // Une réponse encore à compléter n'est pas publiée dans le balisage.
-        mainEntity: c.faq.items
-          .filter((item) => !item.answer.some((paragraph) => paragraph.includes(todoMarker)))
-          .map((item) => ({
-            "@type": "Question",
-            name: item.question,
-            acceptedAnswer: { "@type": "Answer", text: item.answer.join(" ") },
-          })),
       },
       ...projects.map((project) => ({
         "@type": "CreativeWork",
@@ -191,82 +144,6 @@ export function buildProjectStructuredData(project: Project, lang: Lang) {
         breadcrumb: { "@id": `${url}#breadcrumb` },
       },
       breadcrumb(lang, url, c.title),
-    ],
-  }
-}
-
-/** Graphe de /parcours et /en/profile : une page profil dont le sujet est le `Person`. */
-export function buildProfileStructuredData(lang: Lang) {
-  const p = profile[lang]
-  const url = `${site.url}${paths.profile[lang]}`
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "ProfilePage",
-        "@id": url,
-        url,
-        name: `${site.name} · ${p.subtitle}`,
-        description: p.intro,
-        inLanguage: htmlLang[lang],
-        dateModified: profileUpdatedAt,
-        isPartOf: { "@id": websiteId },
-        mainEntity: { ...author, jobTitle: p.subtitle },
-        breadcrumb: { "@id": `${url}#breadcrumb` },
-      },
-      breadcrumb(lang, url, ui[lang].profile),
-    ],
-  }
-}
-
-/**
- * Graphe d'une page service : le service (rattaché à l'activité de l'accueil),
- * sa FAQ et son fil d'Ariane.
- */
-export function buildServiceStructuredData(service: Service, lang: Lang) {
-  const c = service.content[lang]
-  const url = `${site.url}${paths.service(lang, c.slug)}`
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": url,
-        url,
-        name: c.metaTitle,
-        description: c.metaDescription,
-        inLanguage: htmlLang[lang],
-        dateModified: service.updatedAt,
-        isPartOf: { "@id": websiteId },
-        about: { "@id": `${url}#service` },
-        breadcrumb: { "@id": `${url}#breadcrumb` },
-      },
-      {
-        "@type": "Service",
-        "@id": `${url}#service`,
-        name: c.shortName,
-        serviceType: c.serviceType,
-        description: c.lead,
-        url,
-        provider: { "@id": businessId },
-        areaServed: [
-          { "@type": "City", name: site.area },
-          { "@type": "Country", name: "France" },
-        ],
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `${url}#faq`,
-        url,
-        inLanguage: htmlLang[lang],
-        isPartOf: { "@id": websiteId },
-        mainEntity: c.faq.items.map((item) => ({
-          "@type": "Question",
-          name: item.question,
-          acceptedAnswer: { "@type": "Answer", text: item.answer.join(" ") },
-        })),
-      },
-      breadcrumb(lang, url, c.shortName),
     ],
   }
 }

@@ -2,7 +2,7 @@ import type { StaticImageData } from "next/image"
 import type { Lang } from "@/content/i18n"
 
 /** Statut affiché en badge. Absent = pas de badge (ex. un poste salarié). */
-export type ProjectStatus = "in-progress" | "done"
+export type ProjectStatus = "in-progress" | "done" | "stopped"
 
 export type GalleryItem = {
   image: StaticImageData
@@ -26,13 +26,13 @@ export type ProjectContent = {
   technical: { label: string; value: string }[]
   result: string[]
   gallery: GalleryItem[]
-  /** Ce que le projet montre à un client : affiché sur la carte de l'accueil. */
+  /** Ce que le projet démontre : affiché sur la carte de l'accueil. */
   highlights?: string[]
 }
 
 export type Project = {
   slug: string
-  /** `personal` : projet perso, listé sur /parcours. `work` : expérience en entreprise. */
+  /** `personal` : projet perso, listé sur l'accueil. `work` : expérience en entreprise. */
   kind: "personal" | "work"
   status?: ProjectStatus
   stack: string[]

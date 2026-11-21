@@ -7,8 +7,8 @@ export const cvPaths: Record<Lang, string> = {
   en: "/cv/alexis-delporte-en.pdf",
 }
 
-/** Dernière révision du contenu de /parcours et /en/profile (AAAA-MM-JJ). */
-export const profileUpdatedAt = "2026-10-26"
+/** Dernière révision du contenu de l'accueil, / et /en (AAAA-MM-JJ). */
+export const profileUpdatedAt = "2026-11-21"
 
 export type TimelineItem = {
   title: string
@@ -26,7 +26,7 @@ type Profile = {
   education: TimelineItem[]
 }
 
-/** Contenu de /parcours et /en/profile, repris du portfolio. */
+/** Contenu de l'accueil (/ et /en), repris du portfolio. */
 export const profile: Record<Lang, Profile> = {
   fr: {
     subtitle: "Concepteur Développeur d'Applications · Développeur full-stack",
@@ -92,16 +92,11 @@ export const profile: Record<Lang, Profile> = {
   },
 }
 
-/** Contact direct de /parcours : CV en tête, puis les canaux. */
+/** Contact direct de l'accueil : CV en tête, puis les canaux. */
 export function contactItems(lang: Lang) {
   return [
     { label: "CV", value: lang === "fr" ? "PDF, français" : "PDF, English", href: cvPaths[lang] },
     { label: "Email", value: site.email, href: `mailto:${site.email}` },
-    {
-      label: lang === "fr" ? "Téléphone" : "Phone",
-      value: lang === "fr" ? site.phone.display : site.phone.international,
-      href: `tel:${site.phone.international.replace(/\s/g, "")}`,
-    },
     { label: "LinkedIn", value: "in/alexis-delporte", href: site.links.linkedin, external: true },
     { label: "GitHub", value: "AlexDDevv", href: site.links.github, external: true },
   ]

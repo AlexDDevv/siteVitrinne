@@ -2,7 +2,6 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { ButtonLink } from "@/components/ui/button"
 import { LangSwitcher } from "@/components/ui/lang-switcher"
 import { Container } from "@/components/ui/section"
-import { home as homeContent } from "@/content/home"
 import { paths, ui, type Alternates, type Lang } from "@/content/i18n"
 import { navLinks } from "@/lib/site"
 
@@ -14,13 +13,12 @@ export function SiteHeader({
   lang?: Lang
   /** Équivalents FR / EN de la page : affiche le sélecteur de langue. */
   alternates?: Alternates
-  /** Cible du bouton Contact : le formulaire de l'accueil, ou le contact direct de /parcours. */
+  /** Cible du bouton Contact : par défaut, la section Contact de l'accueil. */
   contactHref?: string
 }) {
   const t = ui[lang]
   const home = paths.home[lang]
-  // Par défaut, le formulaire de l'accueil de la langue courante.
-  const contact = contactHref ?? `${home}#${homeContent[lang].ids.contact}`
+  const contact = contactHref ?? `${home}#contact`
 
   return (
     <header className="border-line-strong/70 bg-ink/85 sticky top-0 z-20 border-b backdrop-blur-md">

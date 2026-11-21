@@ -149,7 +149,7 @@ const antiCheat: Article = {
           type: "p",
           text: "Les règles d'XP, de streak et de déblocage narratif sont isolées en fonctions pures, testées cas limite par cas limite. Côté API, des tests e2e avec Supertest tournent contre un serveur JWKS simulé. Au total, le projet compte environ 450 cas de test.",
         },
-        { type: "h2", id: "lecons", text: "Ce que j'en retiens pour un produit client" },
+        { type: "h2", id: "lecons", text: "Ce que j'en retiens pour d'autres produits" },
         {
           type: "ul",
           items: [
@@ -268,7 +268,7 @@ const antiCheat: Article = {
           type: "p",
           text: "XP, streak and narrative unlock rules are isolated as pure functions, tested edge case by edge case. On the API side, e2e tests with Supertest run against a mock JWKS server. In total, the project has about 450 test cases.",
         },
-        { type: "h2", id: "lessons", text: "What I take away for a client product" },
+        { type: "h2", id: "lessons", text: "What I take away for other products" },
         {
           type: "ul",
           items: [
@@ -300,7 +300,7 @@ export const articlesIndex = {
     title: "Articles",
     metaTitle: "Articles techniques : React, NestJS, architecture | Alexis Delporte",
     description:
-      "Retours d'expérience techniques d'Alexis Delporte, développeur full-stack freelance : architecture NestJS, sécurité, React, PostgreSQL.",
+      "Retours d'expérience techniques d'Alexis Delporte, développeur full-stack : architecture NestJS, sécurité, React, PostgreSQL.",
     lead: "Des retours d'expérience tirés de mes projets : les choix techniques, les compromis et ce que j'en retiens.",
     read: "Lire l'article",
     minutes: (n: number) => `${n} min de lecture`,
@@ -314,7 +314,7 @@ export const articlesIndex = {
     title: "Articles",
     metaTitle: "Technical Articles: React, NestJS, Architecture | Alexis Delporte",
     description:
-      "Technical write-ups by Alexis Delporte, freelance full-stack developer: NestJS architecture, security, React, PostgreSQL.",
+      "Technical write-ups by Alexis Delporte, full-stack developer: NestJS architecture, security, React, PostgreSQL.",
     lead: "Write-ups drawn from my projects: the technical choices, the trade-offs and what I take away from them.",
     read: "Read the article",
     minutes: (n: number) => `${n} min read`,

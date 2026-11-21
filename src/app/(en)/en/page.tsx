@@ -5,19 +5,17 @@ import { site } from "@/lib/site"
 
 export const metadata = pageMetadata({
   lang: "en",
-  title: `Freelance React / NestJS developer in ${site.area} | ${site.name}`,
+  title: `${site.name}, full-stack developer React / TypeScript / NestJS`,
   absoluteTitle: true,
   description:
-    "Freelance full-stack developer working with React, TypeScript and NestJS. MVPs, rebuilds and performance work on web applications for startups, product teams and agencies. Based near Lyon, France, working remotely.",
+    "Portfolio and resume of Alexis Delporte, full-stack developer working with React, TypeScript and NestJS, based near Lyon, France: projects, case studies, experience, education and technical articles.",
   keywords: [
-    "freelance full-stack developer",
-    "freelance React TypeScript developer",
-    "freelance NestJS developer",
-    "MVP development",
-    "web application rebuild",
-    "web application performance",
-    "white-label development for agencies",
-    "freelance developer France",
+    "full-stack developer",
+    "React TypeScript developer",
+    "NestJS developer",
+    "developer portfolio",
+    "full-stack developer resume",
+    "full-stack developer Lyon",
   ],
   alternates: paths.home,
 })

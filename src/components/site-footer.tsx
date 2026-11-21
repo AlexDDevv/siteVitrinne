@@ -1,9 +1,8 @@
 import type { ReactNode } from "react"
 import { Container } from "@/components/ui/section"
 import { TextLink } from "@/components/ui/text-link"
-import { home } from "@/content/home"
 import { paths, ui, type Lang } from "@/content/i18n"
-import { services } from "@/content/services"
+import { cvPaths } from "@/content/profile"
 import { site, socialLinks } from "@/lib/site"
 
 const heading = {
@@ -26,33 +25,23 @@ function Column({ id, title, children }: { id: string; title: string; children: 
 }
 
 /**
- * Pied de page en colonnes : services, pages du site, réseaux. Une colonne en
- * mobile, deux en tablette, quatre en desktop (identité comprise).
+ * Pied de page en colonnes : identité, pages du site, réseaux. Une colonne en
+ * mobile, deux en tablette, trois en desktop.
  */
 export function SiteFooter({ lang = "fr" }: { lang?: Lang }) {
   const t = ui[lang]
   return (
     <footer className="border-line bg-ink-alt border-t">
       <Container className="text-faint grid gap-10 py-12 text-sm">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1.3fr_1fr_1fr]">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr]">
           <div className="grid content-start gap-2">
             <p className="text-subtle font-mono text-[13px] tracking-[0.06em]">
               alexis<span className="text-accent">.</span>delporte
             </p>
             <p className="max-w-[30ch] leading-relaxed">
-              {home[lang].role} · {site.city} ({site.postalCode.slice(0, 2)})
+              {site.role[lang]} · {site.city}, {lang === "fr" ? "près de" : "near"} {site.area}
             </p>
           </div>
-
-          <Column id="footer-services" title={t.services}>
-            {services.map((service) => (
-              <li key={service.key}>
-                <TextLink href={paths.service(lang, service.content[lang].slug)} tone="subtle">
-                  {service.content[lang].shortName}
-                </TextLink>
-              </li>
-            ))}
-          </Column>
 
           <Column id="footer-site" title={heading[lang].site}>
             <li>
@@ -61,8 +50,8 @@ export function SiteFooter({ lang = "fr" }: { lang?: Lang }) {
               </TextLink>
             </li>
             <li>
-              <TextLink href={paths.profile[lang]} tone="subtle">
-                {t.profile}
+              <TextLink href={cvPaths[lang]} tone="subtle">
+                {lang === "fr" ? "CV (PDF)" : "Resume (PDF)"}
               </TextLink>
             </li>
             <li>

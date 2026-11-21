@@ -4,17 +4,8 @@ import { LangSwitcher } from "@/components/ui/lang-switcher"
 import { Container } from "@/components/ui/section"
 import { TextLink } from "@/components/ui/text-link"
 import { htmlLang, paths, type Lang } from "@/content/i18n"
-import { host, legal, mailProcessor } from "@/lib/legal"
+import { host, legal } from "@/lib/legal"
 import { site } from "@/lib/site"
-
-/** Signale une information légale encore absente, en évidence sur la page. */
-function ToComplete({ label }: { label: string }) {
-  return (
-    <mark className="bg-amber/20 text-cream rounded px-1.5 py-0.5 font-mono text-[13px]">
-      [À COMPLÉTER : {label}]
-    </mark>
-  )
-}
 
 function Article({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -58,12 +49,8 @@ export function LegalPage({ lang }: { lang: Lang }) {
           <div className="mx-auto grid max-w-[760px] gap-8">
             <header className="grid gap-4">
               <div className="flex flex-wrap items-center justify-between gap-4">
-                <TextLink
-                  href={fr ? "/" : paths.profile.en}
-                  tone="subtle"
-                  className="font-mono text-[13px]"
-                >
-                  <span aria-hidden>←</span> {fr ? "Retour à l'accueil" : "Back to profile"}
+                <TextLink href={paths.home[lang]} tone="subtle" className="font-mono text-[13px]">
+                  <span aria-hidden>←</span> {fr ? "Retour à l'accueil" : "Back to home"}
                 </TextLink>
                 <LangSwitcher lang={lang} alternates={paths.legal} />
               </div>
@@ -89,36 +76,13 @@ export function LegalPage({ lang }: { lang: Lang }) {
               >
                 {site.name}
               </Row>
-              <Row lang={lang} label={fr ? "Statut" : "Legal status"}>
-                {fr
-                  ? "Entrepreneur individuel (micro-entreprise)"
-                  : "Sole proprietor (French micro-entreprise)"}
-              </Row>
-              <Row lang={lang} label={fr ? "Adresse du siège social" : "Registered address"}>
-                {legal.address ?? <ToComplete label="adresse du siège" />}
-              </Row>
-              {legal.workplace ? (
-                <Row lang={lang} label={fr ? "Lieu d'exercice" : "Place of business"}>
-                  {fr ? legal.workplace : legal.workplaceEn}
-                </Row>
-              ) : null}
-              <Row lang={lang} label={fr ? "SIRET" : "SIRET (French company number)"}>
-                {legal.siret ?? <ToComplete label="numéro SIRET à 14 chiffres" />}
-              </Row>
               <Row lang={lang} label="Email">
                 {email}
               </Row>
-              {legal.phone ? (
-                <Row lang={lang} label={fr ? "Téléphone" : "Phone"}>
-                  <TextLink href={`tel:+33${legal.phone.slice(1)}`}>
-                    {legal.phone.replace(/(\d{2})(?=\d)/g, "$1 ")}
-                  </TextLink>
-                </Row>
-              ) : null}
               <p>
                 {fr
-                  ? "L'activité de développement web n'est pas une profession réglementée : elle n'est soumise ni à un ordre professionnel, ni à une autorisation d'exercice."
-                  : "Web development is not a regulated profession in France: it is not subject to a professional body or to a licence to practise."}
+                  ? "Site personnel, édité par une personne physique à titre non professionnel et sans finalité commerciale."
+                  : "Personal website, published by an individual in a non-professional capacity and with no commercial purpose."}
               </p>
             </Article>
 
@@ -142,56 +106,15 @@ export function LegalPage({ lang }: { lang: Lang }) {
             </Article>
 
             <Article title={fr ? "Données personnelles" : "Personal data"}>
-              {fr ? (
-                <p>
-                  Le formulaire de contact recueille votre <strong>nom</strong>, votre{" "}
-                  <strong>adresse email</strong>, le <strong>type de projet</strong> et le{" "}
-                  <strong>message</strong> que vous rédigez. Aucune autre donnée n&apos;est
-                  collectée.
-                </p>
-              ) : (
-                <p>
-                  The contact form collects your <strong>name</strong>, your{" "}
-                  <strong>email address</strong>, the <strong>project type</strong> and the{" "}
-                  <strong>message</strong> you write. No other data is collected.
-                </p>
-              )}
-              <Row lang={lang} label={fr ? "Responsable du traitement" : "Data controller"}>
-                {site.name}
-              </Row>
-              <Row lang={lang} label={fr ? "Finalité" : "Purpose"}>
-                {fr
-                  ? "Répondre à votre demande et échanger sur votre projet"
-                  : "Replying to your request and discussing your project"}
-              </Row>
-              <Row lang={lang} label={fr ? "Base légale" : "Legal basis"}>
-                {fr
-                  ? "Mesures précontractuelles prises à votre demande (art. 6.1.b du RGPD)"
-                  : "Pre-contractual steps taken at your request (Art. 6(1)(b) GDPR)"}
-              </Row>
-              <Row lang={lang} label={fr ? "Durée de conservation" : "Retention period"}>
-                {fr
-                  ? "3 ans à compter de notre dernier échange, puis suppression"
-                  : "3 years from our last exchange, then deletion"}
-              </Row>
-              <Row lang={lang} label={fr ? "Destinataires" : "Recipients"}>
-                {fr
-                  ? `${site.name} uniquement. Aucune donnée n'est vendue, louée ni transmise à des fins publicitaires.`
-                  : `${site.name} only. No data is sold, rented or shared for advertising purposes.`}
-              </Row>
               <p>
                 {fr
-                  ? `L'acheminement des emails est assuré par ${mailProcessor.name}, agissant comme sous-traitant. Le traitement est hébergé en ${mailProcessor.region}, sans transfert hors Union européenne. Voir sa `
-                  : `Emails are delivered by ${mailProcessor.name}, acting as a processor. Processing is hosted in the ${mailProcessor.regionEn}, with no transfer outside the European Union. See its `}
-                <TextLink href={mailProcessor.url} external lang={lang}>
-                  {fr ? "politique de confidentialité" : "privacy policy"}
-                </TextLink>
-                .
+                  ? "Ce site ne comporte aucun formulaire et ne collecte aucune donnée personnelle. Si vous m'écrivez par email, votre adresse et votre message servent uniquement à vous répondre et ne sont transmis à personne."
+                  : "This website has no form and collects no personal data. If you email me, your address and message are used only to reply to you and are never shared."}
               </p>
               <p>
                 {fr
-                  ? "Vous disposez d'un droit d'accès, de rectification, d'effacement, d'opposition, de limitation et de portabilité sur vos données. Pour les exercer, écrivez à "
-                  : "You have the right to access, rectify, erase, object to, restrict and port your data. To exercise these rights, write to "}
+                  ? "Vous disposez d'un droit d'accès, de rectification et d'effacement sur ces échanges. Pour l'exercer, écrivez à "
+                  : "You have the right to access, rectify and erase these exchanges. To exercise it, write to "}
                 {email}
                 {fr
                   ? ". Vous pouvez également introduire une réclamation auprès de la "
@@ -227,16 +150,16 @@ export function LegalPage({ lang }: { lang: Lang }) {
               </p>
               <p>
                 {fr
-                  ? "Les noms et logos des sociétés citées à titre de références appartiennent à leurs titulaires respectifs."
-                  : "The names and logos of the companies mentioned as references belong to their respective owners."}
+                  ? "Les noms et logos des sociétés citées appartiennent à leurs titulaires respectifs."
+                  : "The names and logos of the companies mentioned belong to their respective owners."}
               </p>
             </Article>
 
             <Article title={fr ? "Responsabilité" : "Liability"}>
               <p>
                 {fr
-                  ? "Les informations publiées sont fournies à titre indicatif et peuvent évoluer. Les tarifs affichés sont indicatifs et ne constituent pas une offre contractuelle : seule une proposition signée engage les parties."
-                  : "The information published is provided for guidance and may change. The rates shown are indicative and do not constitute a contractual offer: only a signed proposal binds the parties."}
+                  ? "Les informations publiées sont fournies à titre indicatif et peuvent évoluer."
+                  : "The information published is provided for guidance and may change."}
               </p>
               <p>
                 {fr

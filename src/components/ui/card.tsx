@@ -1,32 +1,7 @@
 import type { ReactNode } from "react"
 
-/** Carte de contenu : le motif surface + bordure repris dans Offre, Projets et Tarifs. */
-export function Card({
-  children,
-  className = "",
-  interactive = false,
-  accent = false,
-}: {
-  children: ReactNode
-  className?: string
-  /** Éclaircit la bordure au survol, pour les cartes que l'on parcourt. */
-  interactive?: boolean
-  /** Carte mise en avant : fond et bordure ambre. */
-  accent?: boolean
-}) {
-  return (
-    <div
-      className={`shadow-card rounded-xl border transition-[box-shadow,border-color] ${
-        accent ? "bg-surface-accent border-accent" : "bg-surface border-line-strong"
-      } ${interactive ? "hover:border-line-hover hover:shadow-card-raised" : ""} ${className}`}
-    >
-      {children}
-    </div>
-  )
-}
-
 /** Étiquette monospace de la stack technique. `muted` pour la variante sur fond plein. */
-export function Tag({ children, muted = false }: { children: ReactNode; muted?: boolean }) {
+function Tag({ children, muted = false }: { children: ReactNode; muted?: boolean }) {
   return muted ? (
     <span className="bg-ink text-subtle rounded-[5px] px-2.5 py-1.5 font-mono text-xs">
       {children}

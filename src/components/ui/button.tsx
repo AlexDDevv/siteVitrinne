@@ -51,20 +51,3 @@ export function ButtonLink({
     </a>
   )
 }
-
-type ButtonProps = {
-  variant?: Variant
-  children: ReactNode
-  className?: string
-} & Omit<ComponentPropsWithoutRef<"button">, "className">
-
-export function Button({ variant = "primary", children, className = "", ...props }: ButtonProps) {
-  return (
-    <button
-      className={`${base} ${variants[variant]} cursor-pointer disabled:cursor-not-allowed disabled:opacity-70 ${className}`}
-      {...props}
-    >
-      {children}
-    </button>
-  )
-}

@@ -4,7 +4,7 @@ import { baseMetadata } from "@/lib/metadata"
 
 export { viewport } from "@/lib/metadata"
 
-/** Root layout anglais : /en/profile et les études de cas EN. L'accueil freelance reste en français. */
+/** Root layout anglais : accueil /en, études de cas et articles EN. */
 export const metadata: Metadata = {
   ...baseMetadata,
   description:

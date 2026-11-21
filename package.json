@@ -1,5 +1,5 @@
 {
-  "name": "alexis-delporte-freelance",
+  "name": "alexis-delporte-portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,9 +15,7 @@
   "dependencies": {
     "next": "15.5.24",
     "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "resend": "^6.25.0",
-    "zod": "^4.5.4"
+    "react-dom": "19.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -5,19 +5,16 @@ import { site } from "@/lib/site"
 
 export const metadata = pageMetadata({
   lang: "fr",
-  title: `Développeur freelance React / NestJS à ${site.area} | ${site.name}`,
+  title: `${site.name}, développeur full-stack React / TypeScript / NestJS`,
   absoluteTitle: true,
   description:
-    "Développeur full-stack freelance React, TypeScript et NestJS. MVP, refonte et performance d'applications web pour startups, équipes produit et agences. Basé près de Lyon, missions à distance.",
+    "Portfolio et CV d'Alexis Delporte, développeur full-stack React, TypeScript et NestJS basé près de Lyon : projets, études de cas, expériences, formations et articles techniques.",
   keywords: [
-    "développeur full-stack freelance",
-    "freelance React TypeScript",
-    "freelance NestJS",
-    "développement MVP",
-    "refonte application web",
-    "performance application web",
-    "sous-traitance agence web",
-    "développeur freelance startup",
+    "développeur full-stack",
+    "développeur React TypeScript",
+    "développeur NestJS",
+    "portfolio développeur",
+    "CV développeur full-stack",
     "développeur full-stack Lyon",
   ],
   alternates: paths.home,

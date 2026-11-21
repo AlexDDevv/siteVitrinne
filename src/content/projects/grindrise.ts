@@ -4,7 +4,7 @@ import type { Project } from "@/types/project"
 export const grindrise: Project = {
   slug: "grindrise",
   kind: "personal",
-  status: "in-progress",
+  status: "stopped",
   stack: [
     "React Native",
     "Expo",
@@ -19,9 +19,9 @@ export const grindrise: Project = {
     "CapRover",
     "Jest",
   ],
-  updatedAt: "2026-10-26",
+  updatedAt: "2026-11-21",
   repo: "https://github.com/AlexDDevv/GrindRise",
-  // [À COMPLÉTER : lien store / démo]. Vide : le lien Démo est masqué.
+  // Projet arrêté avant publication sur les stores : pas de démo.
   demo: "",
   content: {
     fr: {
@@ -33,7 +33,7 @@ export const grindrise: Project = {
         "Une logique serveur robuste : anti-triche arbitré par l'API, jobs en file d'attente avec BullMQ et Redis.",
         "Une réflexion produit : engagement, régularité, rétention.",
       ],
-      dates: "2026 → en cours",
+      dates: "2026",
       context: [
         "Grindrise est une application mobile de suivi sportif : course, musculation et autres sports d'endurance. Elle ajoute une couche de gamification RPG pour entretenir la régularité.",
         "Le joueur choisit une classe, gagne de l'XP à chaque séance, monte de niveau et débloque des fragments de récit.",
@@ -48,7 +48,7 @@ export const grindrise: Project = {
         "Suivi de musculation exercice par exercice et série par série, avec un catalogue filtrable par groupe musculaire. L'utilisateur peut créer ses propres exercices, suivre des statistiques de séance en direct et consulter un récapitulatif final.",
         "Programmes d'entraînement personnalisés, organisés en jours types avec exercices réordonnables par glisser-déposer. Une séance peut être démarrée directement depuis un jour type.",
         "Streak calculé en jours locaux selon le fuseau horaire du joueur, avec des bonus fixes aux paliers (3, 7, 14, 30 jours, puis tous les 30 jours).",
-        "Système narratif en cours de construction : le mécanisme de déblocage (trame principale liée au niveau global, trames annexes par sport) est en place côté serveur, le contenu et le codex restent à intégrer. Des emails de passage de niveau sont envoyés, avec un désabonnement en un clic.",
+        "Système narratif amorcé : le mécanisme de déblocage (trame principale liée au niveau global, trames annexes par sport) est en place côté serveur ; le contenu et le codex n'ont pas été intégrés. Des emails de passage de niveau sont envoyés, avec un désabonnement en un clic.",
       ],
       technical: [
         {
@@ -83,7 +83,7 @@ export const grindrise: Project = {
         },
       ],
       result: [
-        "Le projet est en développement actif. La boucle séance → XP → niveau fonctionne de bout en bout. L'historique, les analytics de progression et le premier build mobile publié restent à venir.",
+        "J'ai arrêté le développement avant la publication sur les stores. À ce stade, la boucle séance → XP → niveau fonctionnait de bout en bout ; l'historique, les analytics de progression et le contenu narratif n'ont pas été terminés.",
         "Le système complet (mobile, API, base, infrastructure) part d'un modèle de menace : le client n'écrit jamais d'XP, la RLS est testée automatiquement et le barème est conçu pour que tricher rapporte peu.",
         "La logique métier est isolée en fonctions pures, testées cas limite par cas limite. Les écritures sensibles passent par des transactions atomiques. Les compromis sont documentés dans le code (vérification JWT locale contre révocation immédiate, geste en thread JS contre dépendance native). Le déploiement est conteneurisé et durci, sur deux environnements isolés.",
         "Les choix produit sont visibles : pas de bonus d'effort en musculation (le tonnage est trop facile à gonfler), streak calé sur le fuseau local du joueur.",
@@ -99,7 +99,7 @@ export const grindrise: Project = {
         "Robust server logic: anti-cheat enforced by the API, queued jobs with BullMQ and Redis.",
         "Product thinking: engagement, consistency, retention.",
       ],
-      dates: "2026 → ongoing",
+      dates: "2026",
       context: [
         "Grindrise is a mobile fitness tracker for running, strength training and other endurance sports. It adds an RPG gamification layer to keep users consistent.",
         "Players pick a class, earn XP with every workout, level up and unlock story fragments.",
@@ -114,7 +114,7 @@ export const grindrise: Project = {
         "Strength tracking exercise by exercise and set by set, with a catalog filterable by muscle group. Users can create their own exercises, follow live session stats and review a final summary.",
         "Custom training programs organized into template days with drag-and-drop reorderable exercises. A workout can be started directly from a template day.",
         "Streak counted in local days based on the player's time zone, with fixed bonuses at milestones (3, 7, 14, 30 days, then every 30 days).",
-        "Narrative system under construction: the unlock mechanism (main storyline tied to overall level, side storylines per sport) is in place on the server, while the story content and codex are still to come. Level-up emails are sent, with one-click unsubscribe.",
+        "Narrative system, started: the unlock mechanism (main storyline tied to overall level, side storylines per sport) is in place on the server, while the story content and codex were never added. Level-up emails are sent, with one-click unsubscribe.",
       ],
       technical: [
         {
@@ -149,7 +149,7 @@ export const grindrise: Project = {
         },
       ],
       result: [
-        "The project is under active development. The workout → XP → level loop works end to end. History, progression analytics and the first published mobile build are still to come.",
+        "I stopped development before the app reached the stores. At that point, the workout → XP → level loop worked end to end; history, progression analytics and the narrative content were never finished.",
         "The complete system (mobile, API, database, infrastructure) starts from a threat model: the client never writes XP, RLS is tested automatically and the scoring model is designed so that cheating pays very little.",
         "Business logic is isolated in pure functions, tested edge case by edge case. Sensitive writes go through atomic transactions. Trade-offs are documented in the code (local JWT verification versus immediate revocation, JS-thread gestures versus a native dependency). Deployment is containerized and hardened, across two isolated environments.",
         "Product decisions are visible: no effort bonus for strength training (tonnage is too easy to inflate), streaks computed in the player's local time zone.",

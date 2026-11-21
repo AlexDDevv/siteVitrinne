@@ -8,15 +8,12 @@ export const ogLocale: Record<Lang, string> = { fr: "fr_FR", en: "en_US" }
 /** Chemins des pages bilingues. Une seule définition, utilisée par la nav, le sitemap et les hreflang. */
 export const paths = {
   home: { fr: "/", en: "/en" } satisfies Record<Lang, string>,
-  profile: { fr: "/parcours", en: "/en/profile" } satisfies Record<Lang, string>,
   legal: { fr: "/mentions-legales", en: "/en/legal-notice" } satisfies Record<Lang, string>,
   project: (lang: Lang, slug: string) =>
     lang === "fr" ? `/projets/${slug}` : `/en/projects/${slug}`,
   articles: { fr: "/articles", en: "/en/articles" } satisfies Record<Lang, string>,
   article: (lang: Lang, slug: string) =>
     lang === "fr" ? `/articles/${slug}` : `/en/articles/${slug}`,
-  /** Page service : le slug change avec la langue (il porte le mot-clé visé). */
-  service: (lang: Lang, slug: string) => (lang === "fr" ? `/${slug}` : `/en/${slug}`),
 }
 
 /** Équivalent d'une page dans chaque langue, pour les hreflang et le sélecteur FR · EN. */
@@ -26,7 +23,6 @@ export const ui = {
   fr: {
     skipLink: "Aller au contenu",
     home: "Accueil",
-    profile: "Parcours",
     mainNav: "Navigation principale",
     langSwitch: "Langue",
     projects: "Projets",
@@ -47,7 +43,7 @@ export const ui = {
     links: "Liens",
     previews: "Aperçus",
     otherProjects: "Autres projets",
-    status: { "in-progress": "En cours", done: "Terminé" },
+    status: { "in-progress": "En cours", done: "Terminé", stopped: "Arrêté" },
     technologiesOf: (title: string) => `Technologies de ${title}`,
     enlarge: (caption: string) => `Agrandir : ${caption}`,
     close: "Fermer",
@@ -58,14 +54,11 @@ export const ui = {
       toDark: "Activer le thème sombre",
     },
     legal: "Mentions légales",
-    services: "Services",
-    relatedService: "Voir aussi",
     articles: "Articles",
   },
   en: {
     skipLink: "Skip to content",
     home: "Home",
-    profile: "Profile",
     mainNav: "Main navigation",
     langSwitch: "Language",
     projects: "Projects",
@@ -86,7 +79,7 @@ export const ui = {
     links: "Links",
     previews: "Previews",
     otherProjects: "Other projects",
-    status: { "in-progress": "In progress", done: "Finished" },
+    status: { "in-progress": "In progress", done: "Finished", stopped: "Discontinued" },
     technologiesOf: (title: string) => `${title} technologies`,
     enlarge: (caption: string) => `Enlarge: ${caption}`,
     close: "Close",
@@ -97,8 +90,6 @@ export const ui = {
       toDark: "Switch to dark theme",
     },
     legal: "Legal notice",
-    services: "Services",
-    relatedService: "See also",
     articles: "Articles",
   },
 } as const

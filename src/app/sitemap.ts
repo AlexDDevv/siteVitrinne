@@ -1,12 +1,9 @@
 import type { MetadataRoute } from "next"
 import { articles } from "@/content/articles"
-import { homeUpdatedAt } from "@/content/home"
 import { htmlLang, paths, type Alternates } from "@/content/i18n"
 import { profileUpdatedAt } from "@/content/profile"
 import { projects } from "@/content/projects"
-import { services } from "@/content/services"
 import { legal } from "@/lib/legal"
-import { serviceAlternates } from "@/lib/services"
 import { site } from "@/lib/site"
 
 /**
@@ -34,9 +31,8 @@ function bilingual(
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    ...bilingual(paths.home, 1, homeUpdatedAt),
-    ...services.flatMap((service) => bilingual(serviceAlternates(service), 0.9, service.updatedAt)),
-    ...bilingual(paths.articles, 0.6, articles[0]?.updatedAt ?? homeUpdatedAt),
+    ...bilingual(paths.home, 1, profileUpdatedAt),
+    ...bilingual(paths.articles, 0.6, articles[0]?.updatedAt ?? profileUpdatedAt),
     ...articles.flatMap((article) =>
       bilingual(
         {
@@ -47,7 +43,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         article.updatedAt
       )
     ),
-    ...bilingual(paths.profile, 0.8, profileUpdatedAt),
     ...projects.flatMap((project) =>
       bilingual(
         { fr: paths.project("fr", project.slug), en: paths.project("en", project.slug) },

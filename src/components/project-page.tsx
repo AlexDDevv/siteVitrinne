@@ -14,8 +14,7 @@ import { buildProjectStructuredData } from "@/lib/structured-data"
 import type { Project } from "@/types/project"
 
 /**
- * Étude de cas, rédigée de façon neutre pour les clients comme pour les
- * recruteurs : Contexte / Problème / Ce que j'ai fait / Résultat / Stack / Liens.
+ * Étude de cas : Contexte / Problème / Ce que j'ai fait / Résultat / Stack / Liens.
  */
 export function ProjectPage({ project, lang }: { project: Project; lang: Lang }) {
   const t = ui[lang]

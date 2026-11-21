@@ -1,8 +1,7 @@
 import { articles } from "@/content/articles"
-import { home } from "@/content/home"
 import { paths, type Lang } from "@/content/i18n"
+import { cvPaths, profile } from "@/content/profile"
 import { projects } from "@/content/projects"
-import { services } from "@/content/services"
 import { site } from "@/lib/site"
 
 /** Généré au build : un fichier statique, servi comme public/llms.txt. */
@@ -10,26 +9,20 @@ export const dynamic = "force-static"
 
 const heading = {
   fr: {
-    services: "Services",
-    rates: "Tarifs",
-    area: "Zone d'intervention",
-    caseStudies: "Études de cas",
+    projects: "Projets et études de cas",
     articles: "Articles",
     links: "Liens",
     colon: " : ",
-    profile: "Parcours, expériences et formations",
-    faq: "Questions fréquentes (coût, délais, agences, stack, code)",
+    home: "Portfolio, expériences et formations",
+    cv: "CV (PDF)",
   },
   en: {
-    services: "Services (English)",
-    rates: "Rates (English)",
-    area: "Area (English)",
-    caseStudies: "Case studies (English)",
+    projects: "Projects and case studies (English)",
     articles: "Articles (English)",
     links: "Links (English)",
     colon: ": ",
-    profile: "Profile, experience and education",
-    faq: "FAQ (cost, timelines, agencies, stack, code)",
+    home: "Portfolio, experience and education",
+    cv: "Resume (PDF)",
   },
 } satisfies Record<Lang, unknown>
 
@@ -38,40 +31,23 @@ const heading = {
  * qu'un seul titre `#`, d'où le suffixe « (English) » sur les sections anglaises.
  */
 function section(lang: Lang) {
-  const c = home[lang]
   const t = heading[lang]
-  const homeUrl = `${site.url}${paths.home[lang]}`
   return [
-    `## ${t.services}`,
-    ...c.offer.items.map((offer) => `- ${offer.title}${t.colon}${offer.description}`),
-    "",
-    `## ${t.rates}`,
-    c.rates.intro,
-    ...c.rates.tiers.map((tier) => `- ${tier.title}${t.colon}${tier.price}`),
-    "",
-    `## ${t.area}`,
-    c.hero.location(site.city, site.area),
-    "",
-    `## ${t.caseStudies}`,
+    `## ${t.projects}`,
     ...projects.map(
       (project) =>
-        `- [${project.content[lang].title}](${site.url}${paths.project(lang, project.slug)}): ${project.content[lang].summary}`
+        `- [${project.content[lang].title}](${site.url}${paths.project(lang, project.slug)})${t.colon}${project.content[lang].summary}`
     ),
     "",
     `## ${t.articles}`,
     ...articles.map((article) => {
       const ac = article.content[lang]
-      return `- [${ac.title}](${site.url}${paths.article(lang, ac.slug)}): ${ac.description}`
+      return `- [${ac.title}](${site.url}${paths.article(lang, ac.slug)})${t.colon}${ac.description}`
     }),
     "",
     `## ${t.links}`,
-    ...services.map((service) => {
-      const sc = service.content[lang]
-      return `- [${sc.shortName}](${site.url}${paths.service(lang, sc.slug)}): ${sc.metaDescription}`
-    }),
-    `- [${t.profile}](${site.url}${paths.profile[lang]})`,
-    `- [${t.faq}](${homeUrl}#${c.ids.faq})`,
-    `- [Contact](${homeUrl}#${c.ids.contact})`,
+    `- [${t.home}](${site.url}${paths.home[lang]})`,
+    `- [${t.cv}](${site.url}${cvPaths[lang]})`,
   ]
 }
 
@@ -79,12 +55,11 @@ export function GET() {
   const body = [
     `# ${site.name}`,
     "",
-    `> ${home.fr.role} (React, TypeScript, NestJS) basé à ${site.city}, près de ${site.area}. ${home.fr.hero.lead}`,
+    `> ${profile.fr.intro}`,
     "",
-    `> ${home.en.role} (React, TypeScript, NestJS) based in ${site.city}, near ${site.area}, France. ${home.en.hero.lead}`,
+    `> ${profile.en.intro}`,
     "",
     `- Email${heading.fr.colon}${site.email}`,
-    `- ${site.links.malt}`,
     `- ${site.links.linkedin}`,
     `- ${site.links.github}`,
     "",

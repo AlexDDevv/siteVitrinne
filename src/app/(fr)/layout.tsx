@@ -6,7 +6,7 @@ import { site } from "@/lib/site"
 export { viewport } from "@/lib/metadata"
 
 /**
- * Root layout français : accueil freelance, /parcours, études de cas FR, mentions légales.
+ * Root layout français : accueil (portfolio), études de cas FR, articles, mentions légales.
  * Le SEO de l'accueil vit dans sa page, pour ne pas fuiter sur les autres pages.
  */
 export const metadata: Metadata = {

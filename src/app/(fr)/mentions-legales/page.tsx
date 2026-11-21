@@ -6,7 +6,7 @@ import { site } from "@/lib/site"
 export const metadata = pageMetadata({
   lang: "fr",
   title: "Mentions légales",
-  description: `Mentions légales et politique de confidentialité du site de ${site.name}, développeur full-stack freelance à ${site.city}.`,
+  description: `Mentions légales et politique de confidentialité du site personnel de ${site.name}, développeur full-stack.`,
   alternates: paths.legal,
 })
 
