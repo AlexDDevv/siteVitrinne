@@ -1,9 +1,10 @@
 import { ThemeToggle } from "@/components/theme-toggle"
 import { ButtonLink } from "@/components/ui/button"
 import { LangSwitcher } from "@/components/ui/lang-switcher"
+import { Logo } from "@/components/ui/logo"
 import { Container } from "@/components/ui/section"
 import { paths, ui, type Alternates, type Lang } from "@/content/i18n"
-import { navLinks } from "@/lib/site"
+import { navLinks, site } from "@/lib/site"
 
 export function SiteHeader({
   lang = "fr",
@@ -27,8 +28,8 @@ export function SiteHeader({
         que dans un menu masqué : la navigation reste visible dès 320 px.
       */}
       <Container className="flex flex-wrap items-center justify-between gap-x-2 gap-y-2.5 px-4 py-3 sm:flex-nowrap sm:px-6 sm:py-3.5">
-        <a href={home} className="text-subtle font-mono text-[13px] tracking-[0.06em]">
-          alexis<span className="text-accent">.</span>delporte
+        <a href={home} aria-label={`${site.name}, ${t.home.toLowerCase()}`}>
+          <Logo priority compact />
         </a>
         <nav
           aria-label={t.mainNav}

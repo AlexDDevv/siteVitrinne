@@ -1,4 +1,5 @@
 import type { ReactNode } from "react"
+import { Logo } from "@/components/ui/logo"
 import { Container } from "@/components/ui/section"
 import { TextLink } from "@/components/ui/text-link"
 import { paths, ui, type Lang } from "@/content/i18n"
@@ -35,8 +36,8 @@ export function SiteFooter({ lang = "fr" }: { lang?: Lang }) {
       <Container className="text-faint grid gap-10 py-12 text-sm">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr]">
           <div className="grid content-start gap-2">
-            <p className="text-subtle font-mono text-[13px] tracking-[0.06em]">
-              alexis<span className="text-accent">.</span>delporte
+            <p>
+              <Logo size={32} />
             </p>
             <p className="max-w-[30ch] leading-relaxed">
               {site.role[lang]} · {site.city}, {lang === "fr" ? "près de" : "near"} {site.area}
