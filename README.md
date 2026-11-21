@@ -21,23 +21,23 @@ warm-dark, accent ambre, typographie IBM Plex.
 ## Lancer le projet en local
 
 ```bash
-npm install
+pnpm install
 cp .env.example .env.local   # puis renseigner les valeurs
-npm run dev                  # http://localhost:3000
+pnpm dev                     # http://localhost:3000
 ```
 
 ## Scripts
 
 | Commande               | Rôle                                    |
 | ---------------------- | --------------------------------------- |
-| `npm run dev`          | Serveur de développement                |
-| `npm run build`        | Build de production                     |
-| `npm run start`        | Sert le build de production             |
-| `npm run lint`         | ESLint                                  |
-| `npm run lint:fix`     | ESLint avec corrections automatiques    |
-| `npm run format`       | Prettier (écriture)                     |
-| `npm run format:check` | Prettier (vérification seule)           |
-| `npm run typecheck`    | `tsc --noEmit`                          |
+| `pnpm dev`              | Serveur de développement                |
+| `pnpm build`            | Build de production                     |
+| `pnpm start`            | Sert le build de production             |
+| `pnpm lint`             | ESLint                                  |
+| `pnpm lint:fix`         | ESLint avec corrections automatiques    |
+| `pnpm format`           | Prettier (écriture)                     |
+| `pnpm format:check`     | Prettier (vérification seule)           |
+| `pnpm typecheck`        | `tsc --noEmit`                          |
 
 ## Variables d'environnement
 
